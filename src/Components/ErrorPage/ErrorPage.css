@@ -1,0 +1,54 @@
+/* FILEPATH: /d:/Courses/Programming/Front_end developer/Projects/IZItechs/Summit/summit/src/Components/ErrorPage/ErrorPage.css */
+
+/* Style the error container */
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f8f8f8;
+}
+
+/* Style the error message */
+.error-message {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Style the error image */
+.error-image {
+    width: 50%;
+    max-width: 500px;
+    margin-bottom: 2rem;
+}
+
+/* Style the error button */
+.error-button {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #0077ff;
+    color: #fff;
+    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    -webkit-transition: background-color 0.3s ease-in-out;
+    -moz-transition: background-color 0.3s ease-in-out;
+    -ms-transition: background-color 0.3s ease-in-out;
+    -o-transition: background-color 0.3s ease-in-out;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+/* Style the error button on hover */
+.error-button:hover {
+    background-color: #005ae6;
+}

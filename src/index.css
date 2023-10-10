@@ -1,3 +1,19 @@
+:root{
+  --PrimColor:#377474;
+  --SecColor:#717171;
+}
+.bg-primColor{
+  background-color: var(--PrimColor)!important;
+}
+.bg-secColor{
+  background-color: var(--SecColor)!important;
+}
+.text-primColor{
+  color: var(--PrimColor)!important;
+}
+.text-secColor{
+  color: var(--SecColor)!important;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +26,32 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.myVh-100{
+  height: calc(100vh - 100px);
+}
+@media (max-width: 1199px) {
+  
+
+.myVh-100{
+  height: auto;
+}
+}
+
+@media (max-width: 768px) {
+  
+
+.myVh-100{
+  height: auto;
+}
+}
+
+@media (max-width: 576px) {
+  
+.myVh-100{
+  height: auto;
+}
+
 }
