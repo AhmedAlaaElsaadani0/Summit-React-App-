@@ -68,13 +68,13 @@ specifyStyleForNav=()=>{
             <Link className="nav-link active" aria-current="page" to="About">About</Link>
           </li>
           <li className="nav-item me-5">
-            <Link className="nav-link active" aria-current="page" to="#">Buy</Link>
+            <Link className="nav-link active" aria-current="page" to="Buy">Buy</Link>
           </li>
           <li className="nav-item me-5">
-            <Link className="nav-link active" aria-current="page" to="#">Rent</Link>
+            <Link className="nav-link active" aria-current="page" to="Rent">Rent</Link>
           </li>
           <li className="nav-item me-5">
-            <Link className="nav-link active" aria-current="page" to="#">Area</Link>
+            <Link className="nav-link active" aria-current="page" to="Area">Area</Link>
           </li>
         </ul>
         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
