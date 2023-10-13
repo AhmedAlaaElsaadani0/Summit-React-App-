@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from '../Navbar/Navbar'
 import homeStyle from './Home.module.css'
+import { Link } from 'react-router-dom'
 
 export default class Home extends Component {
   render() {
@@ -18,7 +19,7 @@ export default class Home extends Component {
 with a dream of perfect life. Here, we are helping you to
 get you perfect home with best deals.
                 </p>
-                <a href="" className={homeStyle.SearchLink}> SEARCH NOW !</a>
+                <Link to="./Buy" className={homeStyle.SearchLink}> SEARCH NOW !</Link>
                 </div>
                 </div>
 

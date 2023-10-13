@@ -3,7 +3,14 @@ import React, { Component } from 'react'
 export default class ApartmentPoster extends Component {
    
     componentDidMount(){
-        document.querySelector('.AbartmentImage').style.height=`${document.querySelector(".AbartmentDesc").clientHeight }px`;
+        document.querySelectorAll('.AbartmentImage').forEach(
+            apartmentImage=>{
+                document.querySelectorAll('.AbartmentDesc').forEach(
+                    apartmentDesc=>{
+                        apartmentImage.style.height=`${apartmentDesc.clientHeight}px`;
+                    }
+                )}
+                )
     }
     render() {
 let flag=!this.props.flag;
