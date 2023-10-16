@@ -6,7 +6,7 @@ export default class About extends Component {
   render() {
     return <React.Fragment>
             
-        <div className="container-fluid p-5 justify-content-center d-flex align-items-center  ">
+        <div className="container-fluid p-5 justify-content-center d-flex align-items-center  " id='About'>
             <div className="row">
 
                 <div className="col-lg-6  p-0 d-flex justify-content-center align-items-center ">

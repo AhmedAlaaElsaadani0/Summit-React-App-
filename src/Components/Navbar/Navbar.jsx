@@ -65,21 +65,21 @@ specifyStyleForNav=()=>{
             <Link className="nav-link active selectedNavElement " aria-current="page" to="/">Home</Link>
           </li>
           <li className="nav-item me-5">
-            <Link className="nav-link active" aria-current="page" to="About">About</Link>
+            <Link className="nav-link active" aria-current="page" to="/About">About</Link>
           </li>
           <li className="nav-item me-5">
-            <Link className="nav-link active" aria-current="page" to="Buy">Buy</Link>
+            <Link className="nav-link active" aria-current="page" to="/Buy">Buy</Link>
           </li>
           <li className="nav-item me-5">
-            <Link className="nav-link active" aria-current="page" to="Rent">Rent</Link>
+            <Link className="nav-link active" aria-current="page" to="/Rent">Rent</Link>
           </li>
           <li className="nav-item me-5">
-            <Link className="nav-link active" aria-current="page" to="Area">Area</Link>
+            <Link className="nav-link active" aria-current="page" to="/Area">Area</Link>
           </li>
         </ul>
         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <Link  className="nav-link active ContactUs  navItemCircle" aria-current="page"  to="Contact">Contact</Link>
+            <Link  className="nav-link active ContactUs  navItemCircle" aria-current="page"  to="/Contact">Contact</Link>
           </li>
         </ul>
       </div>

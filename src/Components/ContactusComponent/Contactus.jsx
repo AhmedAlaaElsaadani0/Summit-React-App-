@@ -3,7 +3,7 @@ import styleContactus from './Contactus.module.css'
 export default class Contactus extends Component {
   render() {
     return <React.Fragment>
-            <div className='d-flex justify-content-center align-items-center h-75'>
+            <div className='d-flex justify-content-center align-items-center h-75' id='Contact'>
                 
         <div className={styleContactus.widthEle+" container p-5 justify-content-center d-flex bg-primColor rounded-5 align-items-center flex-column "}>
            <h2 className={'text-white mb-5 '+styleContactus.fontSize}>Get started with Summit</h2>

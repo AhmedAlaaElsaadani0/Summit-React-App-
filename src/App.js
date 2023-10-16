@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './Components/HomeComponent/Home';
 import About from './Components/AboutComponent/About';
 import Contactus from './Components/ContactusComponent/Contactus';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import RootLayout from './Components/RootLayout/RootLayout';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import Area from './Components/AreaComponent/Area';

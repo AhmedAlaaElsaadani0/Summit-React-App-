@@ -15,7 +15,7 @@ export default class ApartmentPoster extends Component {
     render() {
 let flag=!this.props.flag;
         return <React.Fragment>
-        <div className={"w-75 p-0 mt-3 rounded-4 m-auto " + (flag?"bg-primColor":"bg-white") }>
+        <div className={"w-75 p-0 mt-3 rounded-4 m-auto shadow " + (flag?"bg-primColor":"bg-white") }>
         <div className="container-fluied overflow-hidden">
         <div className="row">
 

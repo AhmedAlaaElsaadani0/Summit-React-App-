@@ -7,7 +7,7 @@ export default class Home extends Component {
   render() {
     return <React.Fragment>
             
-        <div className="container-fluid p-5 justify-content-center d-flex align-items-center h-100  ">
+        <div className="container-fluid p-5 justify-content-center d-flex align-items-center h-100  " id='Home'>
             <div className="row">
                 
             <div className="col-md-6">
