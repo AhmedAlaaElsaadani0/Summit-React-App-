@@ -44,12 +44,12 @@ export default class SocialWhats extends Component {
         
       }
     }
-     className='bg-secondary text-white mb-5 WhatsappText  rounded-top-0   rounded-bottom-0   rounded-end-5 rounded-start-5  rounded-3 p-2 me-2 '> 
+     className='bg-primColor text-white mb-5 WhatsappText shadow  rounded-top-0   rounded-bottom-0   rounded-end-5 rounded-start-5  rounded-3 p-2 me-2 '> 
     <p className='m-0'>Do you need to send Message?</p>
 
       </div>    
-<div className='  WhatsappIcon rounded-circle bg-success d-flex justify-content-center text-white '>
-        <i className="fa-brands fa-3x m-2 fa-whatsapp"> </i>
+<div className='  WhatsappIcon rounded-circle bg-success shadow d-flex justify-content-center text-white '>
+        <i className="fa-brands fa-2x m-2 fa-whatsapp"> </i>
         </div>
 </div>
     </React.Fragment>

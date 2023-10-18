@@ -1,9 +1,14 @@
 :root{
-  --PrimColor:#377474;
+  --PrimColor:hsl(180, 36%, 34%);
+  --PrimColorHover:hsl(180, 36%, 30%);
+  /* --PrimColorHover:#2b5e5e; */
   --SecColor:#717171;
 }
 .bg-primColor{
   background-color: var(--PrimColor)!important;
+}
+.bg-primColorHover{
+  background-color: var(--PrimColorHover)!important;
 }
 .bg-secColor{
   background-color: var(--SecColor)!important;
@@ -30,7 +35,50 @@ code {
 
 
 .myVh-100{
-  height: calc(100vh - 100px);
+  height: calc(100vh - 120px);
+}
+
+/* style for every Button */
+.sButton {
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+
+.sButtonGreen {
+  color: white;
+  background-color: var(--PrimColor);
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+.sButtonGreen:hover {
+  text-decoration: none;
+  background-color: var(--PrimColorHover);
+}
+
+.sButtonWhite {
+  color: var(--PrimColor);
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+.sButtonWhite:hover {
+  color: var(--PrimColorHover);
+  text-decoration: none;
+  background-color: white;
 }
 @media (max-width: 1199px) {
   

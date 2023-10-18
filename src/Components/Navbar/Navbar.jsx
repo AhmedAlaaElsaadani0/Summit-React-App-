@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
 import  "./styleNavBar.css" 
-import { Link } from 'react-router-dom'
+import Link from '../Link/Link';
+
 export default class Navbar extends Component {
 changeStyleForNavItemContactUs=()=>{
   let contactUs=document.querySelector(".ContactUs");
@@ -52,7 +53,7 @@ specifyStyleForNav=()=>{
     <div className="container-fluid mx-3 d-flex justify-content-between ">
       <Link className="navbar-brand" to="/">
         <img src="Images/Logo.png" style={{
-          width: '100px'
+          width: '130px'
         
         }} alt="logo website " />
       </Link>
@@ -76,6 +77,7 @@ specifyStyleForNav=()=>{
           <li className="nav-item me-5">
             <Link className="nav-link active" aria-current="page" to="/Area">Area</Link>
           </li>
+          
         </ul>
         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
           <li className="nav-item">

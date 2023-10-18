@@ -9,6 +9,7 @@ import ErrorPage from './Components/ErrorPage/ErrorPage';
 import Area from './Components/AreaComponent/Area';
 import Rent from './Components/RentComponent/Rent';
 import Buy from './Components/Buy/Buy';
+import ApartmentDetails from './Components/Apartment/ApartmentDetailsComponent/ApartmentDetails';
 let routers = createBrowserRouter([
   {path:'/', element: <RootLayout/>, children:[
     {index:true, element: <Home/>},
@@ -17,6 +18,8 @@ let routers = createBrowserRouter([
     {path:'Area', element: <Area/>},
     {path:'Rent', element: <Rent/>},
     {path:'Buy', element: <Buy/>},
+    {path:'ApartmentDetails', element: <ApartmentDetails/>},
+
   
 
       ]},
