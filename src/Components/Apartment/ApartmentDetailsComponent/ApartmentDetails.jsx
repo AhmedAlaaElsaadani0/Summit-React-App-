@@ -79,7 +79,8 @@ const ApartmentDetails = (props) => {
               <div className="col-md-4 AbartmentImage">
                 <div className="w-100 h-100">
 
-                  <AparmentSlider />
+                  <AparmentSlider flatImages={flat.pictures}  />
+
                 </div>
               </div>
             </div>
