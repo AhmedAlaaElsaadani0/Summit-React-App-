@@ -179,12 +179,9 @@ export default class ApiManger {
      * @param {int} GovId
      * @returns {object}
      */
-        static async getAreasOfGov(GovId, token) {
+        static async getAreasOfGov(GovId) {
             const response = await fetch(`${AreaBaseURl}/${GovId}`, {
-                method: 'GET',
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                },
+                method: 'GET',          
             }).then(response => response.json())
             console.log(response);
             return response;

@@ -5,14 +5,21 @@ import ApartmentLoading from '../Apartment/ApartmentLoadingComponent/ApartmentLo
 import startWork from '../JsClasses/Forms';
 
 const Buy = () => {
-  const [param, setParam] = useState('?Type=2');
+  
   const [response, setResponse] = useState({});
+  const [PageIndex, setpageIndex] = useState(1)
+  const [SearchValue, setsearchValue] = useState("")
   const [apartments, setApartments] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  const getAllApartments = async () => {
+  //DidMount
+    useEffect(() => {
+      // startWork();
+      getAllApartments();
+    }, []);
+// this main API call to get all apartments by using param
+  const getAllApartments = async (searchValue=SearchValue,pageIndex=PageIndex) => {
     let flag = false;
-    let response = await ApiManger.getAllApartments(param);
+    let response = await ApiManger.getAllApartments(`?Type=2&pageIndex=${pageIndex}&title=${searchValue}`);
     let updatedApartments = [...apartments, ...response.data];
     console.log(updatedApartments);
     for (let i = apartments.length; i < updatedApartments.length; i++) {
@@ -24,14 +31,24 @@ const Buy = () => {
     }
     setResponse(response);
     setApartments(updatedApartments);
-    setParam(`?Type=2&pageIndex=${response.pageIndex + 1}`);
+    setpageIndex(response.data.length==0 ?response.pageIndex:response.pageIndex + 1)
     setLoading(false);
   };
+  // this function to get the value of search input and set it to searchValue
+  const handleSearch = (e) => {
+    document.querySelectorAll('.Apartment').forEach((apartment) => {
+      apartment.remove();
+    })
+    e.preventDefault();
+    setpageIndex(1);
+    let value = document.getElementsByName('searchElement')[0].value;
+    setsearchValue(value);
+    // setApartments([]);
+    getAllApartments(value,1);
 
-  useEffect(() => {
-    startWork();
-    getAllApartments();
-  }, []);
+  
+  }
+  // this function to load more apartments when we click on load more button
   async function loadMore() {
     let btn = document.getElementById('loadMore');
     btn.disabled = true;
@@ -48,11 +65,11 @@ const Buy = () => {
   return (
     <React.Fragment>
       <div className='d-flex justify-content-center align-items-center h-75 flex-wrap'>
-        <form action="" dir='rtl' id="BuyPageSearch" className="d-flex w-75 justify-content-center">
-          <div className="w-75 position-relative text-secondary">
-            <input name="searchElement" type="text" className="form-control mb-3 form-label mb-0 rounded-5 p-2 pe-3"
-              placeholder="search" />
-            <i className="fa-solid fa-magnifying-glass pb-3 position-absolute top-50 translate-middle-y ms-3 start-0"></i>
+        <form action=''  dir='rtl' id='RentPageSearch' className='d-flex w-75 justify-content-center'>
+          <div className='w-75 position-relative text-secondary'>
+            <input onChange={handleSearch} name='searchElement' type='text' className='form-control mb-3 form-label mb-0 rounded-5 p-2 pe-3'
+              placeholder='search' />
+            <i className='fa-solid fa-magnifying-glass pb-3 position-absolute top-50 translate-middle-y ms-3 start-0'></i>
           </div>
           <button type="submit" className="sButtonAdditionForm btn mb-3 btn-primary rounded-5 mx-2 px-5 py-0">Search</button>
         </form>

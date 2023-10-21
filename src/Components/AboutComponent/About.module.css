@@ -2,8 +2,7 @@
     font-size: 4.5rem;
     font-weight: 900;
     line-height: 1.1;
-    background: linear-gradient(90deg, #96A69F 0%, #96A69F 35%, var(--PrimColor) 100%);
-    background: -webkit-linear-gradient(90deg, #96A69F 1%, #96A69F 35%, var(--PrimColor) 100%);
+    background:var(--PrimColor);
     background-clip: text;
     -moz-background-clip: text;
     -webkit-background-clip: text;

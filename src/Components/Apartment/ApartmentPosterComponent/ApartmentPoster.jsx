@@ -22,11 +22,12 @@ const ApartmentPoster = (props) => {
       });
     });
   }, []);
+  
   return (
     <React.Fragment>
       {
 
-        <div className={`w-75 p-0 mb-3 rounded-4 overflow-hidden m-auto shadow ${flag ? 'bg-primColor' : 'bg-white'}`}>
+        <div className={`w-75 p-0 mb-3 rounded-4 overflow-hidden m-auto shadow Apartment ${flag ? 'bg-primColor' : 'bg-white'}`}>
           <div className="container-fluied overflow-hidden">
             <div className="row">
               <div className={`col-md-8 fs-3 fw-bolder AbartmentDesc ${flag ? 'text-white' : 'text-primColor'}`}>
@@ -53,8 +54,8 @@ const ApartmentPoster = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="col-md-4 AbartmentImage ">
-                <AparmetSlider />
+              <div className="col-md-4 AbartmentImage AparmentSlider ">
+                <AparmetSlider key={props.index}/>
               </div>
             </div>
           </div>

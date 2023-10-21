@@ -15,7 +15,6 @@ const ApartmentDetails = (props) => {
   });
   const location = useLocation();
   let flat=location.state;
-console.log(flat);
   const flag = false;
 
   return (
