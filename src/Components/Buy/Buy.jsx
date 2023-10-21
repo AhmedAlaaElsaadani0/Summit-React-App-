@@ -71,7 +71,6 @@ const Buy = () => {
               placeholder='search' />
             <i className='fa-solid fa-magnifying-glass pb-3 position-absolute top-50 translate-middle-y ms-3 start-0'></i>
           </div>
-          <button type="submit" className="sButtonAdditionForm btn mb-3 btn-primary rounded-5 mx-2 px-5 py-0">Search</button>
         </form>
         <div className="Apartments mt-3 w-100">
           {loading ?
