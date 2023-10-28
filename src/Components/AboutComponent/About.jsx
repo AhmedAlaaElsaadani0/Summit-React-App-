@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Navbar from '../Navbar/Navbar'
 import styleAbout from './About.module.css'
 
 export default class About extends Component {
@@ -11,7 +10,7 @@ export default class About extends Component {
 
                 <div className="col-lg-6  p-0 d-flex justify-content-center align-items-center ">
                    <div className=" overflow-hidden border rounded-5 w-100 shadow ">
-                   <img src="Images/AboutImage.png" style={{
+                   <img src="Images/cairoTower.jpg" style={{
                         width: "100%",
                         height: "100%"
                     }} alt="RandomBuilding" />

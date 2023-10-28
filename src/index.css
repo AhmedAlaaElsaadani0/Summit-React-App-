@@ -1,6 +1,6 @@
 :root{
-  --PrimColor:hsl(180, 36%, 34%);
-  --PrimColorHover:hsl(180, 36%, 30%);
+  --PrimColor:#377676;
+  --PrimColorHover:hsl(180, 37%, 24%);
   /* --PrimColorHover:#2b5e5e; */
   --SecColor:#717171;
 }
@@ -102,4 +102,144 @@ code {
   height: auto;
 }
 
+}
+/* -------------------------form control by Amooor 😘----------------------------------- */
+
+.form-control-Amoor {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #b1b4b7;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Hover CSS */
+
+.form-control-Amoor:hover {
+  border-color: #377676;
+  box-shadow: 0 0 0 0.2rem rgb(55, 118, 118,0.25);
+}
+
+/* Focus CSS */
+
+.form-control-Amoor:focus {
+  outline: none;
+  border-color: #377676;
+  box-shadow: 0 0 0 0.2rem rgb(55, 118, 118,0.25);
+}
+
+/* Disabled CSS */
+
+.form-control-Amoor:disabled, .form-control-Amoor[readonly] {
+  background-color: #e9ecef;
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+/* Validation CSS */
+
+.form-control-Amoor.is-valid {
+  border-color: #377676;
+  box-shadow: 0 0 0 0.2rem rgb(55, 118, 118,0.25);
+}
+
+.form-control-Amoor.is-invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Before CSS */
+
+.form-control-Amoor::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.25rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #ced4da;
+  transition: transform 0.15s ease-in-out;
+}
+
+/* After CSS */
+
+.form-control-Amoor::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0.25rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #377676;
+  transition: transform 0.15s ease-in-out;
+}
+
+/* Focus Before CSS */
+
+.form-control-Amoor:focus::before {
+  transform: scaleX(1);
+}
+
+/* Focus After CSS */
+
+.form-control-Amoor:focus::after {
+  transform: scaleX(1);
+}
+
+/* -------------------------form select by Amooor 😘----------------------------------- */
+/* Default CSS */
+
+.form-select-Amoor {
+  display: inline-block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#343a40' stroke-width='1.5' stroke-linecap='round' d='M2 5l6 6 6-6'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: right 0.75rem;
+  background-position-y: center;
+  border: 1px solid #b1b4b7;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Focus CSS */
+
+.form-select-Amoor:focus {
+  border-color: #377676;
+  box-shadow: 0 0 0 0.2rem rgb(55, 118, 118,0.25);
+  outline: none;
+}
+
+/* Disabled CSS */
+
+.form-select-Amoor:disabled, .form-select-Amoor[readonly] {
+  background-color: #e9ecef;
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+/* Validation CSS */
+
+.form-select-Amoor.is-valid {
+  border-color: #377676;
+  box-shadow: 0 0 0 0.2rem rgb(55, 118, 118,0.25);
+}
+
+.form-select-Amoor.is-invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }

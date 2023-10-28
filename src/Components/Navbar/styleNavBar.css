@@ -22,34 +22,35 @@ nav a {
     /*Setthebackgroundcolortogreen*/background-color:var(--PrimColor);
     /*Setthedisplaypropertytoinline-blocktomaketheelementablock-levelelementwithinlineproperties*/display: inline-block;
     /*Settheborder-radiuspropertyto50%tomaketheelementacircle*/border-radius: 50%;
-    /*Setthepaddingpropertytoaddsomespacearoundthetext*/padding: 15px 30px 15px 0.03em ;
-    transition:all .5s ease-in-out ;
+    /*Setthepaddingpropertytoaddsomespacearoundthetext*/padding: 5px 10px 5px 2px ;
+    transition:all 0.5s ease-in-out ;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
-    -webkit-transition:all .5s ease-in-out ;
-    -moz-transition:all .5s ease-in-out ;
-    -ms-transition:all .5s ease-in-out ;
-    -o-transition:all .5s ease-in-out ;
+    -webkit-transition:all 0.5s ease-in-out ;
+    -moz-transition:all 0.5s ease-in-out ;
+    -ms-transition:all 0.5s ease-in-out ;
+    -o-transition:all 0.5s ease-in-out ;
 }
 .navItemSelectedCircle::before {
     content: "Contact";
     color: white;
     font-weight: bolder;
+
     /*Setthebackgroundcolortogreen*/background-color:var(--PrimColor);
     /*Setthedisplaypropertytoinline-blocktomaketheelementablock-levelelementwithinlineproperties*/display: inline-block;
     /*Settheborder-radiuspropertyto50%tomaketheelementacircle*/border-radius: 50%;
-    /*Setthepaddingpropertytoaddsomespacearoundthetext*/padding: 15px 0px 15px 20px ;
+    /*Setthepaddingpropertytoaddsomespacearoundthetext*/padding: 30px 4px 30px 15px ;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
-    transition: all .5s ease-in-out ;
-    -webkit-transition: all .5s ease-in-out ;
-    -moz-transition: all .5s ease-in-out ;
-    -ms-transition: all .5s ease-in-out ;
-    -o-transition: all .5s ease-in-out ;
+    transition: all 0.5s ease-in-out ;
+    -webkit-transition: all 0.5s ease-in-out ;
+    -moz-transition: all 0.5s ease-in-out ;
+    -ms-transition: all 0.5s ease-in-out ;
+    -o-transition: all 0.5s ease-in-out ;
 }
 .selectedNavElement{
     color: var(--PrimColor)!important;

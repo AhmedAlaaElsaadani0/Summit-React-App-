@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Navbar from '../Navbar/Navbar'
 import homeStyle from './Home.module.css'
 import Link from '../Link/Link'
 
@@ -36,7 +35,7 @@ export default class Home extends Component {
                     </div>
 
                     <div className="col-md-6 shadow p-0 overflow-hidden  border rounded-5 ">
-                        <img src="Images/RandomBuilding.jpg" style={{
+                        <img src="Images/Pyramids.jpg" style={{
                             width: "100%",
                             height: "100%"
                         }} alt="RandomBuilding" />

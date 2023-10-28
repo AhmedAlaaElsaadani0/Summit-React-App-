@@ -65,11 +65,11 @@ function Rent() {
   return (
     <React.Fragment>
       <div className='d-flex justify-content-center align-items-center h-75 flex-wrap'>
-        <form action=''  dir='rtl' id='RentPageSearch' className='d-flex w-75 justify-content-center'>
+      <form action=''  id='RentPageSearch' className='d-flex w-50 justify-content-center'>
           <div className='w-75 position-relative text-secondary'>
-            <input onChange={handleSearch} name='searchElement' type='text' className='form-control mb-3 form-label mb-0 rounded-5 p-2 pe-3'
-              placeholder='search' />
-            <i className='fa-solid fa-magnifying-glass pb-3 position-absolute top-50 translate-middle-y ms-3 start-0'></i>
+          <i className='fa-solid fa-magnifying-glass pb-3 position-absolute top-50 translate-middle-y me-3 end-0'></i>
+            <input onChange={handleSearch} name='searchElement' type='text' className='form-control-Amoor mb-3  form-label mb-0 rounded-5 p-3 pe-3'
+              placeholder='Search' />
           </div>
         </form>
         <div className='Apartments mt-3 w-100'>
