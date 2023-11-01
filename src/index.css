@@ -80,6 +80,14 @@ code {
   text-decoration: none;
   background-color: white;
 }
+
+
+
+::selection {
+  color: white;
+  background-clip: initial;   
+  background-color: var(--PrimColor);
+}
 @media (max-width: 1199px) {
   
 

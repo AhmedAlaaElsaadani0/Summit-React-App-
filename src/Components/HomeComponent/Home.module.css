@@ -10,9 +10,17 @@
         color: transparent;
         -webkit-text-fill-color: transparent;
         -moz-text-fill-color: transparent;
-        
-    
 }
+
+.MainHeading::selection {
+    background-color: var(--PrimColor);
+    background-clip:initial ;
+    -webkit-background-clip: initial;
+    -moz-background-clip: initial;
+    -webkit-text-fill-color: white;
+    -moz-text-fill-color: white;
+    color: white;
+  }
 .SecondaryHeading{
     
     font-size: 1.8rem;

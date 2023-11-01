@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Navbar from '../Navbar/Navbar'
 import homeStyle from './Home.module.css'
 import Link from '../Link/Link'
+import About from '../AboutComponent/About.jsx'
+import Contactus from '../ContactusComponent/Contactus.jsx'
 
 export default class Home extends Component {
     render() {
@@ -44,6 +46,8 @@ export default class Home extends Component {
 
                 </div>
             </div>
+            <About/>
+            <Contactus/>
         </React.Fragment>
     }
 }

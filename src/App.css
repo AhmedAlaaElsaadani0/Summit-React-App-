@@ -56,11 +56,11 @@
 }
 
 .bars.show > div {
-  animation: show 0.2s both ease-in-out;
-  -webkit-animation: show 0.2sP both ease-in-out;
+  animation: show 0.1s both ease-in-out;
+  -webkit-animation: show 0.1s both ease-in-out;
 }
 
 .bars.hide > div {
-  animation: hide 0.2s both ease-in-out;
-  -webkit-animation: hide 0.2s both ease-in-out;
+  animation: hide 0.1s both ease-in-out;
+  -webkit-animation: hide 0.1s both ease-in-out;
 }

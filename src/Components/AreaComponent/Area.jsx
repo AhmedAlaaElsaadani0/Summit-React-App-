@@ -102,7 +102,8 @@ const handleSearchByRegionId = (e) => {
       <div className='d-flex justify-content-center align-items-center h-75 flex-wrap'>
         <div className='w-100 d-flex justify-content-center flex-wrap'>
           <select onChange={handleSearchByGovId} onKeyDown={handleSearchByGovId} style={{
-            width: "80%"
+            width: "80%",
+            fontSize: "20px",
           }} name='Gov' className='form-select px-3 py-2 rounded-5' id='selectorGovs'>
             <option value="" selected disabled>All Governorates</option>
 
@@ -141,7 +142,9 @@ const handleSearchByRegionId = (e) => {
             {
               display: 'none',
               width: '70%',
-              transition: 'all 0.5s ease-in-out'
+              transition: 'all 0.5s ease-in-out',
+            fontSize: "20px",
+
             }
           } id='selectorAreas'>
             <option value="" selected disabled>All avaliable  Areas</option>
@@ -151,7 +154,9 @@ const handleSearchByRegionId = (e) => {
             {
               display: 'none',
               width: '30%',
-              transition: 'all 0.5s ease-in-out'
+              transition: 'all 0.5s ease-in-out',
+            fontSize: "20px",
+
             }
           } id='selectorRegions'>
             <option value="" selected disabled>All Regions</option>
@@ -207,6 +212,7 @@ const clearRegionsSelector = () => {
     selectorRegions.removeChild(selectorRegions.firstChild);
   }
 }
+
 
   // this function to append Child to Areas Selector
   const appendChildToAreasSelector = (response) => {

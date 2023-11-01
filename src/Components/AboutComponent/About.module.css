@@ -2,15 +2,7 @@
     font-size: 4.5rem;
     font-weight: 900;
     line-height: 1.1;
-    background:var(--PrimColor);
-    background-clip: text;
-    -moz-background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
-    
-
+    color:var(--PrimColor);
 }
 .SecondaryHeading{   
     font-size: 2rem;

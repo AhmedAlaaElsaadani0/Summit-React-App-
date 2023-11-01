@@ -15,7 +15,7 @@ const Link = ({ to, className,style,children }) => {
         bars.classList.remove('show');
         bars.classList.add('hide');
         navigate(to);
-      }, 800);
+      }, 400);
 
       setTimeout(() => bars.classList.remove('hide'), 1600);
     }
