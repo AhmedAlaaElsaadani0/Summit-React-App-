@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ApartmentLoading from '../ApartmentLoadingComponent/ApartmentLoading';
 import AparmetSlider from '../ApartmentSliderComponent/AparmentSlider';
 
 const ApartmentPoster = (props) => {

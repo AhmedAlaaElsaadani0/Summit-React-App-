@@ -46,7 +46,7 @@
 .SearchLink:hover{
     color: white;
     text-decoration: none;
-    padding:0.8rem 1.7rem ;
+    padding:0.75rem 1.5rem ;
     border-radius: 1rem;
     background-color: var(--PrimColorHover);
     -webkit-border-radius: 1rem;

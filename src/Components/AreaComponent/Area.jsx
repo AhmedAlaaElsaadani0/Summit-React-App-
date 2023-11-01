@@ -100,11 +100,10 @@ const handleSearchByRegionId = (e) => {
   return (
     <React.Fragment>
       <div className='d-flex justify-content-center align-items-center h-75 flex-wrap'>
-        <div className='w-100 d-flex justify-content-center flex-wrap'>
+        <div className='w-50 d-flex justify-content-center flex-wrap'>
           <select onChange={handleSearchByGovId} onKeyDown={handleSearchByGovId} style={{
-            width: "80%",
-            fontSize: "20px",
-          }} name='Gov' className='form-select px-3 py-2 rounded-5' id='selectorGovs'>
+            width: "80%"
+          }} name='Gov' className='form-select-Amoor px-3 py-2 rounded-5' id='selectorGovs'>
             <option value="" selected disabled>All Governorates</option>
 
             <option value="1">Alexandria</option>
@@ -138,7 +137,7 @@ const handleSearchByRegionId = (e) => {
             <option value="29">Tanta</option>
 
           </select>
-          <select onChange={handleSearchByAreaId} onKeyDown={handleSearchByAreaId} name='Areas' className='form-select mt-2 me-2 px-3 py-2 rounded-5 ' style={
+          <select onChange={handleSearchByAreaId} onKeyDown={handleSearchByAreaId} name='Areas' className='form-select-Amoor mt-2 me-2 px-3 py-2 rounded-5 ' style={
             {
               display: 'none',
               width: '70%',
@@ -150,7 +149,7 @@ const handleSearchByRegionId = (e) => {
             <option value="" selected disabled>All avaliable  Areas</option>
           </select>
 
-          <select onSelect={handleSearchByRegionId} onFocus={handleSearchByRegionId} name='Regions' className='form-select mt-2 px-3 py-2 rounded-5 ' style={
+          <select onSelect={handleSearchByRegionId} onFocus={handleSearchByRegionId} name='Regions' className='form-select-Amoor mt-2 px-3 py-2 rounded-5 ' style={
             {
               display: 'none',
               width: '30%',
@@ -171,7 +170,7 @@ const handleSearchByRegionId = (e) => {
               return <ApartmentLoading key={index} flag={item} />;
             })
             :
-            apartments.length == 0 ? <h2 className='text-center bg-primColor text-white'>No Apartments Found</h2> :
+            apartments.length == 0 ? <h2 className='text-center bg-primColor text-white p-5'>Sorry, There is no Apartments Found for This Region!</h2> :
               apartments.map((item, index) => {
                 return <ApartmentPoster key={index} index={index} previousPage="Area" loading={loading} flat={item.data} flag={item.flag} />
               })}

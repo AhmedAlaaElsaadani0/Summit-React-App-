@@ -53,7 +53,7 @@ specifyStyleForNav=()=>{
     <div className="container-fluid mx-3 d-flex justify-content-between ">
       <Link className="navbar-brand" to="/">
         <img src="Images/Logo.png" style={{
-          width: '130px'
+          width: '160px',
         
         }} alt="logo website " />
       </Link>
