@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ApartmentPoster from '../Apartment/ApartmentPosterComponent/ApartmentPoster';
-import startWork from '../JsClasses/Forms';
 import ApartmentLoading from '../Apartment/ApartmentLoadingComponent/ApartmentLoading';
 import ApiManger from '../JsClasses/ApiManger';
 
-function Rent() { 
+function Rent() {
 
   const [response, setResponse] = useState({});
   const [PageIndex, setpageIndex] = useState(1)
@@ -12,12 +11,12 @@ function Rent() {
   const [apartments, setApartments] = useState([]);
   const [loading, setLoading] = useState(true);
   //DidMount
-    useEffect(() => {
-      // startWork();
-      getAllApartments();
-    }, []);
-// this main API call to get all apartments by using param
-  const getAllApartments = async (searchValue=SearchValue,pageIndex=PageIndex) => {
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    getAllApartments();
+  }, []);
+  // this main API call to get all apartments by using param
+  const getAllApartments = async (searchValue = SearchValue, pageIndex = PageIndex) => {
     let flag = false;
     let response = await ApiManger.getAllApartments(`?Type=1&pageIndex=${pageIndex}&title=${searchValue}`);
     let updatedApartments = [...apartments, ...response.data];
@@ -31,7 +30,7 @@ function Rent() {
     }
     setResponse(response);
     setApartments(updatedApartments);
-    setpageIndex(response.data.length==0 ?response.pageIndex:response.pageIndex + 1)
+    setpageIndex(response.data.length == 0 ? response.pageIndex : response.pageIndex + 1)
     setLoading(false);
   };
   // this function to get the value of search input and set it to searchValue
@@ -44,9 +43,9 @@ function Rent() {
     let value = document.getElementsByName('searchElement')[0].value;
     setsearchValue(value);
     // setApartments([]);
-    getAllApartments(value,1);
+    getAllApartments(value, 1);
 
-  
+
   }
   // this function to load more apartments when we click on load more button
   async function loadMore() {
@@ -58,16 +57,19 @@ function Rent() {
   // When New Data is Fetched From Api we return button to it's state
   useEffect(() => {
     let btn = document.getElementById('loadMore');
-    btn.disabled = false;
-    btn.innerHTML = 'Load More';
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = 'Load More';
+    } 
+
   }, [apartments])
 
   return (
     <React.Fragment>
       <div className='d-flex justify-content-center align-items-center h-75 flex-wrap'>
-      <form action=''  id='RentPageSearch' className='d-flex w-50 justify-content-center'>
+        <form action='' id='RentPageSearch' className='d-flex w-50 justify-content-center'>
           <div className='w-75 position-relative text-secondary'>
-          <i className='fa-solid fa-magnifying-glass pb-3 position-absolute top-50 translate-middle-y me-3 end-0'></i>
+            <i className='fa-solid fa-magnifying-glass pb-3 position-absolute top-50 translate-middle-y me-3 end-0'></i>
             <input onChange={handleSearch} name='searchElement' type='text' className='form-control-Amoor mb-3  form-label mb-0 rounded-5 p-3 pe-3'
               placeholder='Search' />
           </div>
@@ -77,14 +79,14 @@ function Rent() {
             ? [true, false, true].map((item, index) => {
               return <ApartmentLoading key={index} flag={item} />;
             })
-            : 
+            :
             apartments.map((item, index) => {
               console.log(item);
               return <ApartmentPoster key={index} previousPage="Buy" loading={loading} flat={item.data} flag={item.flag} />
             })}
         </div>
         <div>
-          <button onClick={loadMore} className="sButton sButtonGreen" id='loadMore'>Load More</button>
+          {(response.count !== 0 || !(response.pageSize > response.count)) ? <button onClick={loadMore} className="sButton sButtonGreen" id='loadMore'>Load More</button> : ""}
         </div>
       </div>
     </React.Fragment>

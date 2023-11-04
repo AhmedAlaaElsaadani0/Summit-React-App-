@@ -15,9 +15,6 @@ changeStyleForNavItemContactUs=()=>{
   else{contactUs.classList.remove("navItemSelectedCircle");
   contactUs.classList.add("navItemCircle");
   contactUs.innerText="Contact";}
- 
-
-
 }
 // specify style for nav item when refresh page
 specifyStyleForNav=()=>{
@@ -47,9 +44,12 @@ specifyStyleForNav=()=>{
   componentDidMount(){
     this.specifyStyleForNav()
     this.changeStyleForNavItem()
+  // Call the function initially and listen for window resize events
+    updateAttributeForScreenSize();
+    window.addEventListener('resize', updateAttributeForScreenSize);
   }
  render() {
-    return <React.Fragment><nav className="navbar navbar-expand-lg  bg-transparent">
+    return <React.Fragment><nav id='navBarMain' className="navbar navbar-expand-lg  bg-responsiveTransparentAndPrimColorWhenPhone" data-bs-theme="dark">
     <div className="container-fluid mx-3 d-flex justify-content-between ">
       <Link className="navbar-brand" to="/">
         <img src="Images/Logo.png" style={{
@@ -89,5 +89,20 @@ specifyStyleForNav=()=>{
     </div>
   </nav>
   </React.Fragment>
+  }
+}
+// Function to update the attribute value
+function updateAttributeForScreenSize() {
+  const element = document.getElementById('navBarMain'); // Change 'myElement' to the ID of your target element
+  const screenWidth = window.innerWidth; // Get the current screen width
+
+  // Check if the screen width is less than 789px
+  if (screenWidth <= 768) {
+    element.attributes.setNamedItem(document.createAttribute('data-bs-theme'));
+    // add the attribute data-bs-theme and set it's value dark
+    element.setAttribute('data-bs-theme', 'dark'); 
+    } else {
+    // Reset the attribute to its initial value when the screen width is not less than 789px
+    element.removeAttribute('data-bs-theme'); // Change 'initial-value' to your initial attribute value
   }
 }

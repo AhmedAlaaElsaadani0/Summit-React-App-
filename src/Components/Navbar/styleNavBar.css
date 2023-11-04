@@ -66,3 +66,24 @@ nav a {
     -ms-transition: all 0.3s ease-in-out !important;
     -o-transition: all 0.3s ease-in-out !important;
 }
+.bg-responsiveTransparentAndPrimColorWhenPhone{
+    background-color: transparent!important;
+}
+@media screen and (max-width: 768px) {
+    .bg-responsiveTransparentAndPrimColorWhenPhone{
+        background-color: var(--PrimColor)!important;
+    }
+    .selectedNavElement{
+        color:black!important;
+        font-weight: bolder!important;
+        text-decoration: underline!important;
+        -moz-text-decoration:underline !important;
+        -webkit-text-decoration:underline !important;
+    }
+    
+    /* set all children elements of navbar to white */
+    .bg-responsiveTransparentAndPrimColorWhenPhone a {
+        color: white;
+    }
+
+}

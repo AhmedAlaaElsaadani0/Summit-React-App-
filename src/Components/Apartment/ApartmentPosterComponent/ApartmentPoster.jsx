@@ -54,7 +54,7 @@ const ApartmentPoster = (props) => {
                 </div>
               </div>
               <div className="col-md-4 AbartmentImage AparmentSlider ">
-                <AparmetSlider flatImages={flat.pictures}/>
+                <AparmetSlider key={flat.id} uniqeNum={flat.id} flatImages={flat.pictures}/>
               </div>
             </div>
           </div>

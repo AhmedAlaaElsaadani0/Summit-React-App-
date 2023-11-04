@@ -18,7 +18,7 @@ function Area() {
     getAllApartments();
   }, []);
   // this main API call to get all apartments by using param
-  const getAllApartments = async (govId = GovId, pageIndex = PageIndex,areaId=AreaId,regionId=RegionId) => {
+  const getAllApartments = async (govId = GovId, pageIndex = PageIndex, areaId = AreaId, regionId = RegionId) => {
     let flag = false;
     let response = await ApiManger.getAllApartments(`?pageIndex=${pageIndex}&govId=${govId}&areaid=${areaId}&regionId=${regionId}`);
     let updatedApartments = [...apartments, ...response.data];
@@ -50,29 +50,29 @@ function Area() {
     getAllApartments(value, 1);
     // setApartments([]);
   }
- // this function to get the value of search input and set it to areaId and get all apartments by areaId
- const handleSearchByAreaId = (e) => {
-   e.preventDefault();
-   resetPage();
-   clearRegionsSelector();
-  ApiManger.getRegionsOfArea(e.target.value).then((response) => {
-    appendChildToRegionsSelector(response);
-  });
-  let value = document.querySelector('#selectorAreas').value;
-  setAreaId(value);
-  getAllApartments(GovId, 1,value);
-  document.querySelector('#selectorAreas').style.width = '50%';
-  // setApartments([]);
-}
-// this function to get the value of search input and set it to regionId and get all apartments by regionId
-const handleSearchByRegionId = (e) => {
-  e.preventDefault();
-  resetPage();
-  let value = document.querySelector('#selectorRegions').value;
-  getAllApartments(GovId, 1,AreaId,value);
-  setRegionId(value);
-  // setApartments([]);
-}
+  // this function to get the value of search input and set it to areaId and get all apartments by areaId
+  const handleSearchByAreaId = (e) => {
+    e.preventDefault();
+    resetPage();
+    clearRegionsSelector();
+    ApiManger.getRegionsOfArea(e.target.value).then((response) => {
+      appendChildToRegionsSelector(response);
+    });
+    let value = document.querySelector('#selectorAreas').value;
+    setAreaId(value);
+    getAllApartments(GovId, 1, value);
+    document.querySelector('#selectorAreas').style.width = '50%';
+    // setApartments([]);
+  }
+  // this function to get the value of search input and set it to regionId and get all apartments by regionId
+  const handleSearchByRegionId = (e) => {
+    e.preventDefault();
+    resetPage();
+    let value = document.querySelector('#selectorRegions').value;
+    getAllApartments(GovId, 1, AreaId, value);
+    setRegionId(value);
+    // setApartments([]);
+  }
 
   // this Function to reset the page to it's default state for new search
   const resetPage = () => {
@@ -80,7 +80,7 @@ const handleSearchByRegionId = (e) => {
       apartment.remove();
     })
     setpageIndex(1);
-   
+
   }
 
   // this function to load more apartments when we click on load more button
@@ -93,8 +93,10 @@ const handleSearchByRegionId = (e) => {
   // When New Data is Fetched From Api we return button to it's state
   useEffect(() => {
     let btn = document.getElementById('loadMore');
-    btn.disabled = false;
-    btn.innerHTML = 'Load More';
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = 'Load More';
+    }
   }, [apartments])
 
   return (
@@ -142,7 +144,7 @@ const handleSearchByRegionId = (e) => {
               display: 'none',
               width: '70%',
               transition: 'all 0.5s ease-in-out',
-            fontSize: "20px",
+              fontSize: "20px",
 
             }
           } id='selectorAreas'>
@@ -154,7 +156,7 @@ const handleSearchByRegionId = (e) => {
               display: 'none',
               width: '30%',
               transition: 'all 0.5s ease-in-out',
-            fontSize: "20px",
+              fontSize: "20px",
 
             }
           } id='selectorRegions'>
@@ -177,7 +179,7 @@ const handleSearchByRegionId = (e) => {
         </div>
 
         <div>
-          <button onClick={loadMore} className="sButton sButtonGreen" id='loadMore'>Load More</button>
+          {(response.count !== 0 || !(response.pageSize > response.count)) ? <button onClick={loadMore} className="sButton sButtonGreen" id='loadMore'>Load More</button> : ""}
         </div>
       </div>
     </React.Fragment>
@@ -213,33 +215,32 @@ const clearRegionsSelector = () => {
 }
 
 
-  // this function to append Child to Areas Selector
-  const appendChildToAreasSelector = (response) => {
-    let areas = response;
-    console.log(response);
-    let selector = document.querySelector('#selectorAreas');
-    let option = creatDefaultELementInSelector("All avaliable  Areas");
-    selector.append(option);
-    selector.style.display = 'block';
-    areas.forEach((area) => {
-      let option = document.createElement('option');
-      option.value = area.id;
-      option.innerHTML = area.name;
-      selector.appendChild(option);
-    })
-  }
-  // this function to append Child to Regions Selector
+// this function to append Child to Areas Selector
+const appendChildToAreasSelector = (response) => {
+  let areas = response;
+  console.log(response);
+  let selector = document.querySelector('#selectorAreas');
+  let option = creatDefaultELementInSelector("All avaliable  Areas");
+  selector.append(option);
+  selector.style.display = 'block';
+  areas.forEach((area) => {
+    let option = document.createElement('option');
+    option.value = area.id;
+    option.innerHTML = area.name;
+    selector.appendChild(option);
+  })
+}
+// this function to append Child to Regions Selector
 
-  const appendChildToRegionsSelector = (response) => {
-    let regions = response;
-    let selector = document.querySelector('#selectorRegions');
-    creatDefaultELementInSelector("All avaliable Regions");
-    selector.style.display = 'block';
-    regions.forEach((region) => {
-      let option = document.createElement('option');
-      option.value = region.id;
-      option.innerHTML = region.name;
-      selector.appendChild(option);
-    }) 
-  } 
-  
+const appendChildToRegionsSelector = (response) => {
+  let regions = response;
+  let selector = document.querySelector('#selectorRegions');
+  creatDefaultELementInSelector("All avaliable Regions");
+  selector.style.display = 'block';
+  regions.forEach((region) => {
+    let option = document.createElement('option');
+    option.value = region.id;
+    option.innerHTML = region.name;
+    selector.appendChild(option);
+  })
+}
