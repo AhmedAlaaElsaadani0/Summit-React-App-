@@ -3,6 +3,7 @@
     font-weight: 900;
     line-height: 1.1;
     color:var(--PrimColor);
+    
 }
 .SecondaryHeading{   
     font-size: 2rem;
@@ -26,6 +27,7 @@
 @media (max-width: 1200px) {
     .MainHeading {
         font-size: 3rem;
+        margin-top: 1rem;
     }
     
 .myWidth{
@@ -40,14 +42,19 @@
 
 @media (max-width: 576px) {
     .MainHeading {
-        font-size: 1.5rem;
+        margin-top: 1rem;
+        font-size: 2.25rem;
+        text-align: center;
+
     }
     
 .myWidth{
     width :100%;
 }
 .SecondaryHeading{
-        font-size: .9rem;
+        font-size: 1.15rem;
+        text-align: center;
+
 }
 
 

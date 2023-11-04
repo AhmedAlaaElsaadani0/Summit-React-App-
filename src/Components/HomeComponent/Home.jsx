@@ -13,7 +13,7 @@ export default class Home extends Component {
 
                     <div className="col-md-6 ">
                         <div className="d-flex justify-content-center align-items-center h-100 w-100 m-auto flex-column flex-wrap">
-                            <p className={homeStyle.MainHeading}>We will help you to find your perfect home.
+                            <p className={homeStyle.MainHeading}>We will help you to find your perfect home
                             </p>
                             <p className={homeStyle.SecondaryHeading}>
                                 Every dream starts with a passion and every living start
@@ -22,7 +22,6 @@ export default class Home extends Component {
                             </p>
                             <Link style={
                                 {
-                                    fontSize: "30px",
                                     fontWeight: "500",
                                     color: "white",
                                     borderRadius: "10px",

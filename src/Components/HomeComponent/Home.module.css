@@ -28,6 +28,7 @@
     line-height: 1.7;
 }
 .SearchLink{
+    font-size: 1.75rem;
     color: white;
     text-decoration: none;
     padding:0.75rem 1.5rem ;
@@ -68,7 +69,9 @@
 }
 .SearchLink{
     font-size: 1.5rem;
-    padding:0.3rem 0.5rem ;
+    padding:0.4rem 0.6rem ;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 .myVh-100{
     height: auto;
@@ -78,14 +81,20 @@
 @media (max-width: 768px) {
     .MainHeading {
         font-size: 3rem;
+        text-align: center;
+
     }
     
 .SecondaryHeading{
+    text-align: center;
+
         font-size: 1.5rem;
 }
 .SearchLink{
     font-size: 1.5rem;
-    padding:0.3rem 0.5rem ;
+    padding:0.4rem 0.6rem ;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 .myVh-100{
     height: auto;
@@ -94,17 +103,32 @@
 
 @media (max-width: 576px) {
     .MainHeading {
-        font-size: 1.5rem;
+        font-size: 2rem;
+        text-align: center;
     }
 .SecondaryHeading{
         font-size: 1.3rem;
+        text-align: center;
 }
 .SearchLink{
-    font-size: 0.8rem;
-    padding:0.3rem 0.5rem ;
+    font-size:1.25rem;
+    padding:0.4rem 0.6rem ;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 .myVh-100{
     height: auto;
 }
 
+.SearchLink:hover{
+    color: white;
+    text-decoration: none;
+    padding:0.3rem 0.5rem ;
+    border-radius: 1rem;
+    background-color: var(--PrimColorHover);
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
 }

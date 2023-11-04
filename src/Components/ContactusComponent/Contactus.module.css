@@ -26,14 +26,18 @@ margin: auto;
     }
     .fontSize {
         font-size: 2rem;
-margin: auto;
+        margin: auto;
     }
 }
 
 @media only screen and (max-width: 500px) {
+    .mob-style{
+        width: 75%!important;
+
+    }
     .fontSize {
-        font-size: 1.8rem;
-margin: auto;
+        font-size: 1.5rem;
+        margin: auto;
 
     }
     .socialMedia {
@@ -42,13 +46,3 @@ margin: auto;
 }
 
 
-@media only screen and (max-width: 450px) {
-    .fontSize {
-        font-size: 1rem;
-margin: auto;
-
-    }
-    .socialMedia {
-        width: 100%;
-    }
-}
