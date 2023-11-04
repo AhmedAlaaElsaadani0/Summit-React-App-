@@ -179,7 +179,7 @@ function Area() {
         </div>
 
         <div>
-          {(response.count !== 0 || !(response.pageSize > response.count)) ? <button onClick={loadMore} className="sButton sButtonGreen" id='loadMore'>Load More</button> : ""}
+          {(response.count > 0 && ( response.count/response.pageSize) >= response.pageIndex)? <button onClick={loadMore} className="sButton sButtonGreen" id='loadMore'>Load More</button> : ""}
         </div>
       </div>
     </React.Fragment>
