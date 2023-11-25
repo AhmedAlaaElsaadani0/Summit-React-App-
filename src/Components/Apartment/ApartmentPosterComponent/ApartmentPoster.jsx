@@ -15,11 +15,6 @@ const ApartmentPoster = (props) => {
   };
   
   useEffect(() => {
-    document.querySelectorAll('.AbartmentImage').forEach((apartmentImage) => {
-      document.querySelectorAll('.AbartmentDesc').forEach((apartmentDesc) => {
-        apartmentImage.style.height = `${apartmentDesc.clientHeight}px`;
-      });
-    });
   }, []);
   
   return (
@@ -53,7 +48,7 @@ const ApartmentPoster = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="col-md-4 AbartmentImage AparmentSlider ">
+              <div className="col-md-4 AbartmentImage AparmentSlider " style={{Height:document.querySelectorAll('.AbartmentDesc').clientHeight ,  maxHeight:'500px'}}>
                 <AparmetSlider key={flat.id} uniqeNum={flat.id} flatImages={flat.pictures}/>
               </div>
             </div>
