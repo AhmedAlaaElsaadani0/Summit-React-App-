@@ -87,7 +87,7 @@ function Area() {
   async function loadMore() {
     let btn = document.getElementById('loadMore');
     btn.disabled = true;
-    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+    btn.innerHTML = '<i className="fa-solid fa-spinner fa-spin"></i>';
     await getAllApartments();
   }
   // When New Data is Fetched From Api we return button to it's state
@@ -104,7 +104,11 @@ function Area() {
       <div className='d-flex justify-content-center align-items-center h-75 flex-wrap'>
         <div className='w-50 d-flex justify-content-center flex-wrap'>
           <select onChange={handleSearchByGovId} onKeyDown={handleSearchByGovId} style={{
-            width: "80%"
+            width: "80%",
+            fontSize: "20px",
+            transition: "all 0.5s ease-in-out",
+            display: "block",
+            fontWeight: "bold",
           }} name='Gov' className='form-select-Amoor px-3 py-2 rounded-5' id='selectorGovs'>
             <option value="" selected disabled>All Governorates</option>
 
@@ -144,8 +148,8 @@ function Area() {
               display: 'none',
               width: '70%',
               transition: 'all 0.5s ease-in-out',
-              fontSize: "20px",
-
+              fontSize: "18px",
+              fontWeight:400
             }
           } id='selectorAreas'>
             <option value="" selected disabled>All avaliable  Areas</option>
@@ -156,8 +160,9 @@ function Area() {
               display: 'none',
               width: '30%',
               transition: 'all 0.5s ease-in-out',
-              fontSize: "20px",
-
+            fontSize: "18px",
+              fontWeight:400
+            
             }
           } id='selectorRegions'>
             <option value="" selected disabled>All Regions</option>
@@ -179,7 +184,7 @@ function Area() {
         </div>
 
         <div>
-          {(response.count > 0 && ( response.count/response.pageSize) >= response.pageIndex)? <button onClick={loadMore} className="sButton sButtonGreen" id='loadMore'>Load More</button> : ""}
+          {(response.count > 0 && (response.count / response.pageSize) >= response.pageIndex) ? <button onClick={loadMore} className="sButton sButtonGreen" id='loadMore'>Load More</button> : ""}
         </div>
       </div>
     </React.Fragment>

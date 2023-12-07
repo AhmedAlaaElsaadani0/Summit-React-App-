@@ -51,7 +51,7 @@ function Rent() {
   async function loadMore() {
     let btn = document.getElementById('loadMore');
     btn.disabled = true;
-    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+    btn.innerHTML = '<i className="fa-solid fa-spinner fa-spin"></i>';
     await getAllApartments();
   }
   // When New Data is Fetched From Api we return button to it's state
