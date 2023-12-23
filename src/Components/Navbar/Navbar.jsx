@@ -52,7 +52,7 @@ specifyStyleForNav=()=>{
     return <React.Fragment><nav id='navBarMain' className="navbar navbar-expand-lg  bg-responsiveTransparentAndPrimColorWhenPhone" data-bs-theme="dark">
     <div className="container-fluid mx-3 d-flex justify-content-between ">
       <Link className="navbar-brand" to="/">
-        <img src="Images/Logo.png" style={{
+        <img src="Images/icon.png" style={{
           width: '160px',
         
         }} alt="logo website " />
