@@ -101,8 +101,12 @@ function updateAttributeForScreenSize() {
     element.attributes.setNamedItem(document.createAttribute('data-bs-theme'));
     // add the attribute data-bs-theme and set it's value dark
     element.setAttribute('data-bs-theme', 'dark'); 
+    //change image src to icon.png
+    document.querySelector("#navBarMain img").src="Images/Icon.png";
     } else {
     // Reset the attribute to its initial value when the screen width is not less than 789px
     element.removeAttribute('data-bs-theme'); // Change 'initial-value' to your initial attribute value
+    //change image src to logo.png
+    document.querySelector("#navBarMain img").src="Images/Logo.png";
   }
 }

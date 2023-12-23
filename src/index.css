@@ -80,8 +80,10 @@ code {
   text-decoration: none;
   background-color: white;
 }
-
-
+/* width for search input */
+.widthForSearch{
+  width: 50%;
+}
 
 ::selection {
   color: white;
@@ -102,6 +104,9 @@ code {
 .myVh-100{
   height: auto;
 }
+.widthForSearch{
+  width: 100%;
+}
 }
 
 @media (max-width: 576px) {
@@ -110,6 +115,9 @@ code {
   height: auto;
 }
 
+.widthForSearch{
+  width: 100%;
+}
 }
 /* -------------------------form control by Amooor 😘----------------------------------- */
 
@@ -258,3 +266,10 @@ code {
 .form-select-Amoor:focus option:checked {
   background-color: #007bff;
 } */
+/* write media query for screen */
+
+@media screen and (max-width: 650px) {
+  .m-smalldevice-auto{
+    margin: auto;
+  }
+}

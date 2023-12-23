@@ -74,7 +74,7 @@ nav a {
         background-color: var(--PrimColor)!important;
     }
     .selectedNavElement{
-        color:black!important;
+        color:white!important;
         font-weight: bolder!important;
         text-decoration: underline!important;
         -moz-text-decoration:underline !important;
@@ -85,5 +85,19 @@ nav a {
     .bg-responsiveTransparentAndPrimColorWhenPhone a {
         color: white;
     }
+
+    /* Select the "Us" suffix in the "Contact Us" link */
+.navItemCircle::after {
+    content: "Us";
+    color: var(--PrimColor);
+    background-color:white;
+    
+}
+.navItemSelectedCircle::before {
+    content: "Contact";
+    color: var(--PrimColor);
+    background-color:white;
+}
+
 
 }

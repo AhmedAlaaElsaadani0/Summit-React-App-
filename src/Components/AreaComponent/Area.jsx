@@ -102,7 +102,7 @@ function Area() {
   return (
     <React.Fragment>
       <div className='d-flex justify-content-center align-items-center h-75 flex-wrap'>
-        <div className='w-50 d-flex justify-content-center flex-wrap'>
+        <div className='w-75 d-flex mt-3 justify-content-center flex-wrap'>
           <select onChange={handleSearchByGovId} onKeyDown={handleSearchByGovId} style={{
             width: "80%",
             fontSize: "20px",
@@ -111,18 +111,17 @@ function Area() {
             fontWeight: "bold",
           }} name='Gov' className='form-select-Amoor px-3 py-2 rounded-5' id='selectorGovs'>
             <option value="" selected disabled>All Governorates</option>
-
-            <option value="1">Alexandria</option>
+            <option value="6">Cairo</option>
+            <option value="11">Giza</option>
+            {/* <option value="1">Alexandria</option>
             <option value="2">Assiut</option>
             <option value="3">Aswan</option>
             <option value="4">Beheira</option>
             <option value="5">Bani Suef</option>
-            <option value="6">Cairo</option>
             <option value="7">Daqahliya</option>
             <option value="8">Damietta</option>
             <option value="9">Fayyoum</option>
             <option value="10">Gharbiya</option>
-            <option value="11">Giza</option>
             <option value="12">Helwan</option>
             <option value="13">Ismailia</option>
             <option value="14">Kafr El-Sheikh</option>
@@ -140,7 +139,7 @@ function Area() {
             <option value="26">Sohag</option>
             <option value="27">South Sinai</option>
             <option value="28">Suez</option>
-            <option value="29">Tanta</option>
+            <option value="29">Tanta</option> */}
 
           </select>
           <select onChange={handleSearchByAreaId} onKeyDown={handleSearchByAreaId} name='Areas' className='form-select-Amoor mt-2 me-2 px-3 py-2 rounded-5 ' style={
