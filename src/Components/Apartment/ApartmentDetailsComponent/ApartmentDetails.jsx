@@ -2,34 +2,41 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import AparmentSlider from '../ApartmentSliderComponent/AparmentSlider';
+import ErrorPage from '../../ErrorPage/ErrorPage';
 
 const ApartmentDetails = (props) => {
 
-
+  const location = useLocation();
+  const navigate = useNavigate();
+  let flat = location.state;
+  // const navigate = useNavigate();
   useEffect(() => {
     document.querySelectorAll('.AbartmentImage').forEach((apartmentImage) => {
       document.querySelectorAll('.AbartmentDesc').forEach((apartmentDesc) => {
         apartmentImage.style.height = `${apartmentDesc.clientHeight}px`;
       });
     });
-  });
-  const location = useLocation();
-  let flat=location.state;
-  const flag = true;
 
+  }, []);
+
+  const flag = true;
+  if(flat===null){
+    return <ErrorPage/>;
+    // window.location.href=window.location.href.split("Apart")[0]   
+  };
   return (
     <React.Fragment>
       <div className="myVh-100 d-flex justify-content-center  align-items-center">
 
         <div className={`w-75 p-0 rounded-4 m-auto shadow ${flag ? 'bg-primColor' : 'bg-white'}`} >
-          <div className="container-fluied overflow-hidden" style={{padding:"20px"}}>
+          <div className="container-fluied overflow-hidden" style={{ padding: "20px" }}>
             <div className="row">
               <div className={`col-md-8 fs-3 fw-bolder AbartmentDesc ${flag ? 'text-white' : 'text-primColor'}`}>
                 <div className="fs-3 px-3 fw-bolder w-100">
                   <h2 className="py-2">{flat.title} </h2>
                   <h2 className="py-2">{flat.governorate + "/ " + flat.area + "/ " + flat.region}</h2>
                   <div className={`text-black fs-4 p-4 ${flag ? 'text-white' : 'text-black'}`}>
-                  <p id="Floor">
+                    <p id="Floor">
                       Floor : <span className="fw-normal"> {flat.floor} </span>
                     </p>
                     <p id="Price">
@@ -71,7 +78,7 @@ const ApartmentDetails = (props) => {
                         </div>
 
                       </div>
-                      <button className={+flag? "sButtonWhite sButton " : "sButtonGreen sButton "}>Apartment Price : {flat.price}</button>
+                      <button className={+flag ? "sButtonWhite sButton " : "sButtonGreen sButton "}>Apartment Price : {flat.price}</button>
                     </div>
                   </div>
                 </div>
@@ -79,7 +86,7 @@ const ApartmentDetails = (props) => {
               <div className="col-md-4 AbartmentImage">
                 <div className="w-100 h-100">
 
-                  <AparmentSlider flatImages={flat.pictures}  />
+                  <AparmentSlider flatImages={flat.pictures} />
 
                 </div>
               </div>
