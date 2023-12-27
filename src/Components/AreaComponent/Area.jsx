@@ -22,7 +22,6 @@ function Area() {
     let flag = false;
     let response = await ApiManger.getAllApartments(`?pageIndex=${pageIndex}&govId=${govId}&areaid=${areaId}&regionId=${regionId}`);
     let updatedApartments = [...apartments, ...response.data];
-    console.log(updatedApartments);
     for (let i = apartments.length; i < updatedApartments.length; i++) {
       updatedApartments[i] = {
         flag: flag ? true : false,
@@ -41,7 +40,6 @@ function Area() {
     resetPage();
     clearAreaSelector();
     clearRegionsSelector();
-    console.log(e.target.value);
     ApiManger.getAreasOfGov(e.target.value).then((response) => {
       appendChildToAreasSelector(response);
     });
@@ -221,8 +219,7 @@ const clearRegionsSelector = () => {
 
 // this function to append Child to Areas Selector
 const appendChildToAreasSelector = (response) => {
-  let areas = response;
-  console.log(response);
+  let areas = response
   let selector = document.querySelector('#selectorAreas');
   let option = creatDefaultELementInSelector("All avaliable  Areas");
   selector.append(option);

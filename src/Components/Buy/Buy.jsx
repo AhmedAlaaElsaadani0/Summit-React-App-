@@ -21,7 +21,7 @@ const Buy = () => {
     let flag = false;
     let response = await ApiManger.getAllApartments(`?Type=2&pageIndex=${pageIndex}&title=${searchValue}`);
     let updatedApartments = [...apartments, ...response.data];
-    console.log(updatedApartments);
+    
     for (let i = apartments.length; i < updatedApartments.length; i++) {
       updatedApartments[i] = {
         flag: flag ? true : false,
@@ -79,7 +79,7 @@ const Buy = () => {
             })
             :
             apartments.map((item, index) => {
-              console.log(item);
+              
               return <ApartmentPoster key={index} previousPage="Buy" loading={loading} flat={item.data} flag={item.flag} />
             })}
         </div>

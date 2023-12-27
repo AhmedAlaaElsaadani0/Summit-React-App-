@@ -37,7 +37,7 @@ export default class ApiManger {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
     /////////////////////////// Admin ///////////////////////////
@@ -60,7 +60,7 @@ export default class ApiManger {
             body: JSON.stringify(user)
 
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
     /**
@@ -122,7 +122,7 @@ export default class ApiManger {
             body: JSON.stringify(user)
 
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     };
    
@@ -147,7 +147,7 @@ export default class ApiManger {
             body: JSON.stringify(area)
 
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
 
@@ -171,7 +171,7 @@ export default class ApiManger {
             body: JSON.stringify(area)
 
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
      /**
@@ -183,7 +183,7 @@ export default class ApiManger {
             const response = await fetch(`${AreaBaseURl}/${GovId}`, {
                 method: 'GET',          
             }).then(response => response.json())
-            console.log(response);
+            
             return response;
         }
     /**
@@ -198,7 +198,7 @@ export default class ApiManger {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
     /////////////////////////// Regions ///////////////////////////
@@ -222,7 +222,7 @@ export default class ApiManger {
                 body: JSON.stringify(region)
     
             }).then(response => response.json())
-            console.log(response);
+            
             return response;
         }  
          /**
@@ -245,7 +245,7 @@ export default class ApiManger {
             body: JSON.stringify(region)
 
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }  
      /**
@@ -260,7 +260,7 @@ export default class ApiManger {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
     
@@ -276,7 +276,7 @@ export default class ApiManger {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
     /////////////////////////// Aparetments ///////////////////////////
@@ -316,7 +316,7 @@ export default class ApiManger {
                 body: formData
     
             }).then(response => response.json())
-            console.log(response);
+            
             return response;
         }
         /**
@@ -356,7 +356,7 @@ export default class ApiManger {
                 body: formData
     
             }).then(response => response.json())
-            console.log(response);
+            
             return response;
         }
 
@@ -368,7 +368,7 @@ export default class ApiManger {
         const response = await fetch(`${ApartmentBaseURl+param}`, {
             method: 'GET',
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
 
@@ -384,7 +384,7 @@ export default class ApiManger {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
 

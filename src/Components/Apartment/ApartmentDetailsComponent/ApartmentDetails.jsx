@@ -7,7 +7,6 @@ import ErrorPage from '../../ErrorPage/ErrorPage';
 const ApartmentDetails = (props) => {
 
   const location = useLocation();
-  const navigate = useNavigate();
   let flat = location.state;
   // const navigate = useNavigate();
   useEffect(() => {
@@ -26,11 +25,18 @@ const ApartmentDetails = (props) => {
   };
   return (
     <React.Fragment>
-      <div className="myVh-100 d-flex justify-content-center  align-items-center">
+      <div className="myVh-100 mt-3 d-flex justify-content-center  align-items-center">
 
         <div className={`w-75 p-0 rounded-4 m-auto shadow ${flag ? 'bg-primColor' : 'bg-white'}`} >
-          <div className="container-fluied overflow-hidden" style={{ padding: "20px" }}>
+          <div className="container-fluied overflow-hidden">
             <div className="row">
+            <div className="col-md-4 AbartmentImage">
+                <div className="w-100 h-100">
+
+                  <AparmentSlider  flatImages={flat.pictures} />
+
+                </div>
+              </div>
               <div className={`col-md-8 fs-3 fw-bolder AbartmentDesc ${flag ? 'text-white' : 'text-primColor'}`}>
                 <div className="fs-3 px-3 fw-bolder w-100">
                   <h2 className="py-2">{flat.title} </h2>
@@ -83,13 +89,7 @@ const ApartmentDetails = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="col-md-4 AbartmentImage">
-                <div className="w-100 h-100">
-
-                  <AparmentSlider flatImages={flat.pictures} />
-
-                </div>
-              </div>
+              
             </div>
           </div>
         </div >

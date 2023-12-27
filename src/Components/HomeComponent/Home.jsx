@@ -3,12 +3,13 @@ import homeStyle from './Home.module.css'
 import Link from '../Link/Link'
 import About from '../AboutComponent/About.jsx'
 import Contactus from '../ContactusComponent/Contactus.jsx'
+import Footer from '../Footer/Footer.jsx'
 
 export default class Home extends Component {
     render() {
         return <React.Fragment>
 
-            <div className="container-fluid p-5 justify-content-center d-flex align-items-center h-100  " id='Home'>
+            <div className="container-fluid p-5 justify-content-center d-flex align-items-center myVh-100  " id='Home'>
                 <div className="row">
 
                     <div className="col-md-6 ">
@@ -44,8 +45,10 @@ export default class Home extends Component {
 
                 </div>
             </div>
-            <About/>
-            <Contactus/>
+            <About />
+            <Contactus />
+
+
         </React.Fragment>
     }
 }

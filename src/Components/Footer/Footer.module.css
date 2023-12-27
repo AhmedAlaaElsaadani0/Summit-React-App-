@@ -1,0 +1,20 @@
+.FooterBackground {
+  background-color: #35413C!important;  
+  color: #fff !important;
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  margin-top: 20px;
+}
+.Footer_a {
+  color: #fff !important;
+  text-decoration: none;
+  cursor: pointer;
+  }
+.Footer_a:hover {
+  color: #fff !important;
+  background-color: aquamarine;
+  }
