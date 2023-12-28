@@ -29,7 +29,7 @@ const ApartmentDetails = (props) => {
 
         <div className={`w-75 p-0 rounded-4 m-auto shadow ${flag ? 'bg-primColor' : 'bg-white'}`} >
           <div className="container-fluied overflow-hidden">
-            <div className="row">
+            <div className="row position-relative">
             <div className="col-md-4 AbartmentImage">
                 <div className="w-100 h-100">
 
@@ -88,6 +88,15 @@ const ApartmentDetails = (props) => {
                     </div>
                   </div>
                 </div>
+              </div>
+              
+              <div className="data position-absolute top-0 end-0 me-3 mt-2 "style={{width: "fit-content"}}>
+
+                <p id="date" >
+                published date: <span className="fw-normal"> {flat.date.split(" ")[0]} </span>
+                </p>
+
+
               </div>
               
             </div>

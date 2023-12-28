@@ -8,24 +8,24 @@ const ApartmentPoster = (props) => {
   const [flat, setflat] = useState(props.flat);
   const [previousPage, setpreviousPage] = useState(props.previousPage);
   const toApartmentDetails = () => {
-    
+
     navigate(`/ApartmentDetails`, { state: flat });
 
 
   };
-  
+
   useEffect(() => {
   }, []);
-  
+
   return (
     <React.Fragment>
       {
 
         <div className={`w-75 p-0 mb-3 rounded-4 overflow-hidden m-auto shadow Apartment ${flag ? 'bg-primColor' : 'bg-white'}`}>
           <div className="container-fluied overflow-hidden">
-            <div className="row">
-            <div className="col-md-4 AbartmentImage AparmentSlider " style={{Height:document.querySelectorAll('.AbartmentDesc').clientHeight ,  maxHeight:'500px'}}>
-                <AparmetSlider key={flat.id} uniqeNum={flat.id} flatImages={flat.pictures}/>
+            <div className="row position-relative ">
+              <div className="col-md-4 AbartmentImage AparmentSlider " style={{ Height: document.querySelectorAll('.AbartmentDesc').clientHeight, maxHeight: '500px' }}>
+                <AparmetSlider key={flat.id} uniqeNum={flat.id} flatImages={flat.pictures} />
               </div>
               <div className={`col-md-8 fs-3 fw-bolder AbartmentDesc ${flag ? 'text-white' : 'text-primColor'}`}>
                 <div className="fs-3 px-3 fw-bolder w-100">
@@ -42,7 +42,7 @@ const ApartmentPoster = (props) => {
                       Apartmentn: <span className="fw-normal">{flat.condition}</span>
                     </p> */}
                     <p id="Descripition">
-                      Descripition: <span className="fw-normal">{flat.description.split(" ").slice(0,5).join(" ")}.....</span>
+                      Descripition: <span className="fw-normal">{flat.description.split(" ").slice(0, 5).join(" ")}.....</span>
                     </p>
                     <div className='w-100 d-flex justify-contnet-end text-center'>
 
@@ -51,7 +51,15 @@ const ApartmentPoster = (props) => {
                   </div>
                 </div>
               </div>
-              
+              <div className="data position-absolute top-0 end-0 me-3 mt-2 "style={{width: "fit-content"}}>
+
+                <p id="date" >
+                published date: <span className="fw-normal"> {flat.date.split(" ")[0]} </span>
+                </p>
+
+
+              </div>
+
             </div>
           </div>
         </div>
