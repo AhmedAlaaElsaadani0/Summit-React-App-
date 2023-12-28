@@ -64,6 +64,7 @@ const Buy = () => {
 
   return (
     <React.Fragment>
+      
       <div className='d-flex  justify-content-center align-items-center h-100 flex-wrap'>
         <form action='' id='RentPageSearch' className='d-flex mt-3 widthForSearch  justify-content-center'>
           <div className='w-75 position-relative text-secondary'>
