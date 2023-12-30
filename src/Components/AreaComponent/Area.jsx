@@ -46,7 +46,7 @@ function Area() {
     });
     let value = document.querySelector('#selectorGovs').value;
     setGovId(value);
-    getAllApartments(value, 1);
+    getAllApartments(value, 1, '', "");
     // setApartments([]);
   }
   // this function to get the value of search input and set it to areaId and get all apartments by areaId
@@ -61,7 +61,7 @@ function Area() {
     });
     let value = document.querySelector('#selectorAreas').value;
     setAreaId(value);
-    getAllApartments(GovId, 1, value);
+    getAllApartments(GovId, 1, value,'');
     document.querySelector('#selectorAreas').style.width = '50%';
     // setApartments([]);
   }
