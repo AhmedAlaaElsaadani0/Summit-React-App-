@@ -21,7 +21,7 @@ const ApartmentPoster = (props) => {
     <React.Fragment>
       {
 
-        <div className={`w-75 p-0 mb-3 rounded-4 overflow-hidden m-auto shadow Apartment ${flag ? 'bg-primColor' : 'bg-white'}`}>
+        <div className={`w-75 w-sm-90 p-0 mb-3 rounded-4 overflow-hidden m-auto shadow Apartment ${flag ? 'bg-primColor' : 'bg-white'}`}>
           <div className="container-fluied overflow-hidden">
             <div className="row position-relative ">
               <div className="col-md-4 AbartmentImage AparmentSlider " style={{ Height: document.querySelectorAll('.AbartmentDesc').clientHeight, maxHeight: '500px' }}>
@@ -41,9 +41,9 @@ const ApartmentPoster = (props) => {
                     {/* <p id="Apartmentn">
                       Apartmentn: <span className="fw-normal">{flat.condition}</span>
                     </p> */}
-                    <p id="Descripition">
+                    {/* <p id="Descripition">
                       Descripition: <span className="fw-normal">{flat.description.split(" ").slice(0, 5).join(" ")}.....</span>
-                    </p>
+                    </p> */}
                     <div className='w-100 d-flex justify-contnet-end text-center'>
 
                       <button onClick={toApartmentDetails} className={` sButton   ms-md-auto m-smalldevice-auto    ${!flag ? "sButtonGreen" : "sButtonWhite"} `}  > Read More</button>
@@ -51,10 +51,10 @@ const ApartmentPoster = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="data position-absolute top-0 end-0 me-3 mt-2 "style={{width: "fit-content"}}>
+              <div className={`data position-absolute top-0 end-0 me-3 mt-2 rounded  ${!flag ? "bg-primColor text-white" : "bg-white  text-primColor" } `}style={{width: "fit-content"}}>
 
-                <p id="date" >
-                published date: <span className="fw-normal"> {flat.date.split(" ")[0]} </span>
+                <p id="date" className='mb-0' >
+                Posted: <span className=""> {flat.date.split(" ")[0]} </span>
                 </p>
 
 

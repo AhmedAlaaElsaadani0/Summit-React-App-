@@ -19,19 +19,6 @@
 .text-secColor{
   color: var(--SecColor)!important;
 }
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 
 
 .myVh-100{
@@ -92,14 +79,18 @@ code {
 }
 @media (max-width: 1199px) {
   
-
 .myVh-100{
   height: auto;
 }
 }
 
 @media (max-width: 768px) {
-  
+  body{
+    overflow-x: hidden;
+    /* responsizve font size */
+    font-size: 14px;
+ 
+}
 
 .myVh-100{
   height: auto;
@@ -110,13 +101,21 @@ code {
 }
 
 @media (max-width: 576px) {
-  
+  body{
+    overflow-x: hidden;
+    font-size: 12px;
+
+}
 .myVh-100{
   height: auto;
 }
 
 .widthForSearch{
   width: 100%;
+}
+
+.w-sm-90{
+  width: 90%!important;
 }
 }
 /* -------------------------form control by Amooor 😘----------------------------------- */
@@ -134,6 +133,14 @@ code {
   border: 1px solid #b1b4b7;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -moz-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -ms-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
 }
 
 /* Hover CSS */
@@ -183,6 +190,10 @@ code {
   left: 0;
   background-color: #ced4da;
   transition: transform 0.15s ease-in-out;
+  -webkit-transition: transform 0.15s ease-in-out;
+  -moz-transition: transform 0.15s ease-in-out;
+  -ms-transition: transform 0.15s ease-in-out;
+  -o-transition: transform 0.15s ease-in-out;
 }
 
 /* After CSS */
@@ -197,18 +208,30 @@ code {
   left: 0;
   background-color: #377676;
   transition: transform 0.15s ease-in-out;
+  -webkit-transition: transform 0.15s ease-in-out;
+  -moz-transition: transform 0.15s ease-in-out;
+  -ms-transition: transform 0.15s ease-in-out;
+  -o-transition: transform 0.15s ease-in-out;
 }
 
 /* Focus Before CSS */
 
 .form-control-Amoor:focus::before {
   transform: scaleX(1);
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  -o-transform: scaleX(1);
 }
 
 /* Focus After CSS */
 
 .form-control-Amoor:focus::after {
   transform: scaleX(1);
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  -o-transform: scaleX(1);
 }
 
 /* -------------------------form select by Amooor 😘----------------------------------- */

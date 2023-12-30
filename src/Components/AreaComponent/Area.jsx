@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ApartmentPoster from '../Apartment/ApartmentPosterComponent/ApartmentPoster';
 import ApiManger from '../JsClasses/ApiManger';
 import ApartmentLoading from '../Apartment/ApartmentLoadingComponent/ApartmentLoading';
+import { Helmet } from 'react-helmet-async';
 
 function Area() {
 
@@ -54,7 +55,9 @@ function Area() {
     resetPage();
     clearRegionsSelector();
     ApiManger.getRegionsOfArea(e.target.value).then((response) => {
-      appendChildToRegionsSelector(response);
+      if (response.code != 401)
+        appendChildToRegionsSelector(response);
+      else handleDisplayNoneForSelectorRegions();
     });
     let value = document.querySelector('#selectorAreas').value;
     setAreaId(value);
@@ -99,15 +102,34 @@ function Area() {
 
   return (
     <React.Fragment>
+
+      <Helmet>
+        <meta
+          name="Keywords"
+          content="
+      Summit,Summit Egypt,Summit Elzahaby,Summit Elzahaby for real estate,Summit Egypt for real estate,Summit Elzahaby for real estate investment,Summit Egypt for real estate investment,Summit Elzahaby for real estate investment and urban development,Summit Egypt for real estate investment and urban development,Summit Elzahaby for real estate development,Summit Egypt for real estate development,Summit Elzahaby for real estate projects,Summit Egypt for real estate projects,Summit Elzahaby for investment,Summit Egypt for investment,Summit Elzahaby for contracting,Summit Egypt for contracting,Summit Elzahaby for contracting and real estate investment,Summit Egypt for contracting and real estate investment,Summit Elzahaby for contracting and urban development,Summit Egypt for contracting and urban development,Summit Elzahaby for contracting and real estate development,Summit Egypt for contracting and real estate development,Summit Elzahaby for contracting and real estate projects,Summit Egypt for contracting and real estate projects
+      "
+        />
+
+        <meta
+          name="description"
+          content="
+      Summit Egypt is a real estate company that offers a wide selection of apartments, villas, houses, lands, and commercial real estate for sale and rent in Egypt.
+      
+      "
+        />
+
+        <title>Summit Egypt-Area</title>
+      </Helmet>
       <div className='d-flex justify-content-center align-items-center h-75 flex-wrap'>
-        <div className='w-75 d-flex mt-3 justify-content-center flex-wrap'>
+        <div className='w-75 w-sm-90 d-flex mt-3 justify-content-center flex-wrap'>
           <select onChange={handleSearchByGovId} onKeyDown={handleSearchByGovId} style={{
             width: "80%",
             fontSize: "20px",
             transition: "all 0.5s ease-in-out",
             display: "block",
             fontWeight: "bold",
-          }} name='Gov' className='form-select-Amoor px-3 py-2 rounded-5' id='selectorGovs'>
+          }} name='Gov' className='form-select-Amoor w-sm-90 mt-2 me-2 px-3 py-2 rounded-5' id='selectorGovs'>
             <option value="" selected disabled>All Governorates</option>
             <option value="6">Cairo</option>
             <option value="11">Giza</option>
@@ -140,26 +162,26 @@ function Area() {
             <option value="29">Tanta</option> */}
 
           </select>
-          <select onChange={handleSearchByAreaId} onKeyDown={handleSearchByAreaId} name='Areas' className='form-select-Amoor mt-2 me-2 px-3 py-2 rounded-5 ' style={
+          <select onChange={handleSearchByAreaId} onKeyDown={handleSearchByAreaId} name='Areas' className='form-select-Amoor mt-2 me-2 px-3 py-2 rounded-5 w-sm-90 ' style={
             {
               display: 'none',
               width: '70%',
               transition: 'all 0.5s ease-in-out',
               fontSize: "18px",
-              fontWeight:400
+              fontWeight: 400
             }
           } id='selectorAreas'>
             <option value="" selected disabled>All avaliable  Areas</option>
           </select>
 
-          <select onSelect={handleSearchByRegionId} onFocus={handleSearchByRegionId} name='Regions' className='form-select-Amoor mt-2 px-3 py-2 rounded-5 ' style={
+          <select onChange={handleSearchByRegionId} name='Regions' className='form-select-Amoor mt-2 px-3 py-2 rounded-5 w-sm-90 ' style={
             {
               display: 'none',
               width: '30%',
               transition: 'all 0.5s ease-in-out',
-            fontSize: "18px",
-              fontWeight:400
-            
+              fontSize: "18px",
+              fontWeight: 400
+
             }
           } id='selectorRegions'>
             <option value="" selected disabled>All Regions</option>
@@ -196,7 +218,7 @@ function creatDefaultELementInSelector(text) {
   let option = document.createElement('option');
   option.value = "";
   option.selected = true;
-  option.disabled = true;
+  // option.disabled = true;
   option.innerHTML = text;
   return option;
 }
@@ -236,12 +258,18 @@ const appendChildToAreasSelector = (response) => {
 const appendChildToRegionsSelector = (response) => {
   let regions = response;
   let selector = document.querySelector('#selectorRegions');
-  creatDefaultELementInSelector("All avaliable Regions");
+  let option = creatDefaultELementInSelector("All avaliable Regions");
+  selector.append(option);
   selector.style.display = 'block';
-  regions.forEach((region) => {
+  regions?.forEach((region) => {
     let option = document.createElement('option');
     option.value = region.id;
     option.innerHTML = region.name;
     selector.appendChild(option);
   })
+}
+//this function will display none the Regions selector if user select the default option in Areas Selector
+const handleDisplayNoneForSelectorRegions = () => {
+  let selector = document.querySelector('#selectorRegions');
+  selector.style.display = 'none';
 }

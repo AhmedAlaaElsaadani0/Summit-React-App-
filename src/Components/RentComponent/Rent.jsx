@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ApartmentPoster from '../Apartment/ApartmentPosterComponent/ApartmentPoster';
 import ApartmentLoading from '../Apartment/ApartmentLoadingComponent/ApartmentLoading';
 import ApiManger from '../JsClasses/ApiManger';
+import { Helmet } from 'react-helmet-async';
 
 function Rent() {
 
@@ -66,6 +67,25 @@ function Rent() {
 
   return (
     <React.Fragment>
+      
+      <Helmet>
+        <meta
+          name="Keywords"
+          content="
+      Summit,Summit Egypt,Summit Elzahaby,Summit Elzahaby for real estate,Summit Egypt for real estate,Summit Elzahaby for real estate investment,Summit Egypt for real estate investment,Summit Elzahaby for real estate investment and urban development,Summit Egypt for real estate investment and urban development,Summit Elzahaby for real estate development,Summit Egypt for real estate development,Summit Elzahaby for real estate projects,Summit Egypt for real estate projects,Summit Elzahaby for investment,Summit Egypt for investment,Summit Elzahaby for contracting,Summit Egypt for contracting,Summit Elzahaby for contracting and real estate investment,Summit Egypt for contracting and real estate investment,Summit Elzahaby for contracting and urban development,Summit Egypt for contracting and urban development,Summit Elzahaby for contracting and real estate development,Summit Egypt for contracting and real estate development,Summit Elzahaby for contracting and real estate projects,Summit Egypt for contracting and real estate projects
+      "
+        />
+
+        <meta
+          name="description"
+          content="
+      Summit Egypt is a real estate company that offers a wide selection of apartments, villas, houses, lands, and commercial real estate for sale and rent in Egypt.
+      
+      "
+        />
+
+        <title>Summit Egypt-Rent</title>
+      </Helmet>
       <div className='d-flex  justify-content-center align-items-center h-75 flex-wrap'>
         <form action='' id='RentPageSearch' className='d-flex mt-3 widthForSearch justify-content-center'>
           <div className='w-75 position-relative text-secondary'>

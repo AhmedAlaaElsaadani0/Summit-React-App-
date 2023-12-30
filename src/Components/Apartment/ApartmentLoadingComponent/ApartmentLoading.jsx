@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class ApartmentLoading extends Component {
 
     render() {
-        return <div className={`w-75 p-0 mb-3 rounded-4  placeholder-glow overflow-hidden m-auto shadow ${this.props.flag ? 'bg-primColor' : 'bg-white'}`}>
+        return <div className={`w-75 w-sm-90 p-0 mb-3 rounded-4  placeholder-glow overflow-hidden m-auto shadow ${this.props.flag ? 'bg-primColor' : 'bg-white'}`}>
             <div className="container-fluied overflow-hidden">
                 <div className="row">
                     <div className="col-md-4 AbartmentImage ">

@@ -13,8 +13,8 @@ import ApartmentDetails from './Components/Apartment/ApartmentDetailsComponent/A
 let routers = createBrowserRouter([
   {path:'/', element: <RootLayout/>, children:[
     {index:true, element: <Home/>},
-    {path:'About', element: <About/>},
-    {path:'Contact', element: <Contactus/>},
+    {path:'About', element: <About headFlag={true}/>},
+    {path:'Contact', element: <Contactus headFlag={true}/>},
     {path:'Area', element: <Area/>},
     {path:'Rent', element: <Rent/>},
     {path:'Buy', element: <Buy/>},
