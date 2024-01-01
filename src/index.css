@@ -246,13 +246,16 @@
   line-height: 1.5;
   color: #212529;
   background-color: #fff;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#343a40' stroke-width='1.5' stroke-linecap='round' d='M2 5l6 6 6-6'/></svg>");
   background-repeat: no-repeat;
   background-position-x: right 0.75rem;
   background-position-y: center;
   border: 1px solid #b1b4b7;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -moz-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -ms-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 /* Focus CSS */

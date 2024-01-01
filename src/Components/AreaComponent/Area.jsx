@@ -20,16 +20,17 @@ function Area() {
   }, []);
   // this main API call to get all apartments by using param
   const getAllApartments = async (govId = GovId, pageIndex = PageIndex, areaId = AreaId, regionId = RegionId) => {
-    let flag = false;
     let response = await ApiManger.getAllApartments(`?pageIndex=${pageIndex}&govId=${govId}&areaid=${areaId}&regionId=${regionId}`);
     let updatedApartments = [...apartments, ...response.data];
-    for (let i = apartments.length; i < updatedApartments.length; i++) {
-      updatedApartments[i] = {
-        flag: flag ? true : false,
-        data: updatedApartments[i]
-      };
-      flag = !flag;
-    }
+    /* previous code to make the background of apartment poster in different colors but we don't need it now
+    // let flag = false;
+    // for (let i = apartments.length; i < updatedApartments.length; i++) {
+    //   updatedApartments[i] = {
+    //     flag: flag ? true : false,
+    //     data: updatedApartments[i]
+    //   };
+    //   flag = !flag;
+    // }*/
     setResponse(response);
     setApartments(updatedApartments);
     setpageIndex(response.data.length == 0 ? response.pageIndex : response.pageIndex + 1)
@@ -198,7 +199,7 @@ function Area() {
             :
             apartments.length == 0 ? <h2 className='text-center bg-primColor text-white p-5'>Sorry, There is no Apartments Found for This Region!</h2> :
               apartments.map((item, index) => {
-                return <ApartmentPoster key={index} index={index} previousPage="Area" loading={loading} flat={item.data} flag={item.flag} />
+                return <ApartmentPoster key={index} index={index} previousPage="Area" loading={loading} flat={item.data} flag={index%2==0? false :true } />
               })}
         </div>
 

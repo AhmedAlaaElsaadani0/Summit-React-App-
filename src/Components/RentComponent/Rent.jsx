@@ -18,17 +18,17 @@ function Rent() {
   }, []);
   // this main API call to get all apartments by using param
   const getAllApartments = async (searchValue = SearchValue, pageIndex = PageIndex) => {
-    let flag = false;
     let response = await ApiManger.getAllApartments(`?Type=1&pageIndex=${pageIndex}&title=${searchValue}`);
     let updatedApartments = [...apartments, ...response.data];
-    
-    for (let i = apartments.length; i < updatedApartments.length; i++) {
-      updatedApartments[i] = {
-        flag: flag ? true : false,
-        data: updatedApartments[i]
-      };
-      flag = !flag;
-    }
+    /* previous code to make the background of apartment poster in different colors but we don't need it now
+    // let flag = false;
+    // for (let i = apartments.length; i < updatedApartments.length; i++) {
+    //   updatedApartments[i] = {
+    //     flag: flag ? true : false,
+    //     data: updatedApartments[i]
+    //   };
+    //   flag = !flag;
+    // }*/
     setResponse(response);
     setApartments(updatedApartments);
     setpageIndex(response.data.length == 0 ? response.pageIndex : response.pageIndex + 1)
@@ -102,7 +102,7 @@ function Rent() {
             :
             apartments.map((item, index) => {
               
-              return <ApartmentPoster key={index} previousPage="Buy" loading={loading} flat={item.data} flag={item.flag} />
+              return <ApartmentPoster key={index} previousPage="Buy" loading={loading} flat={item} flag={index%2==0? false :true } />
             })}
         </div>
         <div>
