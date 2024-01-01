@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import AparmentSlider from '../ApartmentSliderComponent/AparmentSlider';
 import ErrorPage from '../../ErrorPage/ErrorPage';
 

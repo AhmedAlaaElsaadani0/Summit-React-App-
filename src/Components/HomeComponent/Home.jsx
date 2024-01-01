@@ -3,7 +3,6 @@ import homeStyle from './Home.module.css'
 import Link from '../Link/Link'
 import About from '../AboutComponent/About.jsx'
 import Contactus from '../ContactusComponent/Contactus.jsx'
-import Footer from '../Footer/Footer.jsx'
 import { Helmet } from 'react-helmet-async'
 
 export default class Home extends Component {

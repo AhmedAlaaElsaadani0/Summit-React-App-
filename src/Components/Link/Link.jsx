@@ -1,10 +1,8 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Link = ({ to, className,style,children }) => {
   const navigate = useNavigate();
-  const location = useLocation();
-
   const handleClicked = () => {
     const bars = document.getElementById('bars');
 

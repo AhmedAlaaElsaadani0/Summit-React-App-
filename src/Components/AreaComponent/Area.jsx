@@ -199,7 +199,7 @@ function Area() {
             :
             apartments.length == 0 ? <h2 className='text-center bg-primColor text-white p-5'>Sorry, There is no Apartments Found for This Region!</h2> :
               apartments.map((item, index) => {
-                return <ApartmentPoster key={index} index={index} previousPage="Area" loading={loading} flat={item.data} flag={index%2==0? false :true } />
+                return <ApartmentPoster key={index} index={index} previousPage="Area" loading={loading} flat={item} flag={index%2==0? false :true } />
               })}
         </div>
 

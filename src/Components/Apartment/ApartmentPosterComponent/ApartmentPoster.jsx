@@ -4,9 +4,9 @@ import AparmetSlider from '../ApartmentSliderComponent/AparmentSlider';
 
 const ApartmentPoster = (props) => {
   const navigate = useNavigate();
-  const [flag, setFlag] = useState(!props.flag);
-  const [flat, setflat] = useState(props.flat);
-  const [previousPage, setpreviousPage] = useState(props.previousPage);
+  const [flag] = useState(!props.flag);
+  const [flat] = useState(props.flat);
+  // const [previousPage, setpreviousPage] = useState(props.previousPage);
   const toApartmentDetails = () => {
 
     navigate(`/ApartmentDetails`, { state: flat });
