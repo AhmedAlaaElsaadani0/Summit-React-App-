@@ -23,6 +23,7 @@ const Link = ({ to, className,style,children }) => {
     <a style={style}
       className={className}
       onClick={handleClicked}
+      href='#'
     >
       {children}
     </a>
