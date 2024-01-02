@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
 import  "./styleNavBar.css" 
-import Link from '../Link/Link';
-
+const Link=React.lazy(()=>import("../Link/Link"))
 export default class Navbar extends Component {
 changeStyleForNavItemContactUs=()=>{
   let contactUs=document.querySelector(".ContactUs");

@@ -1,8 +1,9 @@
-
-import React, { useEffect } from 'react';
+import React, { useEffect ,lazy } from 'react';
 import { useLocation } from 'react-router-dom';
-import AparmentSlider from '../ApartmentSliderComponent/AparmentSlider';
-import ErrorPage from '../../ErrorPage/ErrorPage';
+
+// Wrap your components with React.lazy
+const AparmentSlider = lazy(() => import('../ApartmentSliderComponent/AparmentSlider'));
+const ErrorPage = lazy(() => import('../../ErrorPage/ErrorPage'));
 
 const ApartmentDetails = (props) => {
 
@@ -33,7 +34,7 @@ const ApartmentDetails = (props) => {
             <div className="col-md-4 AbartmentImage">
                 <div className="w-100 h-100">
 
-                  <AparmentSlider  flatImages={flat.pictures} />
+                  <AparmentSlider flagDetails={true}  flatImages={flat.pictures} />
 
                 </div>
               </div>

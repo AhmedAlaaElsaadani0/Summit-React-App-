@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
-import homeStyle from './Home.module.css'
-import Link from '../Link/Link'
-import About from '../AboutComponent/About.jsx'
-import Contactus from '../ContactusComponent/Contactus.jsx'
+import React, { Component,lazy } from 'react'
 import { Helmet } from 'react-helmet-async'
+import homeStyle from './Home.module.css'
+// Wrap your components with React.lazy
+const About = lazy(() => import('../AboutComponent/About'));
+const Contactus = lazy(() => import('../ContactusComponent/Contactus'));
+const Link= lazy(()=>import('../Link/Link'))
 
 export default class Home extends Component {
     render() {
@@ -63,7 +64,7 @@ export default class Home extends Component {
                 </div>
             </div>
             <About headFlag={false} />
-            <Contactus  headFlag={false}/>
+            <Contactus headFlag={false} />
 
 
         </React.Fragment>

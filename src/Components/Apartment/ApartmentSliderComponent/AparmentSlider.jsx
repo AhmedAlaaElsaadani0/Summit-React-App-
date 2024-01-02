@@ -3,8 +3,19 @@ import React, { Component } from 'react'
 export default class AparmetSlider extends Component {
   render() {
     let uniqeNum = this.props.uniqeNum;
+    let flagDetails = this.props.flagDetails?? false;
     return <React.Fragment>
-      <div id={"carouselExampleWhite"+uniqeNum}  className="carousel h-100 carousel-white hide slide">
+      <div id={"carouselExampleWhite"+uniqeNum}  className="carousel  carousel-white hide slide" style={
+        flagDetails?{ 
+
+          height: "100%",
+          width: "100%",
+        }:{
+          height: "100%",
+          width: "100%",
+          maxHeight: "350px",
+        }
+      }>
         <div className="carousel-indicators">
           {
             

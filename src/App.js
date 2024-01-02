@@ -1,15 +1,18 @@
-import React from 'react';
-import './App.css';
+import React, { lazy } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Home from './Components/HomeComponent/Home';
-import About from './Components/AboutComponent/About';
-import Contactus from './Components/ContactusComponent/Contactus';
-import RootLayout from './Components/RootLayout/RootLayout';
-import ErrorPage from './Components/ErrorPage/ErrorPage';
-import Area from './Components/AreaComponent/Area';
-import Rent from './Components/RentComponent/Rent';
-import Buy from './Components/Buy/Buy';
-import ApartmentDetails from './Components/Apartment/ApartmentDetailsComponent/ApartmentDetails';
+import './App.css';
+
+// Wrap your components with React.lazy
+const Home = lazy(() => import('./Components/HomeComponent/Home'));
+const About = lazy(() => import('./Components/AboutComponent/About'));
+const Contactus = lazy(() => import('./Components/ContactusComponent/Contactus'));
+const RootLayout = lazy(() => import('./Components/RootLayout/RootLayout'));
+const ErrorPage = lazy(() => import('./Components/ErrorPage/ErrorPage'));
+const Area = lazy(() => import('./Components/AreaComponent/Area'));
+const Rent = lazy(() => import('./Components/RentComponent/Rent'));
+const Buy = lazy(() => import('./Components/Buy/Buy'));
+const ApartmentDetails = lazy(() => import('./Components/Apartment/ApartmentDetailsComponent/ApartmentDetails'));
+
 let routers = createBrowserRouter([
   {path:'/', element: <RootLayout/>, children:[
     {index:true, element: <Home/>},

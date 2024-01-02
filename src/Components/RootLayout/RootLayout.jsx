@@ -1,12 +1,14 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Outlet } from "react-router-dom";
-import Navbar from "../Navbar/Navbar";
-import SocialWhats from "../SocialComponent/SocialWhats";
-import AnimatBars from "../AnimatedBarsComponent/AnimatBars";
-import Footer from "../Footer/Footer";
+// Wrap your components with React.lazy
+const Navbar = lazy(() => import('../Navbar/Navbar'));
+const SocialWhats = lazy(() => import('../SocialComponent/SocialWhats'));
+const AnimatBars = lazy(() => import('../AnimatedBarsComponent/AnimatBars'));
+const Footer = lazy(() => import('../Footer/Footer'));
 
 export default function RootLayout() {
-  return (<React.Fragment>
+ 
+return (<React.Fragment>
 
     <div  >
       <Navbar />

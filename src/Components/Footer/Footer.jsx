@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import FooterStyle from './Footer.module.css'
-import Link from '../Link/Link';
-
+const Link=lazy(()=>import('../Link/Link'))
 export default function Footer() {
   return  (
     <div className={"container-fluid "}>
