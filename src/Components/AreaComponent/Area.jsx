@@ -1,9 +1,8 @@
 import React, { useState, useEffect, lazy } from 'react';
 import { Helmet } from 'react-helmet-async';
 import ApiManger from '../JsClasses/ApiManger';
-
-const ApartmentPoster = lazy(() => import('../Apartment/ApartmentPosterComponent/ApartmentPoster'));
-const ApartmentLoading = lazy(() => import('../Apartment/ApartmentLoadingComponent/ApartmentLoading'));
+import ApartmentPoster from '../Apartment/ApartmentPosterComponent/ApartmentPoster';
+import ApartmentLoading from '../Apartment/ApartmentLoadingComponent/ApartmentLoading';
 
 function Area() {
 

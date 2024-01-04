@@ -1,9 +1,8 @@
-import React, { useState, useEffect, lazy } from 'react';
+import React, { useState, useEffect, lazy, startTransition } from 'react';
 import ApiManger from '../JsClasses/ApiManger';
 import { Helmet } from 'react-helmet-async';
-
-const ApartmentPoster = lazy(() => import('../Apartment/ApartmentPosterComponent/ApartmentPoster'));
-const ApartmentLoading = lazy(() => import('../Apartment/ApartmentLoadingComponent/ApartmentLoading'));
+import ApartmentPoster from '../Apartment/ApartmentPosterComponent/ApartmentPoster';
+import ApartmentLoading from '../Apartment/ApartmentLoadingComponent/ApartmentLoading';
 
 const Buy = () => {
 
@@ -14,9 +13,10 @@ const Buy = () => {
   const [loading, setLoading] = useState(true);
   //DidMount
   useEffect(() => {
+     startTransition(() => {
     getAllApartments();
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-
   }, []);
   // this main API call to get all apartments by using param
   const getAllApartments = async (searchValue = SearchValue, pageIndex = PageIndex) => {

@@ -2,6 +2,10 @@ import React, { lazy } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css';
 
+// import Buy from './Components/Buy/Buy';
+// import Rent from './Components/RentComponent/Rent';
+// import Area from './Components/AreaComponent/Area';
+import ApartmentDetails from './Components/Apartment/ApartmentDetailsComponent/ApartmentDetails';
 // Wrap your components with React.lazy
 const Home = lazy(() => import('./Components/HomeComponent/Home'));
 const About = lazy(() => import('./Components/AboutComponent/About'));
@@ -11,7 +15,7 @@ const ErrorPage = lazy(() => import('./Components/ErrorPage/ErrorPage'));
 const Area = lazy(() => import('./Components/AreaComponent/Area'));
 const Rent = lazy(() => import('./Components/RentComponent/Rent'));
 const Buy = lazy(() => import('./Components/Buy/Buy'));
-const ApartmentDetails = lazy(() => import('./Components/Apartment/ApartmentDetailsComponent/ApartmentDetails'));
+// const ApartmentDetails = lazy(() => import('./Components/Apartment/ApartmentDetailsComponent/ApartmentDetails'));
 
 let routers = createBrowserRouter([
   {path:'/', element: <RootLayout/>, children:[

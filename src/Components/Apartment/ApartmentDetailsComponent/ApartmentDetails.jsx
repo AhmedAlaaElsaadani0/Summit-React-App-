@@ -1,14 +1,12 @@
-import React, { useEffect ,lazy } from 'react';
+import React, { useEffect , useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
-// Wrap your components with React.lazy
-const AparmentSlider = lazy(() => import('../ApartmentSliderComponent/AparmentSlider'));
-const ErrorPage = lazy(() => import('../../ErrorPage/ErrorPage'));
+import AparmentSlider from '../ApartmentSliderComponent/AparmentSlider';
+import ErrorPage from '../../ErrorPage/ErrorPage';
 
 const ApartmentDetails = (props) => {
 
   const location = useLocation();
-  let flat = location.state;
+  const [flat, setflat] = useState(location.state);
   // const navigate = useNavigate();
   useEffect(() => {
     document.querySelectorAll('.AbartmentImage').forEach((apartmentImage) => {
@@ -18,12 +16,13 @@ const ApartmentDetails = (props) => {
     });
 
   }, []);
+  
+  // if(flat===null){
+  //   return <ErrorPage/>;
+  //   // window.location.href=window.location.href.split("Apart")[0]   
+  // };
 
   const flag = true;
-  if(flat===null){
-    return <ErrorPage/>;
-    // window.location.href=window.location.href.split("Apart")[0]   
-  };
   return (
     <React.Fragment>
       <div className="myVh-100 mt-3 d-flex justify-content-center  align-items-center">
