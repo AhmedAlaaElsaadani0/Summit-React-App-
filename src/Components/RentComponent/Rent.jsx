@@ -18,9 +18,9 @@ function Rent() {
     getAllApartments();
   }, []);
   // this main API call to get all apartments by using param
-  const getAllApartments = async (searchValue = SearchValue, pageIndex = PageIndex) => {
+  const getAllApartments = async (searchValue = SearchValue, pageIndex = PageIndex,searchFlag=false) => {
     let response = await ApiManger.getAllApartments(`?Type=1&pageIndex=${pageIndex}&title=${searchValue}`);
-    let updatedApartments = [...apartments, ...response.data];
+    let updatedApartments = searchFlag?[...response.data] :[...apartments, ...response.data];
     /* previous code to make the background of apartment poster in different colors but we don't need it now
     // let flag = false;
     // for (let i = apartments.length; i < updatedApartments.length; i++) {
@@ -35,20 +35,36 @@ function Rent() {
     setpageIndex(response.data.length == 0 ? response.pageIndex : response.pageIndex + 1)
     setLoading(false);
   };
-  // this function to get the value of search input and set it to searchValue
-  const handleSearch = (e) => {
-    document.querySelectorAll('.Apartment').forEach((apartment) => {
-      apartment.remove();
-    })
-    e.preventDefault();
+ // this function to get the value of search input and set it to searchValue
+ const handleSearchOnChange = (e) => {
+  // document.querySelectorAll('.Apartment').forEach((apartment) => {
+  //   apartment.remove();
+  // })
+  e.preventDefault();
+  if (e.target.value.length > 3) {
     setpageIndex(1);
     let value = document.getElementsByName('searchElement')[0].value;
     setsearchValue(value);
     // setApartments([]);
-    getAllApartments(value, 1);
-
+    getAllApartments(value, 1, true);
 
   }
+}
+// this function to get the value of search input and set it to searchValue when we click on Enter
+const handleSearchOnSubmit = (e) => {
+  // document.querySelectorAll('.Apartment').forEach((apartment) => {
+  //   apartment.remove();
+  // })
+  e.preventDefault();
+  //when we click on Enter
+  setpageIndex(1);
+  let value = document.getElementsByName('searchElement')[0].value;
+  setsearchValue(value);
+  // setApartments([]);
+  getAllApartments(value, 1, true);
+
+
+}
   // this function to load more apartments when we click on load more button
   async function loadMore() {
     let btn = document.getElementById('loadMore');
@@ -88,10 +104,10 @@ function Rent() {
         <title>Summit Egypt-Rent</title>
       </Helmet>
       <div className='d-flex  justify-content-center align-items-center h-75 flex-wrap'>
-        <form action='' id='RentPageSearch' className='d-flex mt-3 widthForSearch justify-content-center'>
+        <form onSubmit={e=>handleSearchOnSubmit(e)} action='' id='RentPageSearch' className='d-flex mt-3 widthForSearch justify-content-center'>
           <div className='w-75 position-relative text-secondary'>
             <i className='fa-solid fa-magnifying-glass pb-3 position-absolute top-50 translate-middle-y me-3 end-0'></i>
-            <input onChange={handleSearch} name='searchElement' type='text' className='form-control-Amoor mb-3  form-label mb-0 rounded-5 p-3 pe-3'
+            <input onChange={e=>handleSearchOnChange(e)} name='searchElement' type='text' className='form-control-Amoor mb-3  form-label mb-0 rounded-5 p-3 pe-3'
               placeholder='Search By Title' />
           </div>
         </form>
@@ -101,9 +117,9 @@ function Rent() {
               return <ApartmentLoading key={index} flag={item} />;
             })
             :
+            apartments.length == 0 ? <h2 className='text-center bg-primColor text-white p-5'>Sorry, There is no Apartments Found!</h2> :
             apartments.map((item, index) => {
-              
-              return <ApartmentPoster key={index} previousPage="Buy" loading={loading} flat={item} flag={index%2==0? false :true } />
+              return <ApartmentPoster key={index} index={index} previousPage="Area" loading={loading} flat={item} flag={index%2==0? false :true } />
             })}
         </div>
         <div>

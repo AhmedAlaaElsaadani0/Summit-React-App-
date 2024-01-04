@@ -19,9 +19,9 @@ function Area() {
     getAllApartments();
   }, []);
   // this main API call to get all apartments by using param
-  const getAllApartments = async (govId = GovId, pageIndex = PageIndex, areaId = AreaId, regionId = RegionId) => {
+  const getAllApartments = async (govId = GovId, pageIndex = PageIndex, areaId = AreaId, regionId = RegionId,searchFlag=false) => {
     let response = await ApiManger.getAllApartments(`?pageIndex=${pageIndex}&govId=${govId}&areaid=${areaId}&regionId=${regionId}`);
-    let updatedApartments = [...apartments, ...response.data];
+    let updatedApartments = searchFlag?[...response.data] :[...apartments, ...response.data];
     /* previous code to make the background of apartment poster in different colors but we don't need it now
     // let flag = false;
     // for (let i = apartments.length; i < updatedApartments.length; i++) {
@@ -39,7 +39,8 @@ function Area() {
   // this function to get the value of search input and set it to govId
   const handleSearchByGovId = (e) => {
     e.preventDefault();
-    resetPage();
+    // resetPage();
+    setpageIndex(1);
     clearAreaSelector();
     clearRegionsSelector();
     ApiManger.getAreasOfGov(e.target.value).then((response) => {
@@ -47,13 +48,14 @@ function Area() {
     });
     let value = document.querySelector('#selectorGovs').value;
     setGovId(value);
-    getAllApartments(value, 1, '', "");
+    getAllApartments(value, 1, '', "",true);
     // setApartments([]);
   }
   // this function to get the value of search input and set it to areaId and get all apartments by areaId
   const handleSearchByAreaId = (e) => {
     e.preventDefault();
-    resetPage();
+    // resetPage();
+    setpageIndex(1);
     clearRegionsSelector();
     ApiManger.getRegionsOfArea(e.target.value).then((response) => {
       if (response.code != 401)
@@ -62,28 +64,28 @@ function Area() {
     });
     let value = document.querySelector('#selectorAreas').value;
     setAreaId(value);
-    getAllApartments(GovId, 1, value,'');
+    getAllApartments(GovId, 1, value,'',true);
     document.querySelector('#selectorAreas').style.width = '50%';
     // setApartments([]);
   }
   // this function to get the value of search input and set it to regionId and get all apartments by regionId
   const handleSearchByRegionId = (e) => {
     e.preventDefault();
-    resetPage();
+    // resetPage();
     let value = document.querySelector('#selectorRegions').value;
-    getAllApartments(GovId, 1, AreaId, value);
+    getAllApartments(GovId, 1, AreaId, value,true);
     setRegionId(value);
     // setApartments([]);
   }
 
   // this Function to reset the page to it's default state for new search
-  const resetPage = () => {
-    document.querySelectorAll('.Apartment').forEach((apartment) => {
-      apartment.remove();
-    })
-    setpageIndex(1);
+  // const resetPage = () => {
+  //   document.querySelectorAll('.Apartment').forEach((apartment) => {
+  //     apartment.remove();
+  //   })
+  //   setpageIndex(1);
 
-  }
+  // }
 
   // this function to load more apartments when we click on load more button
   async function loadMore() {
