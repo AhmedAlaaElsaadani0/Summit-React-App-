@@ -67,6 +67,10 @@
   text-decoration: none;
   background-color: white;
 }
+button:active{
+  transform: translateY(2px);
+  scale: 0.9;
+}
 /* width for search input */
 .widthForSearch{
   width: 50%;

@@ -11,6 +11,13 @@ nav a {
     -o-transition: all 0.3s ease-in-out;
     
 }
+.listsNavLinks{
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
   
 
 /* Select the "Us" suffix in the "Contact Us" link */
@@ -37,7 +44,6 @@ nav a {
     content: "Contact";
     color: white;
     font-weight: bolder;
-
     /*Setthebackgroundcolortogreen*/background-color:var(--PrimColor);
     /*Setthedisplaypropertytoinline-blocktomaketheelementablock-levelelementwithinlineproperties*/display: inline-block;
     /*Settheborder-radiuspropertyto50%tomaketheelementacircle*/border-radius: 50%;
@@ -68,6 +74,13 @@ nav a {
 }
 .bg-responsiveTransparentAndPrimColorWhenPhone{
     background-color: transparent!important;
+}
+
+@media (max-width: 993px) {
+    .listsNavLinks ul{
+        width: 100%;
+    }
+    
 }
 @media screen and (max-width: 768px) {
     .bg-responsiveTransparentAndPrimColorWhenPhone{

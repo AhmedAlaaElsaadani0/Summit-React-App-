@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './i18n';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
@@ -15,10 +16,7 @@ root.render(
   <React.StrictMode>
   <HelmetProvider>
     <App />
-
   </HelmetProvider>
-  
-    
   </React.StrictMode>
 );
 

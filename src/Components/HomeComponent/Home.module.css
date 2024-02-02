@@ -7,7 +7,7 @@
         background-clip: text;
         -moz-background-clip: text;
         -webkit-background-clip: text;
-        color: transparent;
+        color: transparent ;
         -webkit-text-fill-color: transparent;
         -moz-text-fill-color: transparent;
 }

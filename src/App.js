@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React, { lazy, useEffect } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css';
 
@@ -35,6 +35,13 @@ let routers = createBrowserRouter([
 ])
 
 function App() {
+  const i18nextLng=localStorage.getItem('i18nextLng')||"en";
+  useEffect(() => {
+    if(i18nextLng=="ar"){
+      document.documentElement.dir = "rtl";
+    }
+  }, [i18nextLng]);
+
   return <React.Fragment>
    <RouterProvider router={routers}/>
 
