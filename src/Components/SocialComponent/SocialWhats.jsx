@@ -30,6 +30,9 @@ const SocialWhats = () => {
     };
   }, [hovered]);
   const [flagDirection, setflagDirection] = useState(i18n.language == 'en');
+useEffect(() => {
+  setflagDirection(i18n.language == 'en');
+}, [i18n.language]);
 
   return (
     <> 

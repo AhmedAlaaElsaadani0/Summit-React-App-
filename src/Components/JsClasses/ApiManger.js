@@ -1,4 +1,4 @@
-const BaseURl = 'https://api.summitegypt.com';
+const BaseURl = 'https://api.summitegypt.com/dev';
 const AdminBaseURl = `${BaseURl}/accounts/admins`;
 const AreaBaseURl = `${BaseURl}/Areas`;
 const RegionBaseURl = `${BaseURl}/Regions`;

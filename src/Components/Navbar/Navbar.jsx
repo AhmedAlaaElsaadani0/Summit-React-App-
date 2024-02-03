@@ -1,24 +1,10 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import  "./styleNavBar.css";
-const Link=React.lazy(()=>import("../Link/Link"))
+import "./styleNavBar.css";
+const Link = React.lazy(() => import("../Link/Link"))
 
 const Navbar = () => {
-  const { t , i18n} = useTranslation();
-  // change style for nav item when click on Contact us Navbar
-  const changeStyleForNavItemContactUs = () => {
-    let contactUs = document.querySelector('.ContactUs');
-    if (contactUs.classList.contains('selectedNavElement')) {
-      contactUs.classList.remove('navItemCircle');
-      contactUs.classList.add('navItemSelectedCircle');
-      contactUs.innerText = ' Us';
-      contactUs.classList.remove('selectedNavElement');
-    } else {
-      contactUs.classList.remove('navItemSelectedCircle');
-      contactUs.classList.add('navItemCircle');
-      contactUs.innerText = 'Contact';
-    }
-  };
+  const { t, i18n } = useTranslation();
 
   // specify style for nav item when refresh page
   const specifyStyleForNav = () => {
@@ -28,7 +14,6 @@ const Navbar = () => {
           element.classList.remove('selectedNavElement');
         });
         element.classList.add('selectedNavElement');
-        changeStyleForNavItemContactUs();
       }
     });
   };
@@ -41,7 +26,6 @@ const Navbar = () => {
           element.classList.remove('selectedNavElement');
         });
         element.classList.add('selectedNavElement');
-        changeStyleForNavItemContactUs();
       });
     });
   };
@@ -88,11 +72,11 @@ const Navbar = () => {
         data-bs-theme='dark'
       >
         <div className='container-fluid mx-3 d-flex justify-content-between '>
-          
+
           <Link className='navbar-brand ' to='/'>
             <img src='Images/Logo.png' style={{ width: '100px' }} alt='logo website ' />
           </Link>
-          
+
           <button
             className='navbar-toggler'
             type='button'
@@ -105,7 +89,7 @@ const Navbar = () => {
             <span className='navbar-toggler-icon'></span>
           </button>
           <div className='collapse navbar-collapse listsNavLinks fs-5' id='navbarSupportedContent'>
-            <div/>
+            <div />
             <ul className='navbar-nav gap-3  d-flex justify-content-between mb-2 mb-lg-0'>
               <li className='nav-item '>
                 <Link className='nav-link active selectedNavElement' aria-current='page' to='/'>
@@ -114,33 +98,62 @@ const Navbar = () => {
               </li>
               <li className='nav-item '>
                 <Link className='nav-link active' aria-current='page' to='/About'>
-                {t("Navbar About")}
+                  {t("Navbar About")}
                 </Link>
               </li>
               <li className='nav-item '>
                 <Link className='nav-link active' aria-current='page' to='/Buy'>
-                {t("Navbar Buy")}
+                  {t("Navbar Buy")}
                 </Link>
               </li>
               <li className='nav-item '>
                 <Link className='nav-link active' aria-current='page' to='/Rent'>
-                {t("Navbar Rent")}
+                  {t("Navbar Rent")}
 
                 </Link>
               </li>
-              <li className='nav-item '>
-                <Link className='nav-link active' aria-current='page' to='/Area'>
-                  Area
+              <li className='nav-item'>
+                <Link className='nav-link active' aria-current='page' to='/Contact'>
+                  {t("Navbar Contact")}
+
                 </Link>
               </li>
             </ul>
-            <ul className='navbar-nav ContactUsWidth  mb-2 mb-lg-0'>
+            <ul className='navbar-nav d-flex gap-3  mb-2 mb-lg-0'>
+              {/* login and sign uo button with language switch */}
               <li className='nav-item'>
-                <Link className='nav-link active ContactUs  navItemCircle' aria-current='page' to='/Contact'>
-                {t("Navbar Contact")}
-
+                <button className='navbar-button   ' aria-current='page' to='/Login'>
+                  {t("Navbar Login")}
+                </button>
+              </li>
+              <li className='nav-item'>
+                <Link className='sButton p-2 sButtonGreen  ' aria-current='page' to='/SignUp'>
+                  {t("Navbar Register")}
                 </Link>
               </li>
+              <li className='languageSwitch' 
+              onClick={() => {
+                let flagDirection = i18n.language == 'en';
+
+                flagDirection ? 
+                i18n.changeLanguage('ar') :
+                i18n.changeLanguage('en');
+                flagDirection? document.body.style.direction = 'rtl' : document.body.style.direction = 'ltr';
+
+              }}
+              >
+              <i class="fa-solid fa-earth-americas text-secondary mx-1"></i>
+              {i18n.language == "ar" ? 
+                <span className=' p-1' >
+                  English
+                </span>
+                :
+                  <span className='' >
+                    عربي
+                  </span>
+              }
+              </li>
+
             </ul>
           </div>
         </div>

@@ -9,108 +9,126 @@ nav a {
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
-    
+
 }
-.listsNavLinks{
+
+.listsNavLinks {
     text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 }
-  
 
-/* Select the "Us" suffix in the "Contact Us" link */
-.navItemCircle::after {
-    content: "Us";
-    margin-left:5px ;
-    color: white;
-    font-weight: bolder;
-    /*Setthebackgroundcolortogreen*/background-color:var(--PrimColor);
-    /*Setthedisplaypropertytoinline-blocktomaketheelementablock-levelelementwithinlineproperties*/display: inline-block;
-    /*Settheborder-radiuspropertyto50%tomaketheelementacircle*/border-radius: 50%;
-    /*Setthepaddingpropertytoaddsomespacearoundthetext*/padding: 5px 10px 5px 2px ;
-    transition:all 0.5s ease-in-out ;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    -webkit-transition:all 0.5s ease-in-out ;
-    -moz-transition:all 0.5s ease-in-out ;
-    -ms-transition:all 0.5s ease-in-out ;
-    -o-transition:all 0.5s ease-in-out ;
+.listsNavLinks ul {
+    align-items: center;
 }
-.navItemSelectedCircle::before {
-    content: "Contact";
-    color: white;
-    font-weight: bolder;
-    /*Setthebackgroundcolortogreen*/background-color:var(--PrimColor);
-    /*Setthedisplaypropertytoinline-blocktomaketheelementablock-levelelementwithinlineproperties*/display: inline-block;
-    /*Settheborder-radiuspropertyto50%tomaketheelementacircle*/border-radius: 50%;
-    /*Setthepaddingpropertytoaddsomespacearoundthetext*/padding: 30px 4px 30px 15px ;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    transition: all 0.5s ease-in-out ;
-    -webkit-transition: all 0.5s ease-in-out ;
-    -moz-transition: all 0.5s ease-in-out ;
-    -ms-transition: all 0.5s ease-in-out ;
-    -o-transition: all 0.5s ease-in-out ;
+
+
+.selectedNavElement {
+    color: var(--PrimColor) !important;
+    font-weight: bolder !important;
+    text-decoration: underline !important;
+    -moz-text-decoration: underline !important;
+    -webkit-text-decoration: underline !important;
 }
-.selectedNavElement{
-    color: var(--PrimColor)!important;
-    font-weight: bolder!important;
-    text-decoration: underline!important;
-    -moz-text-decoration:underline !important;
-    -webkit-text-decoration:underline !important;
-}
-.nav-link{
+
+.nav-link {
     transition: all 0.3s ease-in-out !important;
     -webkit-transition: all 0.3s ease-in-out !important;
     -moz-transition: all 0.3s ease-in-out !important;
     -ms-transition: all 0.3s ease-in-out !important;
     -o-transition: all 0.3s ease-in-out !important;
 }
-.bg-responsiveTransparentAndPrimColorWhenPhone{
-    background-color: transparent!important;
+
+.bg-responsiveTransparentAndPrimColorWhenPhone {
+    background-color: transparent !important;
+}
+/* Add this to your existing styles or create a new styleNavBar.css file */
+
+.navbar-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    color: var(--PrimColor);
+    transition: color 0.3s ease-in-out;
+    -webkit-transition: color 0.3s ease-in-out;
+    -moz-transition: color 0.3s ease-in-out;
+    -ms-transition: color 0.3s ease-in-out;
+    -o-transition: color 0.3s ease-in-out;
+}
+  
+  .navbar-button::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -webkit-transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -moz-transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -ms-transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -o-transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+  
+  .navbar-button:hover {
+    color: var(--PrimColorHover); /* Change text color on hover */
+  }
+  
+  .navbar-button:hover::before {
+    width: 100%; /* Full width on hover */
+    background-color: var(--PrimColorHover); /* Set your desired hover color */
+  }
+  
+
+
+.languageSwitch {
+    cursor: pointer;
 }
 
-@media (max-width: 993px) {
-    .listsNavLinks ul{
+@media (max-width: 991px) {
+    .listsNavLinks ul {
         width: 100%;
     }
-    
+
+    .listsNavLinks {
+
+        flex-wrap: wrap;
+    }
+
+
 }
+
 @media screen and (max-width: 768px) {
-    .bg-responsiveTransparentAndPrimColorWhenPhone{
-        background-color: var(--PrimColor)!important;
+    .bg-responsiveTransparentAndPrimColorWhenPhone {
+        background-color: var(--PrimColor) !important;
     }
-    .selectedNavElement{
-        color:white!important;
-        font-weight: bolder!important;
-        text-decoration: underline!important;
-        -moz-text-decoration:underline !important;
-        -webkit-text-decoration:underline !important;
+
+    .selectedNavElement {
+        color: white !important;
+        font-weight: bolder !important;
+        text-decoration: underline !important;
+        -moz-text-decoration: underline !important;
+        -webkit-text-decoration: underline !important;
     }
-    
+
     /* set all children elements of navbar to white */
     .bg-responsiveTransparentAndPrimColorWhenPhone a {
         color: white;
     }
 
-    /* Select the "Us" suffix in the "Contact Us" link */
-.navItemCircle::after {
-    content: "Us";
-    color: var(--PrimColor);
-    background-color:white;
+    .languageSwitch {
+        color: aliceblue;
+    }
+    .navbar-button{
+        color: white;
+    }
+  
+    .navbar-button:hover::before {
+        background-color: white; /* Set your desired hover color */
+      }
     
-}
-.navItemSelectedCircle::before {
-    content: "Contact";
-    color: var(--PrimColor);
-    background-color:white;
-}
-
 
 }

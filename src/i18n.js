@@ -11,14 +11,14 @@ i18n
     detection: {
       order: [
         'localStorage',
-        'htmlTag',
         'cookie',
+        'htmlTag',
         'querystring', 'sessionStorage', 'navigator', 'path', 'subdomain'],
 
       caches: ["cookie", "localStorage"],
     }
-    ,
-    lng:"ar"
+    // ,
+    // lng:"en"
     , backend: {
       // http backend options
       loadPath: '/locale/{{lng}}/{{ns}}.json',
