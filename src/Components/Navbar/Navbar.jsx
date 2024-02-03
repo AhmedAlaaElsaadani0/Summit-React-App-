@@ -8,6 +8,7 @@ const Navbar = () => {
   const { t, i18n } = useTranslation();
   let navbarCollapse;
 
+
   // specify style for nav item when refresh page
   const specifyStyleForNav = () => {
     document.querySelectorAll('.nav-link').forEach((element) => {

@@ -81,6 +81,42 @@ button:active{
   background-clip: initial;   
   background-color: var(--PrimColor);
 }
+/* Track */
+::-webkit-scrollbar {
+  width: 12px; /* Set the width of the scrollbar */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: var(--PrimColor);
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--PrimColorHover); /* Set the color on hover */
+}
+
+/* Track background */
+::-webkit-scrollbar-track {
+  background-color: white; /* Set the background color of the scrollbar track */
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  /* border:1px solid var(--SecColor); */
+}
+
+/* Handle when scrolling */
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--PrimColorHover); /* Set the color when actively scrolling */
+}
+
 @media (max-width: 1199px) {
   
 .myVh-100{
@@ -122,6 +158,15 @@ button:active{
   width: 90%!important;
 }
 }
+/* write media query for screen */
+
+@media screen and (max-width: 650px) {
+  .m-smalldevice-auto{
+    margin: auto;
+  }
+}
+
+
 /* -------------------------form control by Amooor 😘----------------------------------- */
 
 .form-control-Amoor {
@@ -296,10 +341,3 @@ button:active{
 .form-select-Amoor:focus option:checked {
   background-color: #007bff;
 } */
-/* write media query for screen */
-
-@media screen and (max-width: 650px) {
-  .m-smalldevice-auto{
-    margin: auto;
-  }
-}
