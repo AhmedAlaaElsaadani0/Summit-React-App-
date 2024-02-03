@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import "./styleNavBar.css";
+import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
 const Link = React.lazy(() => import("../Link/Link"))
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
+  let navbarCollapse;
 
   // specify style for nav item when refresh page
   const specifyStyleForNav = () => {
@@ -24,6 +26,7 @@ const Navbar = () => {
       element.addEventListener('click', () => {
         document.querySelectorAll('.nav-link').forEach((element) => {
           element.classList.remove('selectedNavElement');
+          navbarCollapse.hide();
         });
         element.classList.add('selectedNavElement');
       });
@@ -37,6 +40,12 @@ const Navbar = () => {
     // Call the function initially and listen for window resize events
     updateAttributeForScreenSize();
     window.addEventListener('resize', updateAttributeForScreenSize);
+
+    // Manually collapse the navbar when a link is clicked
+    navbarCollapse = new bootstrap.Collapse(document.getElementById('navbarSupportedContent'), {
+      toggle: false // Set to false to manually control the collapse state
+    });
+    
 
     // Cleanup on component unmount
     return () => {
