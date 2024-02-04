@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "./AnimateBars.css";
 export default function AnimatBars() {
     return (
         <div id="bars" className="bars">

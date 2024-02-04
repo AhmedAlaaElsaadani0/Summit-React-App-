@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import "./styleNavBar.css";
 import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import Login from '../Login/Login';
 const Link = React.lazy(() => import("../Link/Link"))
 
 const Navbar = () => {
@@ -132,7 +133,7 @@ const Navbar = () => {
             <ul className='navbar-nav d-flex gap-3  mb-2 mb-lg-0'>
               {/* login and sign uo button with language switch */}
               <li className='nav-item'>
-                <button className='navbar-button   ' aria-current='page' to='/Login'>
+                <button className='navbar-button   ' aria-current='page' to='/Login' data-bs-toggle="modal" data-bs-target="#login">
                   {t("Navbar Login")}
                 </button>
               </li>
@@ -168,6 +169,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+      <Login/>
     </>
   );
 };

@@ -93,7 +93,7 @@ const ApartmentDetails = (props) => {
               <div className={`data position-absolute top-0 end-0 me-3 mt-2 rounded  ${!flag ? "bg-primColor text-white" : "bg-white  text-primColor" } `}style={{width: "fit-content"}}>
 
                 <p id="date" className='mb-0'>
-                Posted : <span className="fw-normal"> {flat.date.split(" ")[0]} </span>
+                Posted : <span className="fw-normal"> {flat.date?.split(" ")[0]} </span>
                 </p>
 
 

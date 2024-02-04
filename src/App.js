@@ -1,6 +1,5 @@
 import React, { lazy,  } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import './App.css';
 import Buy from './Components/Buy/Buy';
 import Rent from './Components/RentComponent/Rent';
 import Area from './Components/AreaComponent/Area';
