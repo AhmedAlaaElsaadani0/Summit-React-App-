@@ -12,7 +12,7 @@
     "About Header": "Why Summit?",
     "About Paragraph": "At Summit Egypt, we believe in the power of dreams and the very importance of finding the perfect place to call home. Established with a vision to redefine the real estate industry in Egypt, we are a dynamic and forward-thinking company dedicated to delivering exceptional real estate solutions. At Summit Egypt, we believe in the power of dreams and the importance of fun.",
     "Contact Header": "Call Us",
-    "Contact Paragraph": "Get started with Summit!" ,
+    "Contact Paragraph": "Get started with Summit!",
     "Whatsapp icon message": "Do you need to send Message?",
     "Footer Service": "Services",
     "Footer Buy": "Buy",
@@ -36,5 +36,11 @@
     "Footer Copy": "© 2021 Summit Egypt. All rights reserved.",
     "Error": "Error",
     "Error Message": "Sorry, an error has occurred.",
-    "Error Button": "Go back to home page"
+    "Error Button": "Go back to home page",
+    "Login": "Login",
+    "Login Forgot Password": "Forgot Password?",
+    "Login Remember Me": "Remember Me",
+    "Login Password": "Password",
+    "Login Username": "Username",
+    "Login Not yet account": "Not yet account?"
 }

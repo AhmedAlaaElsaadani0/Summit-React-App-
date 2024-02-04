@@ -103,7 +103,7 @@ const Buy = () => {
         <title>Summit Egypt-Buy</title>
       </Helmet>
 
-      <div className='d-flex  justify-content-center align-items-center h-100 flex-wrap'>
+      <div className='d-flex  justify-content-center align-items-center flex-wrap' >
         <form onSubmit={e => handleSearchOnSubmit(e)} action='' id='RentPageSearch' className='d-flex mt-3 widthForSearch  justify-content-center'>
           <div className='w-75 position-relative text-secondary'>
             <i className='fa-solid fa-magnifying-glass pb-3 position-absolute top-50 translate-middle-y me-3 end-0'></i>
@@ -111,7 +111,7 @@ const Buy = () => {
               placeholder='Search By Title' />
           </div>
         </form>
-        <div className="Apartments mt-3 w-100">
+        <div className="Apartments mt-3 w-100  ">
           {loading ?
             [true, false, true].map((item, index) => {
               return <ApartmentLoading key={index} flag={item} />

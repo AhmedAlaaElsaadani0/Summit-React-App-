@@ -36,6 +36,12 @@
   "Footer Copy": "© 2021 صامت إيجيبت. كل الحقوق محفوظة.",
   "Error": "خطأ",
   "Error Message": "نعتذر، حدث خطأ ما.",
-  "Error Button": "العودة إلى الصفحة الرئيسية"
+  "Error Button": "العودة إلى الصفحة الرئيسية",
+  "Login": "تسجيل الدخول",
+  "Login Forgot Password": "نسيت كلمة المرور؟",
+  "Login Remember Me": "تذكرني",
+  "Login Password": "كلمة المرور",
+  "Login Username": "اسم المستخدم",
+  "Login Not yet account": "ليس لديك حساب بعد؟"
   
 }

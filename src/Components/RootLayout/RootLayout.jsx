@@ -10,13 +10,13 @@ export default function RootLayout() {
  
 return (<React.Fragment>
 
-    <div  >
+    <div style={{minHeight:"70vh"}}  >
       <Navbar />
       <Outlet ></Outlet>
       <AnimatBars />
       <SocialWhats />
-    <Footer />
     </div>
+    <Footer />  
       
 
    </React.Fragment>
