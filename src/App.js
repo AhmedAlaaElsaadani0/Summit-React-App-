@@ -5,12 +5,15 @@ import Rent from './Components/RentComponent/Rent';
 import Area from './Components/AreaComponent/Area';
 import ApartmentDetails from './Components/Apartment/ApartmentDetailsComponent/ApartmentDetails';
 import i18n from './i18n';
+import Form from './Components/Form/Form';
+import RootLayout from './Components/RootLayout/RootLayout';
+import Signup from './Components/Form/Signup/Signup';
 // Wrap your components with React.lazy
 const Home = lazy(() => import('./Components/HomeComponent/Home'));
 const About = lazy(() => import('./Components/AboutComponent/About'));
 const Contactus = lazy(() => import('./Components/ContactusComponent/Contactus'));
-const RootLayout = lazy(() => import('./Components/RootLayout/RootLayout'));
 const ErrorPage = lazy(() => import('./Components/ErrorPage/ErrorPage'));
+// const RootLayout = lazy(() => import('./Components/RootLayout/RootLayout'));
 // const Area = lazy(() => import('./Components/AreaComponent/Area'));
 // const Rent = lazy(() => import('./Components/RentComponent/Rent'));
 // const Buy = lazy(() => import('./Components/Buy/Buy'));
@@ -29,6 +32,11 @@ let routers = createBrowserRouter([
   
 
       ]},
+      {path:'/forms', element: <Form/>,children:[
+        {index:true, element: <Signup/>},
+        {path:"Signup", element: <Signup/>},
+      ]}
+      ,
     {path:'*', element: <ErrorPage/>}
 
 ])

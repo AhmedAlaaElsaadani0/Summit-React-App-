@@ -20,7 +20,7 @@ const Contactus = (props) => {
           <title>Summit Egypt-ContactUs</title>
         </Helmet>
       ) : null}
-      <div className='d-flex justify-content-center align-items-center mt-5 mb-3 myVh-100' id='Contact'>
+      <div className='d-flex justify-content-center align-items-center mt-5 ' id='Contact'>
         <div className={`${styleContactus.widthEle} container p-5 justify-content-center d-flex bg-primColor mob-style rounded-5 align-items-center flex-column `}>
           <h2 className={`text-white mb-5 ${styleContactus.fontSize}`}>{t('Contact Paragraph')}</h2>
           <button className='btn bg-white btn-toolbar .text-primColor fs-1 px-4 py-1 fw-bolder mb-5'>{t("Contact Header")}</button>

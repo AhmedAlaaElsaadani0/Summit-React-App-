@@ -10,13 +10,17 @@ export default function RootLayout() {
  
 return (<React.Fragment>
 
-    <div style={{minHeight:"70vh"}}  >
+    <div className="mainContainer"  >
       <Navbar />
       <Outlet ></Outlet>
       <AnimatBars />
       <SocialWhats />
-    </div>
+      {/* <a href="#root">
+    <button className="scroll2top fa-solid fa-arrow-up"/>
+    </a> */}
+
     <Footer />  
+    </div>
       
 
    </React.Fragment>

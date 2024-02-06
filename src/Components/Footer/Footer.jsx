@@ -5,7 +5,7 @@ const Link=lazy(()=>import('../Link/Link'))
 export default function Footer() {
   const { t, i18n } = useTranslation();
   return  (
-    <div className={"container-fluid "}>
+    <div className={"container-fluid  "}>
       <footer className={"row row-cols-1 row-cols-sm-2 row-cols-md-5 pt-5 mt-5 border-top  "+FooterStyle.FooterBackground}>
 
         <div className="col-lg col-md-3 col-sm-6 mb-3">

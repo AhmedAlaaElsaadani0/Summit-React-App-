@@ -3,10 +3,11 @@ import ApiManger from '../JsClasses/ApiManger';
 import { Helmet } from 'react-helmet-async';
 import ApartmentPoster from '../Apartment/ApartmentPosterComponent/ApartmentPoster';
 import ApartmentLoading from '../Apartment/ApartmentLoadingComponent/ApartmentLoading';
+import { useTranslation } from 'react-i18next';
 
 
 function Rent() {
-
+  const {t,i18n} = useTranslation();
   const [response, setResponse] = useState({});
   const [PageIndex, setpageIndex] = useState(1)
   const [SearchValue, setsearchValue] = useState("")
@@ -21,15 +22,6 @@ function Rent() {
   const getAllApartments = async (searchValue = SearchValue, pageIndex = PageIndex,searchFlag=false) => {
     let response = await ApiManger.getAllApartments(`?Type=1&pageIndex=${pageIndex}&title=${searchValue}`);
     let updatedApartments = searchFlag?[...response.data] :[...apartments, ...response.data];
-    /* previous code to make the background of apartment poster in different colors but we don't need it now
-    // let flag = false;
-    // for (let i = apartments.length; i < updatedApartments.length; i++) {
-    //   updatedApartments[i] = {
-    //     flag: flag ? true : false,
-    //     data: updatedApartments[i]
-    //   };
-    //   flag = !flag;
-    // }*/
     setResponse(response);
     setApartments(updatedApartments);
     setpageIndex(response.data.length == 0 ? response.pageIndex : response.pageIndex + 1)
@@ -37,24 +29,17 @@ function Rent() {
   };
  // this function to get the value of search input and set it to searchValue
  const handleSearchOnChange = (e) => {
-  // document.querySelectorAll('.Apartment').forEach((apartment) => {
-  //   apartment.remove();
-  // })
   e.preventDefault();
   if (e.target.value.length > 3) {
     setpageIndex(1);
     let value = document.getElementsByName('searchElement')[0].value;
     setsearchValue(value);
-    // setApartments([]);
     getAllApartments(value, 1, true);
 
   }
 }
 // this function to get the value of search input and set it to searchValue when we click on Enter
 const handleSearchOnSubmit = (e) => {
-  // document.querySelectorAll('.Apartment').forEach((apartment) => {
-  //   apartment.remove();
-  // })
   e.preventDefault();
   //when we click on Enter
   setpageIndex(1);
@@ -104,26 +89,28 @@ const handleSearchOnSubmit = (e) => {
         <title>Summit Egypt-Rent</title>
       </Helmet>
       <div className='d-flex  justify-content-center align-items-center h-75 flex-wrap'>
-        <form onSubmit={e=>handleSearchOnSubmit(e)} action='' id='RentPageSearch' className='d-flex mt-3 widthForSearch justify-content-center'>
+        {/* <form onSubmit={e=>handleSearchOnSubmit(e)} action='' id='RentPageSearch' className='d-flex mt-3 widthForSearch justify-content-center'>
           <div className='w-75 position-relative text-secondary'>
             <i className='fa-solid fa-magnifying-glass pb-3 position-absolute top-50 translate-middle-y me-3 end-0'></i>
             <input onChange={e=>handleSearchOnChange(e)} name='searchElement' type='text' className='form-control-Amoor mb-3  form-label mb-0 rounded-5 p-3 pe-3'
               placeholder='Search By Title' />
           </div>
-        </form>
-        <div className='Apartments mt-3 w-100'>
+        </form> */}
+        <div className='Apartments mt-5 w-100'>
           {loading
             ? [true, false, true].map((item, index) => {
               return <ApartmentLoading key={index} flag={item} />;
             })
             :
-            apartments.length == 0 ? <h2 className='text-center bg-primColor text-white p-5'>Sorry, There is no Apartments Found!</h2> :
+            apartments.length == 0 ? 
+            <h2 className='text-center bg-primColor text-white p-5'>{t("Not Found Apart Message")}</h2>
+             :
             apartments.map((item, index) => {
               return <ApartmentPoster key={index} index={index} previousPage="Area" loading={loading} flat={item} flag={index%2==0? false :true } />
             })}
         </div>
         <div>
-          {(response.count > 0 && ( response.count/response.pageSize) >= response.pageIndex) ? <button onClick={loadMore} className="sButton sButtonGreen" id='loadMore'>Load More</button> : ""}
+          {(response.count > 0 && ( response.count/response.pageSize) >= response.pageIndex) ? <button onClick={loadMore} className="sButton sButtonGreen" id='loadMore'>{t("Load More")}</button> : ""}
         </div>
       </div>
     </React.Fragment>

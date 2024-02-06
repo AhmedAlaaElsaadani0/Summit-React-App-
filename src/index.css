@@ -1,9 +1,18 @@
 :root{
-  --PrimColor:#377676;
+  --PrimColor:#377474;
   --PrimColorHover:hsl(180, 37%, 24%);
   /* --PrimColorHover:#2b5e5e; */
   --SecColor:#717171;
 }
+/* //////////////////////// */
+/* root style */
+.mainContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+/* //////////////////////// */
 .bg-primColor{
   background-color: var(--PrimColor)!important;
 }
@@ -118,6 +127,38 @@ button:active{
 ::-webkit-scrollbar-thumb:active {
   background-color: var(--PrimColorHover); /* Set the color when actively scrolling */
 }
+
+ /*===================
+  scroll to top button
+=====================*/
+/* .scroll2top{
+  position: fixed;
+  bottom: 2rem;
+  right: 1%;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--PrimColor);
+  color: white;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.8;
+  padding: 12PX;
+  border: 1px solid rgba(299, 299, 299, 0.169);
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}  */
+
 
 @media (max-width: 1199px) {
   

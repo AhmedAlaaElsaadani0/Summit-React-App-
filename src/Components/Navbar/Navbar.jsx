@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import "./styleNavBar.css";
 import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import Login from '../Login/Login';
+import Login from '../Form/Login/Login';
 const Link = React.lazy(() => import("../Link/Link"))
 
 const Navbar = () => {
@@ -138,7 +138,7 @@ const Navbar = () => {
                 </button>
               </li>
               <li className='nav-item'>
-                <Link className='sButton p-2 sButtonGreen  ' aria-current='page' to='/SignUp'>
+                <Link className='sButton p-2 sButtonGreen  ' aria-current='page' to='/forms#SignUp'>
                   {t("Navbar Register")}
                 </Link>
               </li>

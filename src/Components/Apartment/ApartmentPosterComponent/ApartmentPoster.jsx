@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AparmetSlider from '../ApartmentSliderComponent/AparmentSlider';
+import { useTranslation } from 'react-i18next';
 
 const ApartmentPoster = (props) => {
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
   const [flag] = useState(!props.flag);
   const [flat] = useState(props.flat);
   // const [previousPage, setpreviousPage] = useState(props.previousPage);
@@ -36,7 +38,7 @@ const ApartmentPoster = (props) => {
                       Floor : <span className="fw-normal"> {flat.floor} </span>
                     </p> */}
                     <p id="Price">
-                      Price : <span className="fw-normal"> {flat.price} </span>
+                      {t("Apart Price")}<span className="fw-normal"> {flat.price} </span>
                     </p>
                     {/* <p id="Apartmentn">
                       Apartmentn: <span className="fw-normal">{flat.condition}</span>
@@ -46,15 +48,17 @@ const ApartmentPoster = (props) => {
                     </p> */}
                     <div className='w-100 d-flex justify-contnet-end text-center'>
 
-                      <button onClick={toApartmentDetails} className={` sButton   ms-md-auto m-smalldevice-auto    ${!flag ? "sButtonGreen" : "sButtonWhite"} `}  > Read More</button>
+                      <button onClick={toApartmentDetails} className={` sButton   ms-md-auto m-smalldevice-auto    ${!flag ? "sButtonGreen" : "sButtonWhite"} `}  > 
+                      {t("Apart Button")}
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className={`data position-absolute top-0 end-0 me-3 mt-2 rounded  ${!flag ? "bg-primColor text-white" : "bg-white  text-primColor" } `}style={{width: "fit-content"}}>
+              <div className={`data position-absolute top-0 end-0 me-3 mt-2 rounded  ${!flag ? "bg-primColor text-white" : "bg-white  text-primColor"} `} style={{ width: "fit-content" }}>
 
                 <p id="date" className='mb-0' >
-                Posted: <span className=""> {flat.date?.split(" ")[0]} </span>
+                  {t("Apart Post")} <span className=""> {flat.date?.split(" ")[0]} </span>
                 </p>
 
 

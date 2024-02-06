@@ -20,7 +20,7 @@ const About = (props) => {
           <title>Summit Egypt-About</title>
         </Helmet>
       ) : null}
-      <div className="container-fluid p-5 justify-content-center d-flex align-items-center myVh-100" id="About">
+      <div className="container-fluid p-5 justify-content-center d-flex align-items-center " id="About">
         <div className="row">
           <div className="col-lg-6 p-0 d-flex justify-content-center align-items-center">
             <div className="overflow-hidden border rounded-5 w-100 shadow">

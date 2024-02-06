@@ -1,0 +1,45 @@
+.card_registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+}
+
+.card_registration .select-arrow {
+    top: 13px;
+}
+
+.languageSwitch {
+    cursor: pointer;
+    font-size: larger;
+}
+.link2Home{
+    position: relative;
+    width: fit-content;
+}
+.link2Home::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -webkit-transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -moz-transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -ms-transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -o-transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.link2Home:hover {
+    color: var(--PrimColorHover);
+    /* Change text color on hover */
+}
+
+.link2Home:hover::before {
+    width: 100%;
+    /* Full width on hover */
+    background-color: var(--PrimColorHover);
+    /* Set your desired hover color */
+}
