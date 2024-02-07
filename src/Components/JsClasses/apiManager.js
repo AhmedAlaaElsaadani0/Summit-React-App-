@@ -1,10 +1,114 @@
-const BaseURl = 'https://api.summitegypt.com/dev';
+const BaseURl = 'https://api.summitegypt.com';
 const AdminBaseURl = `${BaseURl}/accounts/admins`;
 const AreaBaseURl = `${BaseURl}/Areas`;
 const RegionBaseURl = `${BaseURl}/Regions`;
 const ApartmentBaseURl = `${BaseURl}/Apartments`;
-export default class ApiManger {
+const UserBaseURl = `${BaseURl}/accounts/clients`;
+export default class ApiCalling {
 
+
+  /////////////////////////// Payment /////////////////////////
+  
+    /**
+     * this function to to pay for apartment
+     * @param {number} apartmentId
+     * @returns {link} // you have to redirect the user to payment page with this link
+     * 
+     * */
+    static async payForApartment(apartmentId) {
+        const response = await fetch(`${BaseURl}/payments/${apartmentId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => response.json())
+        console.log(response);
+        return response;
+    }
+  /////////////////////////// login ///////////////////////////
+    /** 
+     * this function help you to login user
+     * @param {object} user
+     * take user object like this {
+        "EmailOrPhone": "abdumezar1@gmail.com", // Email Or Phone Number Or UserName
+        "Password": "01140267118",
+        "RemeberMe" : 0
+        }
+     * @returns {object}
+     */
+        static async loginUser(user) {
+            const response = await fetch(`${UserBaseURl}/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+    
+            }).then(response => response.json())
+            console.log(response);
+            return response;
+        }
+
+    /** 
+     * this function help you to register user
+     * @param {object} user
+     * take user object like this {
+        "FirstName" : "Ahmed",
+        "LastName" : "Ali",
+        "PhoneNumber" : "01125254789",
+        "Email" : "abdumezar@gmail.com",
+        "Gender" : "M",
+        "Address" : "Fayoum",
+        "Password": "user123"
+        }
+     * @returns {object}
+     */
+        static async registerUser(user) {
+            const response = await fetch(`${UserBaseURl}/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+    
+            }).then(response => response.json())
+            console.log(response);
+            return response;
+        }
+      /////////////////// verify Account ///////////////////////////
+    /**
+     * this function send OTP to admin email
+     * @param {string} token
+     * @returns {object}
+     * */
+
+    static async sendOTPToUserEmail(token) {
+        const response = await fetch(`${BaseURl}/accounts/SendOTPConfirmAccount`, {
+            method: 'POST',
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+        }).then(response => response.json())
+        console.log(response);
+        return response;
+    };
+    /**
+     * this function to confirm OTP
+     * @param {string} OTP
+     * @param {string} token
+     * @returns {object}
+     *  
+     */
+    static async confirmOTP(token, OTP) {
+        const response = await fetch(`${BaseURl}/accounts/ConfirmAccountOTP?otp=${OTP}`, {
+            method: 'POST',
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+        }).then(response => response.json())
+        console.log(response);
+        return response;
+    };
     ////////////////// General ///////////////////////////
     /**
      * check if the user is exist or not
@@ -37,7 +141,7 @@ export default class ApiManger {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        
+        console.log(response);
         return response;
     }
     /////////////////////////// Admin ///////////////////////////
@@ -60,7 +164,7 @@ export default class ApiManger {
             body: JSON.stringify(user)
 
         }).then(response => response.json())
-        
+        console.log(response);
         return response;
     }
     /**
@@ -122,7 +226,7 @@ export default class ApiManger {
             body: JSON.stringify(user)
 
         }).then(response => response.json())
-        
+        console.log(response);
         return response;
     };
    
@@ -147,7 +251,7 @@ export default class ApiManger {
             body: JSON.stringify(area)
 
         }).then(response => response.json())
-        
+        console.log(response);
         return response;
     }
 
@@ -171,7 +275,7 @@ export default class ApiManger {
             body: JSON.stringify(area)
 
         }).then(response => response.json())
-        
+        console.log(response);
         return response;
     }
      /**
@@ -179,11 +283,14 @@ export default class ApiManger {
      * @param {int} GovId
      * @returns {object}
      */
-        static async getAreasOfGov(GovId) {
+        static async getAreasOfGov(GovId, token) {
             const response = await fetch(`${AreaBaseURl}/${GovId}`, {
-                method: 'GET',          
+                method: 'GET',
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                },
             }).then(response => response.json())
-            
+            console.log(response);
             return response;
         }
     /**
@@ -198,7 +305,7 @@ export default class ApiManger {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        
+        console.log(response);
         return response;
     }
     /////////////////////////// Regions ///////////////////////////
@@ -222,7 +329,7 @@ export default class ApiManger {
                 body: JSON.stringify(region)
     
             }).then(response => response.json())
-            
+            console.log(response);
             return response;
         }  
          /**
@@ -245,7 +352,7 @@ export default class ApiManger {
             body: JSON.stringify(region)
 
         }).then(response => response.json())
-        
+        console.log(response);
         return response;
     }  
      /**
@@ -260,7 +367,7 @@ export default class ApiManger {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        
+        console.log(response);
         return response;
     }
     
@@ -276,7 +383,7 @@ export default class ApiManger {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        
+        console.log(response);
         return response;
     }
     /////////////////////////// Aparetments ///////////////////////////
@@ -316,7 +423,7 @@ export default class ApiManger {
                 body: formData
     
             }).then(response => response.json())
-            
+            console.log(response);
             return response;
         }
         /**
@@ -356,7 +463,7 @@ export default class ApiManger {
                 body: formData
     
             }).then(response => response.json())
-            
+            console.log(response);
             return response;
         }
 
@@ -364,11 +471,11 @@ export default class ApiManger {
      * this function to get all apartments
      * @returns {object}
      */
-     static async getAllApartments(param="") {
-        const response = await fetch(`${ApartmentBaseURl+param}`, {
+     static async getAllApartments() {
+        const response = await fetch(`${ApartmentBaseURl}`, {
             method: 'GET',
         }).then(response => response.json())
-        
+        console.log(response);
         return response;
     }
 
@@ -384,7 +491,7 @@ export default class ApiManger {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        
+        console.log(response);
         return response;
     }
 

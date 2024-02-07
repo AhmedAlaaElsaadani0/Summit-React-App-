@@ -1,13 +1,14 @@
 import React, { useState, useEffect, lazy } from 'react';
-import ApiManger from '../JsClasses/ApiManger';
+import ApiManger from '../JsClasses/apiManager';
 import { Helmet } from 'react-helmet-async';
 import ApartmentPoster from '../Apartment/ApartmentPosterComponent/ApartmentPoster';
 import ApartmentLoading from '../Apartment/ApartmentLoadingComponent/ApartmentLoading';
 import { useTranslation } from 'react-i18next';
+import Filter from '../Filter/Filter';
 
 
 function Rent() {
-  const {t,i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
   const [response, setResponse] = useState({});
   const [PageIndex, setpageIndex] = useState(1)
   const [SearchValue, setsearchValue] = useState("")
@@ -17,39 +18,39 @@ function Rent() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     getAllApartments();
-  }, []);
+  });
   // this main API call to get all apartments by using param
-  const getAllApartments = async (searchValue = SearchValue, pageIndex = PageIndex,searchFlag=false) => {
+  const getAllApartments = async (searchValue = SearchValue, pageIndex = PageIndex, searchFlag = false) => {
     let response = await ApiManger.getAllApartments(`?Type=1&pageIndex=${pageIndex}&title=${searchValue}`);
-    let updatedApartments = searchFlag?[...response.data] :[...apartments, ...response.data];
+    let updatedApartments = searchFlag ? [...response.data] : [...apartments, ...response.data];
     setResponse(response);
     setApartments(updatedApartments);
     setpageIndex(response.data.length == 0 ? response.pageIndex : response.pageIndex + 1)
     setLoading(false);
   };
- // this function to get the value of search input and set it to searchValue
- const handleSearchOnChange = (e) => {
-  e.preventDefault();
-  if (e.target.value.length > 3) {
+  // this function to get the value of search input and set it to searchValue
+  const handleSearchOnChange = (e) => {
+    e.preventDefault();
+    if (e.target.value.length > 3) {
+      setpageIndex(1);
+      let value = document.getElementsByName('searchElement')[0].value;
+      setsearchValue(value);
+      getAllApartments(value, 1, true);
+
+    }
+  }
+  // this function to get the value of search input and set it to searchValue when we click on Enter
+  const handleSearchOnSubmit = (e) => {
+    e.preventDefault();
+    //when we click on Enter
     setpageIndex(1);
     let value = document.getElementsByName('searchElement')[0].value;
     setsearchValue(value);
+    // setApartments([]);
     getAllApartments(value, 1, true);
 
+
   }
-}
-// this function to get the value of search input and set it to searchValue when we click on Enter
-const handleSearchOnSubmit = (e) => {
-  e.preventDefault();
-  //when we click on Enter
-  setpageIndex(1);
-  let value = document.getElementsByName('searchElement')[0].value;
-  setsearchValue(value);
-  // setApartments([]);
-  getAllApartments(value, 1, true);
-
-
-}
   // this function to load more apartments when we click on load more button
   async function loadMore() {
     let btn = document.getElementById('loadMore');
@@ -63,13 +64,13 @@ const handleSearchOnSubmit = (e) => {
     if (btn) {
       btn.disabled = false;
       btn.innerHTML = 'Load More';
-    } 
+    }
 
   }, [apartments])
 
   return (
     <React.Fragment>
-      
+
       <Helmet>
         <meta
           name="Keywords"
@@ -102,17 +103,19 @@ const handleSearchOnSubmit = (e) => {
               return <ApartmentLoading key={index} flag={item} />;
             })
             :
-            apartments.length == 0 ? 
-            <h2 className='text-center bg-primColor text-white p-5'>{t("Not Found Apart Message")}</h2>
-             :
-            apartments.map((item, index) => {
-              return <ApartmentPoster key={index} index={index} previousPage="Area" loading={loading} flat={item} flag={index%2==0? false :true } />
-            })}
+            apartments.length == 0 ?
+              <h2 className='text-center bg-primColor text-white p-5'>{t("Not Found Apart Message")}</h2>
+              :
+              apartments.map((item, index) => {
+                return <ApartmentPoster key={index} index={index} previousPage="Area" loading={loading} flat={item} flag={index % 2 == 0 ? false : true} />
+              })}
         </div>
         <div>
-          {(response.count > 0 && ( response.count/response.pageSize) >= response.pageIndex) ? <button onClick={loadMore} className="sButton sButtonGreen" id='loadMore'>{t("Load More")}</button> : ""}
+          {(response.count > 0 && (response.count / response.pageSize) >= response.pageIndex) ? <button onClick={loadMore} className="sButton sButtonGreen" id='loadMore'>{t("Load More")}</button> : ""}
         </div>
       </div>
+      <Filter />
+
     </React.Fragment>
   );
 }

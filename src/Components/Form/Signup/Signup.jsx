@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import style from './SignupStyle.module.css'
 import { useTranslation } from 'react-i18next';
 import Link from '../../Link/Link';
-
+import ApiManager from '../../JsClasses/apiManager';
+import { useNavigate } from 'react-router-dom';
 export default function Signup() {
     const { t, i18n } = useTranslation();
+    const navigate=useNavigate()
     const [user, setUser] = useState({
         "FirstName": "",
         "LastName": "",
@@ -19,9 +21,52 @@ export default function Signup() {
         setUser({ ...user, [e.target.name]: e.target.value });
     }
     // create handle submit function
-    let handleSubmit = (e) => {
+    let handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(user)
+        /**
+         * {
+    "code": 200,
+    "message": "Account Registered Successfully!",
+    "token": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9naXZlbm5hbWUiOiJhYmR1bWV6eC5hciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFiZHVtZXp4LmFyQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL21vYmlsZXBob25lIjoiMDExMzUyMTQ3ODkiLCJleHAiOjE3MDc0MDg3NjUsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0Ojc3NzciLCJhdWQiOiJNeVNlY3VyZWRBcGlVc2VycyJ9.8sE-GABA0m5tYGf7RmVi0RNAHg7CmqE0nEm3qKY855Q"
+}
+{
+    "errors": [
+        "Email is regestered already!"
+    ],
+    "code": 400,
+    "message": "you have made a bad request!"
+}
+         */
+        const response = await ApiManager.registerUser(user);
+        if (response.code == 200) {
+            document.querySelector('.SuccessMessage').innerHTML = response.message;
+            document.querySelector('.SuccessMessage').classList.remove('d-none');
+            document.querySelector('.SuccessMessage').classList.add('d-block');
+            setTimeout(() => {
+                document.querySelector('.SuccessMessage').classList.remove('d-block');
+                document.querySelector('.SuccessMessage').classList.add('d-none');
+                navigate('/');
+            }, 3000);
+        }
+        else if (response.code == 400) {
+            document.querySelector('.AlertMessage').innerHTML = response.errors;
+            document.querySelector('.AlertMessage').classList.remove('d-none');
+            document.querySelector('.AlertMessage').classList.add('d-block');
+            setTimeout(() => {
+                document.querySelector('.AlertMessage').classList.remove('d-block');
+                document.querySelector('.AlertMessage').classList.add('d-none');
+            }, 3000);
+        }
+        else{
+            document.querySelector('.AlertMessage').innerHTML = "Something went wrong!";
+            document.querySelector('.AlertMessage').classList.remove('d-none');
+            document.querySelector('.AlertMessage').classList.add('d-block');
+            setTimeout(() => {
+                document.querySelector('.AlertMessage').classList.remove('d-block');
+                document.querySelector('.AlertMessage').classList.add('d-none');
+            }, 3000);
+        }
+
     }
     return (
         <React.Fragment>
@@ -149,6 +194,11 @@ export default function Signup() {
                                     <Link className={'nav-link m-auto  mt-2 ' + style.link2Home} aria-current='page' to='/'>
                                         {t("Registar Home")}
                                     </Link>
+                                    <div className="alert AlertMessage d-none text-center mt-2 alert-danger  m-auto" role="alert">
+                                    </div>
+
+                                    <div className="alert SuccessMessage d-none text-center mt-2 alert-success  m-auto" role="alert">
+                                    </div>
                                 </div>
 
                             </form>

@@ -1,9 +1,10 @@
-import React, { useState, useEffect, lazy, startTransition } from 'react';
-import ApiManger from '../JsClasses/ApiManger';
+import React, { useState, useEffect } from 'react';
+import ApiManger from '../JsClasses/apiManager';
 import { Helmet } from 'react-helmet-async';
 import ApartmentPoster from '../Apartment/ApartmentPosterComponent/ApartmentPoster';
 import ApartmentLoading from '../Apartment/ApartmentLoadingComponent/ApartmentLoading';
 import { useTranslation } from 'react-i18next';
+import Filter from '../Filter/Filter';
 
 const Buy = () => {
 
@@ -15,11 +16,9 @@ const Buy = () => {
   const { t ,i18n} = useTranslation();
   //DidMount
   useEffect(() => {
-    startTransition(() => {
       getAllApartments();
-    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
   // this main API call to get all apartments by using param
   const getAllApartments = async (searchValue = SearchValue, pageIndex = PageIndex, searchFlag = false) => {
     let response = await ApiManger.getAllApartments(`?Type=2&pageIndex=${pageIndex}&title=${searchValue}`);
@@ -113,6 +112,7 @@ const Buy = () => {
           {(response.count > 0 && (response.count / response.pageSize) >= response.pageIndex) ? <button onClick={loadMore} className="sButton sButtonGreen" id='loadMore'>{t("Load More")}</button> : ""}
         </div>
       </div>
+      <Filter/>
     </React.Fragment>
   );
 };

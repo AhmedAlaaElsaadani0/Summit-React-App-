@@ -85,7 +85,7 @@ const Navbar = () => {
         <div className='container-fluid mx-3 d-flex justify-content-between '>
 
           <Link className='navbar-brand ' to='/'>
-            <img src='Images/Logo.png' style={{ width: '100px' }} alt='logo website ' />
+            <img src='Images/Logo.png' style={{ width: '120px' }} alt='logo website ' />
           </Link>
 
           <button

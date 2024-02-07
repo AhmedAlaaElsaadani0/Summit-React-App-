@@ -1,6 +1,6 @@
 import React, { useState, useEffect, lazy } from 'react';
 import { Helmet } from 'react-helmet-async';
-import ApiManger from '../JsClasses/ApiManger';
+import ApiManger from '../JsClasses/apiManager';
 import ApartmentPoster from '../Apartment/ApartmentPosterComponent/ApartmentPoster';
 import ApartmentLoading from '../Apartment/ApartmentLoadingComponent/ApartmentLoading';
 
@@ -17,7 +17,7 @@ function Area() {
   useEffect(() => {
     // startWork();
     getAllApartments();
-  }, []);
+  });
   // this main API call to get all apartments by using param
   const getAllApartments = async (govId = GovId, pageIndex = PageIndex, areaId = AreaId, regionId = RegionId,searchFlag=false) => {
     let response = await ApiManger.getAllApartments(`?pageIndex=${pageIndex}&govId=${govId}&areaid=${areaId}&regionId=${regionId}`);

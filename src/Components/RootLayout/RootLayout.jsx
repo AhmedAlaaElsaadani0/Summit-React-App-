@@ -21,7 +21,6 @@ return (<React.Fragment>
 
     <Footer />  
     </div>
-      
 
    </React.Fragment>
 
