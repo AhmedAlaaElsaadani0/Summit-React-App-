@@ -74,7 +74,12 @@
         "Apart Condition":"Condition : ",
         "Apart Descrp":"Description : ",
         "Not Found Apart Message":"Sorry, No Apartments Found",
-        "Load More":"Load More"
+        "Load More":"Load More",
+    
+    "Filter":"Filter",
+    "Filter Price Range":"Price Range",
+    "Filter Min":"Min",
+    "Filter Max":"Max"
 
     
 

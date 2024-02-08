@@ -76,6 +76,11 @@
     "Apart Descrp":"الوصف : ",
     "Apart Contact":"للتواصل : ",
     "Not Found Apart Message":"عذراً، لا يوجد شقق متاحة حالياً.",
-    "Load More":"تحميل المزيد"
+    "Load More":"تحميل المزيد",
+  
+  "Filter":"تصفية",
+    "Filter Price Range":"السعر",
+    "Filter Min":"الحد الأدنى",
+    "Filter Max":"الحد الأقصى"
   
 }

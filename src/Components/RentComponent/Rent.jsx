@@ -18,7 +18,7 @@ function Rent() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     getAllApartments();
-  });
+  },[]);
   // this main API call to get all apartments by using param
   const getAllApartments = async (searchValue = SearchValue, pageIndex = PageIndex, searchFlag = false) => {
     let response = await ApiManger.getAllApartments(`?Type=1&pageIndex=${pageIndex}&title=${searchValue}`);
@@ -114,7 +114,7 @@ function Rent() {
           {(response.count > 0 && (response.count / response.pageSize) >= response.pageIndex) ? <button onClick={loadMore} className="sButton sButtonGreen" id='loadMore'>{t("Load More")}</button> : ""}
         </div>
       </div>
-      <Filter />
+      {apartments.length == 0 ?"":<Filter/>}
 
     </React.Fragment>
   );

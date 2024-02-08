@@ -2,7 +2,6 @@ import React, { lazy,  } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Buy from './Components/Buy/Buy';
 import Rent from './Components/RentComponent/Rent';
-import Area from './Components/AreaComponent/Area';
 import ApartmentDetails from './Components/Apartment/ApartmentDetailsComponent/ApartmentDetails';
 import i18n from './i18n';
 import Form from './Components/Form/Form';
@@ -24,7 +23,6 @@ let routers = createBrowserRouter([
     {index:true, element: <Home/>},
     {path:'About', element: <About headFlag={true}/>},
     {path:'Contact', element: <Contactus headFlag={true}/>},
-    {path:'Area', element: <Area/>},
     {path:'Rent', element: <Rent/>},
     {path:'Buy', element: <Buy/>},
     {path:'ApartmentDetails', element: <ApartmentDetails/>},

@@ -1,0 +1,5 @@
+.borderBottomSelect {
+  border-bottom: 3px solid var(--PrimColor);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}

@@ -1,34 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import style from "./Filter.module.css"
+import PriceRange from './PriceRange/PriceRange';
+import SelectFilter from './SelectFilter/SelectFilter';
+import { useTranslation } from 'react-i18next';
 export default function Filter() {
+    const [objSearch, setObjSearch] = useState({
+        price: {
+            min: 0,
+            max: 10000
+        },
+        govId: "",
+        areaId: "",
+        regionId: ""
+
+    })
     const [flag, setFlag] = useState(false)
+    const { t, i18n } = useTranslation();
     let filterDiv;
     let filterButton;
     useEffect(() => {
         filterDiv = document.getElementById('filterDiv');
         filterButton = document.getElementById('filterButton');
-        activeSliderAndItsValue();
 
     })
-    const activeSliderAndItsValue=()=>{
-        
-        var slider = document.getElementById("myRange");
-        var output = document.getElementById("demo");
-        output.innerHTML = slider.value;
-
-        slider.oninput = function () {
-            output.innerHTML = this.value;
-            slider.value=this.value
-        }
-    }
 
     const showFilter = (e) => {
 
-        filterDiv.classList.add(style.show);
+        filterDiv.classList.add(i18n.language=="en"? style.show:style.showRtl);
         setTimeout(() => {
             filterDiv.classList.add(style.filterDivShow);
             filterDiv.classList.remove(style.filterDivHide);
-            filterDiv.classList.remove(style.show);
+            filterDiv.classList.remove(i18n.language=="en"? style.show:style.showRtl);
 
         }, 500);
         setFlag(true);
@@ -36,18 +38,18 @@ export default function Filter() {
 
     }
     const hideFilter = () => {
-        filterDiv.classList.add(style.hide);
+        filterDiv.classList.add(i18n.language=="en"?style.hide:style.hideRtl);
         setTimeout(() => {
             filterDiv.classList.add(style.filterDivHide);
             filterDiv.classList.remove(style.filterDivShow);
-            filterDiv.classList.remove(style.hide);
+            filterDiv.classList.remove(i18n.language=="en"?style.hide:style.hideRtl);
 
         }, 500);
         setFlag(false);
     }
     return (
         <React.Fragment>
-            <div className={"position-fixed top-0 bottom-0 start-0 d-flex   "} style={{ zIndex: "999999" }}>
+            <div className={"position-fixed top-0 bottom-0 d-flex "} style={{ zIndex: "999999" }}>
                 <div className={'bg-primColor p-2 align-items-center ' + style.filterDivHide} id='filterDiv' style={{ width: "300px" }}>
                     <div className="bg-white h-50 w-100 rounded-3 d-flex flex-column justify-content-center align-items-center px-2 position-relative">
                         {/* button close */}
@@ -58,57 +60,14 @@ export default function Filter() {
                                     filterButton.style.display = 'block';
                                 }, 500);
                             }}
-                            className="btn btn-danger rounded-circle p-2 m-3 border-0 shadow position-absolute top-0 end-0"
+                            className={"btn btn-danger rounded-circle p-2 m-3 border-0 shadow position-absolute top-0 "+(i18n.language=="en"?"end-0":"start-0")}
                             style={{ width: "50px", height: "50px", fontWeight: "bolder", fontSize: "24px" }}>
                             X
                         </button>
-                        <h3 className='Filter text-primColor fw-bolder'>Filter</h3>
-                        <div class={style.slidecontainer}>
-                            <input type="range" min="1" max="100" value="50" class={style.slider} id="myRange" />
-                            <p>Value: <span id="demo"></span></p>
-                        </div>
-
-                        <select
-                            //   onChange={handleSearchByGovId} onKeyDown={handleSearchByGovId} 
-                            style={{
-                                width: "100%",
-                                fontSize: "20px",
-                                transition: "all 0.5s ease-in-out",
-                                display: "block",
-                                fontWeight: "bold",
-                            }} name='Gov' className='form-select-Amoor  mt-2 px-3 py-2 rounded-5' id='selectorGovs'>
-                            <option value="" selected disabled>All Governorates</option>
-                            <option value="6">Cairo</option>
-                            <option value="11">Giza</option>
-
-                        </select>
-                        <select
-                            //    onChange={handleSearchByAreaId} onKeyDown={handleSearchByAreaId} 
-                            name='Areas' className='form-select-Amoor mt-2  px-3 py-2 rounded-5  ' style={
-                                {
-                                    display: 'block',
-                                    width: '100%',
-                                    transition: 'all 0.5s ease-in-out',
-                                    fontSize: "18px",
-                                    fontWeight: 400
-                                }
-                            } id='selectorAreas'>
-                            <option value="" selected disabled>All avaliable  Areas</option>
-                        </select>
-                        <select
-                            //   onChange={handleSearchByRegionId}
-                            name='Regions' className='form-select-Amoor mt-2 px-3 py-2 rounded-5  ' style={
-                                {
-                                    display: 'block',
-                                    width: '100%',
-                                    transition: 'all 0.5s ease-in-out',
-                                    fontSize: "18px",
-                                    fontWeight: 400
-
-                                }
-                            } id='selectorRegions'>
-                            <option value="" selected disabled>All Regions</option>
-                        </select>
+                        <h3 className='Filter text-primColor fw-bolder'>{t("Filter")}</h3>
+                        <PriceRange t={t} i18n={i18n}/>
+                        <SelectFilter t={t} i18n={i18n}
+                        />
 
 
                     </div>
