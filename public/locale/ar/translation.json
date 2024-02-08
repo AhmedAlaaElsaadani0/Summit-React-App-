@@ -81,6 +81,11 @@
   "Filter":"تصفية",
     "Filter Price Range":"السعر",
     "Filter Min":"الحد الأدنى",
-    "Filter Max":"الحد الأقصى"
+    "Filter Max":"الحد الأقصى",
+  "Region Selc":" كل المناطق المتاحة",
+    "Area Selc":"كل الاحياء المتاحة",
+    "Gov Selc":"كل المحافظات المتاحة",
+    "Cairo":"الفاهرة",
+    "Giza":"الجيزة"
   
 }

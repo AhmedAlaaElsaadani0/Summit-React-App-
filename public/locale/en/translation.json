@@ -79,7 +79,14 @@
     "Filter":"Filter",
     "Filter Price Range":"Price Range",
     "Filter Min":"Min",
-    "Filter Max":"Max"
+    "Filter Max":"Max",
+
+    "Region Selc":"All Regions",
+        "Area Selc":"All Areas",
+        "Gov Selc":"All Governorates",
+        "Cairo":"Cairo",
+        "Giza":"Giza"
+        
 
     
 
