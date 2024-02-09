@@ -1,21 +1,31 @@
 import React from 'react'
 import style from "./select.module.css"
 import ApiManger from '../../JsClasses/apiManager.js';
-export default function SelectFilter({ t, i18n }) {
+export default function SelectFilter({ t, i18n ,handelonChangeSelector}) {
 
     // this function to get the value of search input and set it to govId
     const handleSearchByGovId = (e) => {
         e.preventDefault();
         clearAreaSelector();
         clearRegionsSelector();
-        ApiManger.getAreasOfGov(e.target.value).then((response) => {
-            appendChildToAreasSelector(response);
-        });
+        handelonChangeSelector("", "", e.target.value);
+        if (e.target.value != "") {
+            ApiManger.getAreasOfGov(e.target.value).then((response) => {
+                appendChildToAreasSelector(response);
+            });
+            handleResetSelectorRegions();
+        }
+        else{
+            handleResetSelectorAreas();
+            handleResetSelectorRegions();
+    
+        }
     }
     // this function to get the value of search input and set it to areaId and get all apartments by areaId
     const handleSearchByAreaId = (e) => {
         e.preventDefault();
         clearRegionsSelector();
+        handelonChangeSelector("", e.target.value);
         ApiManger.getRegionsOfArea(e.target.value).then((response) => {
             if (response.code != 401)
                 appendChildToRegionsSelector(response);
@@ -26,6 +36,7 @@ export default function SelectFilter({ t, i18n }) {
     // this function to get the value of search input and set it to regionId and get all apartments by regionId
     const handleSearchByRegionId = (e) => {
         e.preventDefault();
+        handelonChangeSelector(e.target.value);
     }
 
     /* Helper Functions */
@@ -83,10 +94,16 @@ export default function SelectFilter({ t, i18n }) {
             selector.appendChild(option);
         })
     }
-    //this function will display none the Regions selector if user select the default option in Areas Selector
+    //this function will Reset the Regions selector if user select the default option in Areas Selector
     const handleResetSelectorRegions = () => {
         let selector = document.querySelector('#selectorRegions');
         let option = creatDefaultELementInSelector(t("Region Selc"));
+        selector.append(option);
+    }
+    //this functio will reset the Areas Selector if user select the default option in Govs Selector
+    const handleResetSelectorAreas = () => {
+        let selector = document.querySelector('#selectorAreas');
+        let option = creatDefaultELementInSelector(t("Area Selc"));
         selector.append(option);
     }
 
@@ -95,8 +112,8 @@ export default function SelectFilter({ t, i18n }) {
             <div className={'py-1 rounded-3 ' + style.borderBottomSelect}>
                 <select
                     onChange={handleSearchByGovId} onKeyDown={handleSearchByGovId}
-                    name='Gov' className={'form-select-Amoor fw-bold  mt-3 px-3 py-2 rounded-5 ' + style.borderBottomSelect} id='selectorGovs'>
-                    <option value="" selected disabled>{t("Gov Selc")}</option>
+                    name='govId' className={'form-select-Amoor fw-bold  mt-3 px-3 py-2 rounded-5 ' + style.borderBottomSelect} id='selectorGovs'>
+                    <option value="" selected>{t("Gov Selc")}</option>
                     <option value="6">{t("Cairo")}</option>
                     <option value="11">{t("Giza")}</option>
 
@@ -106,14 +123,14 @@ export default function SelectFilter({ t, i18n }) {
             <div className={'py-1 rounded-3 ' + style.borderBottomSelect}>
                 <select
                     onChange={handleSearchByAreaId} onKeyDown={handleSearchByAreaId}
-                    name='Areas' className={'form-select-Amoor mt-3  px-3 py-2 rounded-5  ' + style.borderBottomSelect} id='selectorAreas'>
+                    name='areaId' className={'form-select-Amoor mt-3  px-3 py-2 rounded-5  ' + style.borderBottomSelect} id='selectorAreas'>
                     <option value="" selected disabled>{t("Area Selc")}</option>
                 </select>
             </div>
             <div className={'py-1 rounded-3 ' + style.borderBottomSelect}>
                 <select
                     onChange={handleSearchByRegionId}
-                    name='Regions' className={'form-select-Amoor mt-3 px-3 py-2 rounded-5  ' + style.borderBottomSelect} id='selectorRegions'>
+                    name='regionId' className={'form-select-Amoor mt-3 px-3 py-2 rounded-5  ' + style.borderBottomSelect} id='selectorRegions'>
                     <option value="" selected disabled>{t("Region Selc")}</option>
                 </select>
             </div>

@@ -80,7 +80,7 @@ export default function PriceRange({ t, i18n }) {
             <div>
                 <h4>{t("Filter Price Range")}</h4>
             </div>
-            <div className={styles['price-input']}>
+            <div dir='ltr' className={styles['price-input']}>
                 <div className={styles.field}>
                     <span>{t("Filter Min")}</span>
                     <input type="number" className={styles['input-min']+" m-0 "} defaultValue="2500" onChange={handlePriceInputChange} />
@@ -94,7 +94,7 @@ export default function PriceRange({ t, i18n }) {
             <div className={styles.slider}>
                 <div className={styles.progress}></div>
             </div>
-            <div className={styles['range-input']}>
+            <div dir='ltr' className={styles['range-input']}>
                 <input type="range" className={styles['range-min']} min="0" max="10000" defaultValue="2500" step="100" onChange={handleRangeInputChange} />
                 <input type="range" className={styles['range-max']} min="0" max="10000" defaultValue="7500" step="100" onChange={handleRangeInputChange} />
             </div>

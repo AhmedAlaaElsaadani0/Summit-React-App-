@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy } from 'react';
+import React, { useState, useEffect } from 'react';
 import ApiManger from '../JsClasses/apiManager';
 import { Helmet } from 'react-helmet-async';
 import ApartmentPoster from '../Apartment/ApartmentPosterComponent/ApartmentPoster';
@@ -6,71 +6,87 @@ import ApartmentLoading from '../Apartment/ApartmentLoadingComponent/ApartmentLo
 import { useTranslation } from 'react-i18next';
 import Filter from '../Filter/Filter';
 
+const Rent = () => {
 
-function Rent() {
-  const { t, i18n } = useTranslation();
-  const [response, setResponse] = useState({});
-  const [PageIndex, setpageIndex] = useState(1)
-  const [SearchValue, setsearchValue] = useState("")
-  const [apartments, setApartments] = useState([]);
+  const [response, setResponse] = useState({
+    regionId: '',
+    pageIndex: 0,
+    areaId: '',
+    govId: '',
+    data: []
+  }
+  );
+  // const [SearchValue, setsearchValue] = useState("")
   const [loading, setLoading] = useState(true);
+  const { t, i18n } = useTranslation();
+  const [prevLang, setPrevLang] = useState(i18n.language);
+  const [buttonPressed, setButtonPressed] = useState(false);
+
+
+  // this main API call to get all apartments by using param
+  const getAllApartments = async (pageIndex = response.pageIndex + 1, replaceApartmentFlag = false, govId = response.govId, areaId = response.areaId, regionId = response.regionId) => {
+    try {
+      // Construct the API endpoint
+      const endpoint = `?Type=1&pageIndex=${pageIndex}&language=${i18n.language}&regionId=${regionId}&govId=${govId}&areaid=${areaId}`;
+
+      // Call the API to fetch apartments
+      const apiResponse = await ApiManger.getAllApartments(endpoint);
+
+      // Update state
+      setResponse(prevResponse => ({
+        ...prevResponse,
+        ...apiResponse,
+        pageIndex: apiResponse?.data?.length === 0 ? apiResponse.pageIndex : apiResponse.pageIndex+1,
+        data: replaceApartmentFlag ? apiResponse.data : [...prevResponse.data, ...apiResponse.data]
+      })
+      );
+      setLoading(false);
+    } catch (error) {
+      // Handle errors
+      console.error("Error fetching apartments:", error);
+      // Optionally, you can handle errors by displaying an error message to the user or logging them
+    }
+  };
+
   //DidMount
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     getAllApartments();
-  },[]);
-  // this main API call to get all apartments by using param
-  const getAllApartments = async (searchValue = SearchValue, pageIndex = PageIndex, searchFlag = false) => {
-    let response = await ApiManger.getAllApartments(`?Type=1&pageIndex=${pageIndex}&title=${searchValue}`);
-    let updatedApartments = searchFlag ? [...response.data] : [...apartments, ...response.data];
-    setResponse(response);
-    setApartments(updatedApartments);
-    setpageIndex(response.data.length == 0 ? response.pageIndex : response.pageIndex + 1)
-    setLoading(false);
-  };
-  // this function to get the value of search input and set it to searchValue
-  const handleSearchOnChange = (e) => {
-    e.preventDefault();
-    if (e.target.value.length > 3) {
-      setpageIndex(1);
-      let value = document.getElementsByName('searchElement')[0].value;
-      setsearchValue(value);
-      getAllApartments(value, 1, true);
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  // Effect to load apartments only when language changes
+  useEffect(() => {
+    // Check if language has changed
+    if (prevLang !== i18n.language) {
+      setLoading(true);
+      setResponse({
+        ...response, data: []
+      });//to clear the data when we change the language
+      // Call the API to fetch apartments with the updated language
+      getAllApartments(response.pageIndex - 1, true);
+      // Update the previous language to the current language
+      setPrevLang(i18n.language);
     }
-  }
-  // this function to get the value of search input and set it to searchValue when we click on Enter
-  const handleSearchOnSubmit = (e) => {
-    e.preventDefault();
-    //when we click on Enter
-    setpageIndex(1);
-    let value = document.getElementsByName('searchElement')[0].value;
-    setsearchValue(value);
-    // setApartments([]);
-    getAllApartments(value, 1, true);
-
-
-  }
+  }, [i18n.language, prevLang]);
   // this function to load more apartments when we click on load more button
   async function loadMore() {
-    let btn = document.getElementById('loadMore');
-    btn.disabled = true;
-    btn.innerHTML = '<i className="fa-solid fa-spinner fa-spin"></i>';
-    await getAllApartments();
+    // Set button pressed state to true
+    setButtonPressed(true);
+    await getAllApartments(response.pageIndex).then(() => {
+      // Reset button state after API call
+      setButtonPressed(false);
+    })
   }
-  // When New Data is Fetched From Api we return button to it's state
+  // Effect to reset button state after response state changes
   useEffect(() => {
     let btn = document.getElementById('loadMore');
-    if (btn) {
+    if (buttonPressed && response?.data?.length > 0) {
+      // Reset button state
       btn.disabled = false;
       btn.innerHTML = 'Load More';
     }
-
-  }, [apartments])
-
+  }, [response, buttonPressed]);
   return (
     <React.Fragment>
-
       <Helmet>
         <meta
           name="Keywords"
@@ -87,37 +103,43 @@ function Rent() {
       "
         />
 
-        <title>Summit Egypt-Rent</title>
+        <title>Summit Egypt-Buy</title>
       </Helmet>
-      <div className='d-flex  justify-content-center align-items-center h-75 flex-wrap'>
-        {/* <form onSubmit={e=>handleSearchOnSubmit(e)} action='' id='RentPageSearch' className='d-flex mt-3 widthForSearch justify-content-center'>
+
+      <div className='d-flex  justify-content-center align-items-center flex-wrap' style={{ minHeight: "100%" }}>
+        {/* <form onSubmit={e => handleSearchOnSubmit(e)} action='' id='RentPageSearch' className='d-flex mt-3 widthForSearch  justify-content-center'>
           <div className='w-75 position-relative text-secondary'>
             <i className='fa-solid fa-magnifying-glass pb-3 position-absolute top-50 translate-middle-y me-3 end-0'></i>
-            <input onChange={e=>handleSearchOnChange(e)} name='searchElement' type='text' className='form-control-Amoor mb-3  form-label mb-0 rounded-5 p-3 pe-3'
+            <input onChange={e => handleSearchOnChange(e)} name='searchElement' type='text' className='form-control-Amoor mb-3  form-label mb-0 rounded-5 p-3 pe-3'
               placeholder='Search By Title' />
           </div>
         </form> */}
-        <div className='Apartments mt-5 w-100'>
-          {loading
-            ? [true, false, true].map((item, index) => {
-              return <ApartmentLoading key={index} flag={item} />;
+        <div className="Apartments mt-5  w-100    ">
+          {loading ?
+            [true, false, true].map((item, index) => {
+              return <ApartmentLoading key={index} flag={item} />
             })
             :
-            apartments.length == 0 ?
-              <h2 className='text-center bg-primColor text-white p-5'>{t("Not Found Apart Message")}</h2>
+            response?.data?.length == 0 ?
+              <h2 className='text-center bg-primColor text-white p-5 '>{t("Not Found Apart Message")}</h2>
               :
-              apartments.map((item, index) => {
+              response?.data.map((item, index) => {
                 return <ApartmentPoster key={index} index={index} previousPage="Area" loading={loading} flat={item} flag={index % 2 == 0 ? false : true} />
               })}
         </div>
         <div>
-          {(response.count > 0 && (response.count / response.pageSize) >= response.pageIndex) ? <button onClick={loadMore} className="sButton sButtonGreen" id='loadMore'>{t("Load More")}</button> : ""}
+          {(response?.count > 0 && (response?.count / response?.pageSize) >= response?.pageIndex) ? <button onClick={(e) => {
+            // Call the API to load more apartments
+            e.target.disabled = true;
+            e.target.innerHTML = '<i className="fa-solid fa-spinner fa-spin"></i>';
+            loadMore();
+          }
+          } className="sButton sButtonGreen" id='loadMore'>{t("Load More")}</button> : ""}
         </div>
       </div>
-      {apartments.length == 0 ?"":<Filter/>}
-
+    <Filter getAllApartments={getAllApartments} loading={loading} setLoading={setLoading} setResponse={setResponse} response={response} />
     </React.Fragment>
   );
-}
+};
 
 export default Rent;

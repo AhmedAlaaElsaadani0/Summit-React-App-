@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Link = ({ to, className,style,children }) => {
+const Link = ({ to, className,style,children,aria_current="page" }) => {
   const navigate = useNavigate();
   const handleClicked = () => {
     const bars = document.getElementById('bars');
@@ -24,6 +24,7 @@ const Link = ({ to, className,style,children }) => {
       className={className}
       onClick={handleClicked}
       href='#'
+      aria_current={aria_current!=="page"?aria_current:"page"}
     >
       {children}
     </a>

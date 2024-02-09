@@ -471,8 +471,8 @@ export default class ApiCalling {
      * this function to get all apartments
      * @returns {object}
      */
-     static async getAllApartments() {
-        const response = await fetch(`${ApartmentBaseURl}`, {
+     static async getAllApartments(param) {
+        const response = await fetch(`${ApartmentBaseURl}${param}`, {
             method: 'GET',
         }).then(response => response.json())
         console.log(response);

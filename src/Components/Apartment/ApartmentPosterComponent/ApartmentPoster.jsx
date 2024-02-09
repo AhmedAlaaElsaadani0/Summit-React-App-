@@ -23,7 +23,7 @@ const ApartmentPoster = (props) => {
     <React.Fragment>
       {
 
-        <div className={`w-75 w-sm-90 p-0 mb-3 rounded-4 overflow-hidden m-auto shadow Apartment ${flag ? 'bg-primColor' : 'bg-white'}`}>
+        <div className={`w-75 w-sm-90 p-0 mb-3  rounded-4 overflow-hidden m-auto shadow Apartment ${flag ? 'bg-primColor' : 'bg-white'}`}>
           <div className="container-fluied overflow-hidden">
             <div className="row position-relative ">
               <div className="col-md-4 AbartmentImage AparmentSlider " style={{ Height: document.querySelectorAll('.AbartmentDesc').clientHeight, maxHeight: '500px' }}>
@@ -58,7 +58,7 @@ const ApartmentPoster = (props) => {
               <div className={`data position-absolute top-0 end-0 me-3 mt-2 rounded  ${!flag ? "bg-primColor text-white" : "bg-white  text-primColor"} `} style={{ width: "fit-content" }}>
 
                 <p id="date" className='mb-0' >
-                  {t("Apart Post")} <span className=""> {flat.date?.split(" ")[0]} </span>
+                  {t("Apart Post")} <span className=""> {flat.createdAt} </span>
                 </p>
 
 

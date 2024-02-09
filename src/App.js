@@ -35,7 +35,8 @@ let routers = createBrowserRouter([
         {path:"Signup", element: <Signup/>},
       ]}
       ,
-    {path:'*', element: <ErrorPage/>}
+    {path:'*', element: <ErrorPage/>},
+    
 
 ])
 
