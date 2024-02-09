@@ -14,7 +14,6 @@ const Navbar = () => {
   const specifyStyleForNav = () => {
     document.querySelectorAll('.nav-link').forEach((element) => {
       if (window.location.href.includes(element.getAttribute("aria_current"))) {
-        alert(element.getAttribute("aria_current"));
         document.querySelectorAll('.nav-link').forEach((element) => {
           element.classList.remove('selectedNavElement');
         });
