@@ -479,6 +479,18 @@ export default class ApiCalling {
         return response;
     }
 
+    /**
+     * this function to get all apartments
+     * @returns {object}
+     */
+    static async getApartmentById(id,lng) {
+        const response = await fetch(`${ApartmentBaseURl}?Id=${id}&language=${lng}`, {
+            method: 'GET',
+        }).then(response => response.json())
+        console.log(response);
+        return response;
+    }
+
        /**
      * this function to delete apartment
      * @param {int} appartmentId

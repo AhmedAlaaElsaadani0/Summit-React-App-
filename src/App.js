@@ -25,7 +25,7 @@ let routers = createBrowserRouter([
     {path:'Contact', element: <Contactus headFlag={true}/>},
     {path:'Rent', element: <Rent/>},
     {path:'Buy', element: <Buy/>},
-    {path:'ApartmentDetails', element: <ApartmentDetails/>},
+    {path:'ApartmentDetails/:id', element: <ApartmentDetails/>},
 
   
 

@@ -10,19 +10,19 @@ const ApartmentPoster = (props) => {
   const [flat] = useState(props.flat);
   // const [previousPage, setpreviousPage] = useState(props.previousPage);
   const toApartmentDetails = () => {
-
-    navigate(`/ApartmentDetails`, { state: flat });
+    
+    navigate(`/ApartmentDetails/${flat.id}`, { state: flat });
 
 
   };
-
+  
   // useEffect(() => {
-  // }, []);
-
-  return (
-    <React.Fragment>
+    // }, []);
+    
+    return (
+      <React.Fragment>
       {
-
+        
         <div className={`w-75 w-sm-90 p-0 mb-3  rounded-4 overflow-hidden m-auto shadow Apartment ${flag ? 'bg-primColor' : 'bg-white'}`}>
           <div className="container-fluied overflow-hidden">
             <div className="row position-relative ">

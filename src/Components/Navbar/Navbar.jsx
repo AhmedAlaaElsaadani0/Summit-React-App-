@@ -21,24 +21,18 @@ const Navbar = () => {
       }
     });
   };
-
-  // change style for nav item when click on it
-  const changeStyleForNavItem = () => {
+  // change color of nav item when click on it
+  const changeStyleClassFotNavItem=(e)=>{
+    e.target.classList.add('selectedNavElement');
     document.querySelectorAll('.nav-link').forEach((element) => {
-      element.addEventListener('click', () => {
-        document.querySelectorAll('.nav-link').forEach((element) => {
-          element.classList.remove('selectedNavElement');
-          navbarCollapse.hide();
-        });
-        element.classList.add('selectedNavElement');
-      });
+      if (element !== e.target) {
+        element.classList.remove('selectedNavElement');
+      }
     });
-  };
-
+  }
+  
   useEffect(() => {
     specifyStyleForNav();
-    changeStyleForNavItem();
-
     // Call the function initially and listen for window resize events
     updateAttributeForScreenSize();
     window.addEventListener('resize', updateAttributeForScreenSize);
@@ -79,7 +73,7 @@ const Navbar = () => {
     <>
       <nav
         id='navBarMain'
-        className='navbar navbar-expand-lg  bg-responsiveTransparentAndPrimColorWhenPhone'
+        className='navbar navbar-expand-lg mt-2 bg-responsiveTransparentAndPrimColorWhenPhone'
         data-bs-theme='dark'
       >
         <div className='container-fluid mx-3 d-flex justify-content-between '>
@@ -103,28 +97,28 @@ const Navbar = () => {
             <div />
             <ul className='navbar-nav gap-3  d-flex justify-content-between mb-2 mb-lg-0'>
               <li className='nav-item '>
-                <Link className='nav-link active selectedNavElement' to='/'>
+                <Link className='nav-link active selectedNavElement'  onClick={(e)=>changeStyleClassFotNavItem(e)} to='/'>
                   {t("Navbar Home")}
                 </Link>
               </li>
               <li className='nav-item '>
-                <Link className='nav-link active' aria_current='About' to='/About'>
+                <Link className='nav-link active' aria_current='About' onClick={(e)=>changeStyleClassFotNavItem(e)} to='/About'>
                   {t("Navbar About")}
                 </Link>
               </li>
               <li className='nav-item '>
-                <Link className='nav-link active' aria_current='Buy' to='/Buy'>
+                <Link className='nav-link active' aria_current='Buy' onClick={(e)=>changeStyleClassFotNavItem(e)} to='/Buy'>
                   {t("Navbar Buy")}
                 </Link>
               </li>
               <li className='nav-item '>
-                <Link className='nav-link active' aria_current='Rent' to='/Rent'>
+                <Link className='nav-link active' aria_current='Rent' onClick={(e)=>changeStyleClassFotNavItem(e)} to='/Rent'>
                   {t("Navbar Rent")}
 
                 </Link>
               </li>
               <li className='nav-item'>
-                <Link className='nav-link active' aria_current='Contact' to='/Contact'>
+                <Link className='nav-link active' aria_current='Contact' onClick={(e)=>changeStyleClassFotNavItem(e)} to='/Contact'>
                   {t("Navbar Contact")}
 
                 </Link>
