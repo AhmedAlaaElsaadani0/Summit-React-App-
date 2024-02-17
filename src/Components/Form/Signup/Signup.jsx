@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import style from './SignupStyle.module.css'
 import { useTranslation } from 'react-i18next';
 import Link from '../../Link/Link';
@@ -93,11 +93,13 @@ export default function Signup() {
             isValid = false;
         }
 
-        // // Validate confirmPassword
-        // if (user.password !== user.confirmPassword) {
-        //     newErrors.confirmPassword = 'Passwords do not match';
-        //     isValid = false;
-        // }
+        // Validate confirmPassword
+        if (user.Password !== user.ConfirmPassword) {
+            alert('confirm password'
+            )
+            newErrors.ConfirmPassword = t("Form Confirm Password Error");
+            isValid = false;
+        }
 
         setErrors(newErrors);
         return isValid;
@@ -112,13 +114,15 @@ export default function Signup() {
         e.target.classList.remove('is-valid');
         e.target.classList.add('is-invalid');
     }
-    const handelChange = (e,erorrMessage) => { if (validate(e.target)) {
-        validateSuccessInput(e);
-    }
-    else {
-        validateFailInput(e);
-        setErrors({ ...errors, [e.target.name]: erorrMessage });
-    }};
+    const handelChange = (e, erorrMessage) => {
+        if (validate(e.target)) {
+            validateSuccessInput(e);
+        }
+        else {
+            validateFailInput(e);
+            setErrors({ ...errors, [e.target.name]: erorrMessage });
+        }
+    };
     return (
         <React.Fragment>
             <div className="row justify-content-center align-items-center h-100">
@@ -158,7 +162,7 @@ export default function Signup() {
 
                                         <div className="form-outline">
                                             <label className="form-label" htmlFor="firstName">{t("Register FirstName")}</label>
-                                            <input onChange={(e) => handelChange(e,t('Form Name Error'))
+                                            <input onChange={(e) => handelChange(e, t('Form Name Error'))
                                             } type="text" id="firstName" name='FirstName' className="form-control form-control-lg" />
                                             {errors.FirstName && <p className="text-danger">{errors.FirstName}</p>}
                                         </div>
@@ -168,7 +172,7 @@ export default function Signup() {
 
                                         <div className="form-outline">
                                             <label className="form-label" htmlFor="lastName">{t("Register LastName")}</label>
-                                            <input onChange={(e) =>handelChange(e,t('Form Name Error'))
+                                            <input onChange={(e) => handelChange(e, t('Form Name Error'))
                                             } type="text" id="lastName" name='LastName' className="form-control form-control-lg" />
                                             {errors.LastName && <p className="text-danger">{errors.LastName}</p>}
                                         </div>
@@ -182,7 +186,7 @@ export default function Signup() {
 
                                         <div className="form-outline">
                                             <label className="form-label" htmlFor="emailAddress">{t("Register Email")}</label>
-                                            <input onChange={(e) => handelChange(e,t('Form Email Error'))
+                                            <input onChange={(e) => handelChange(e, t('Form Email Error'))
                                             } type="email" id="emailAddress" name='Email' className="form-control form-control-lg" />
                                             {errors.Email && <p className="text-danger">{errors.Email}</p>}
                                         </div>
@@ -192,8 +196,8 @@ export default function Signup() {
 
                                         <div className="form-outline">
                                             <label className="form-label" htmlFor="phoneNumber">{t("Register PhoneNumber")}</label>
-                                            <input onChange={(e) => 
-                                                handelChange(e,t('Form Phone Error'))}
+                                            <input onChange={(e) =>
+                                                handelChange(e, t('Form Phone Error'))}
                                                 type="tel" id="phoneNumber" name='PhoneNumber' className="form-control form-control-lg" />
                                             {errors.PhoneNumber && <p className="text-danger">{errors.PhoneNumber}</p>}
 
@@ -207,7 +211,7 @@ export default function Signup() {
 
                                         <div className="form-outline">
                                             <label className="form-label" htmlFor="password">{t("Register Password")}</label>
-                                            <input onChange={(e) =>handelChange(e,t('Form Password Error')) } type="password" id="password" name='Password' autoComplete="new-password" className="form-control form-control-lg PasswordValidation" />
+                                            <input onChange={(e) => handelChange(e, t('Form Password Error'))} type="password" id="password" name='Password' autoComplete="new-password" className="form-control form-control-lg PasswordValidation" />
                                         </div>
                                         {errors.Password && <p className="text-danger">{errors.Password}</p>}
 

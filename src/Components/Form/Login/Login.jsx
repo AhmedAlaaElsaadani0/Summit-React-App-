@@ -7,9 +7,9 @@ import ApiManger from '../../JsClasses/apiManager';
 export default function Login() {
   const { t, i18n } = useTranslation();
   const [user, setUser] = useState({
-    "EmailOrPhone" : "",
+    "EmailOrPhone": "",
     "Password": ""
-});
+  });
   const [errors, setErrors] = useState({});
   let createUser = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
