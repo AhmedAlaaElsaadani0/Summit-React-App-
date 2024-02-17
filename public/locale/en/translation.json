@@ -87,7 +87,16 @@
         "Cairo":"Cairo",
         "Giza":"Giza",
         
-    "we are sorry but this appartment was sold":"we are sorry but this appartment was sold"   
+    "we are sorry but this appartment was sold":"we are sorry but this appartment was sold",
+    "Form Name Error":"Name must be at least 4 characters",
+    "Form Email Error":"Email must be a valid email address",
+    "Form Phone Error":"Phone must be at least 11 characters and start with 01",
+    "Form Password Error":"Password must be at least 6 characters",
+    "Form Confirm Password Error":"Password and Confirm Password must match",
+    "Form Address Error":"Address must not be empty",
+    "Form Password Login Error":"We expected password more than 6 characters",
+    "Form Username Error":"valid Email or valid Username"
+
 
     
 

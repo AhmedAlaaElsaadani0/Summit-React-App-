@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from './SignupStyle.module.css'
 import { useTranslation } from 'react-i18next';
 import Link from '../../Link/Link';
 import ApiManager from '../../JsClasses/apiManager';
 import { useNavigate } from 'react-router-dom';
+import validate, { ValidationClass } from '../../JsClasses/validationClass';
 export default function Signup() {
     const { t, i18n } = useTranslation();
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     const [user, setUser] = useState({
         "FirstName": "",
         "LastName": "",
@@ -14,8 +15,10 @@ export default function Signup() {
         "Email": "",
         "Gender": "M",
         "Address": "",
-        "Password": ""
+        "Password": "",
+        "ConfirmPassword": ""
     })
+    const [errors, setErrors] = useState({});
     // Create user from inputs by using the onChange event and take name and value from the inputs
     let createUser = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
@@ -23,60 +26,108 @@ export default function Signup() {
     // create handle submit function
     let handleSubmit = async (e) => {
         e.preventDefault();
-        /**
-         * {
-    "code": 200,
-    "message": "Account Registered Successfully!",
-    "token": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9naXZlbm5hbWUiOiJhYmR1bWV6eC5hciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFiZHVtZXp4LmFyQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL21vYmlsZXBob25lIjoiMDExMzUyMTQ3ODkiLCJleHAiOjE3MDc0MDg3NjUsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0Ojc3NzciLCJhdWQiOiJNeVNlY3VyZWRBcGlVc2VycyJ9.8sE-GABA0m5tYGf7RmVi0RNAHg7CmqE0nEm3qKY855Q"
-}
-{
-    "errors": [
-        "Email is regestered already!"
-    ],
-    "code": 400,
-    "message": "you have made a bad request!"
-}
-         */
-        const response = await ApiManager.registerUser(user);
-        if (response.code == 200) {
-            document.querySelector('.SuccessMessage').innerHTML = response.message;
-            document.querySelector('.SuccessMessage').classList.remove('d-none');
-            document.querySelector('.SuccessMessage').classList.add('d-block');
-            setTimeout(() => {
-                document.querySelector('.SuccessMessage').classList.remove('d-block');
-                document.querySelector('.SuccessMessage').classList.add('d-none');
-                navigate('/');
-            }, 3000);
+        if (validateForm()) {
+            const response = await ApiManager.registerUser(user);
+            if (response.code == 200) {
+                successSubmit(response.message);
+            }
+            else if (response.code == 400) {
+                failSubmit(response.errors[0]);
+            }
+            else {
+                failSubmit('Error happened, please try again later');
+            }
         }
-        else if (response.code == 400) {
-            document.querySelector('.AlertMessage').innerHTML = response.errors;
-            document.querySelector('.AlertMessage').classList.remove('d-none');
-            document.querySelector('.AlertMessage').classList.add('d-block');
-            setTimeout(() => {
-                document.querySelector('.AlertMessage').classList.remove('d-block');
-                document.querySelector('.AlertMessage').classList.add('d-none');
-            }, 3000);
+    }
+    const failSubmit = (message) => {
+        document.querySelector('.AlertMessage').innerHTML = message;
+        document.querySelector('.AlertMessage').classList.remove('d-none');
+        document.querySelector('.AlertMessage').classList.add('d-block');
+        setTimeout(() => {
+            document.querySelector('.AlertMessage').classList.remove('d-block');
+            document.querySelector('.AlertMessage').classList.add('d-none');
+        }, 3000);
+    }
+    const successSubmit = (message) => {
+        document.querySelector('.SuccessMessage').innerHTML = message;
+        document.querySelector('.SuccessMessage').classList.remove('d-none');
+        document.querySelector('.SuccessMessage').classList.add('d-block');
+        setTimeout(() => {
+            document.querySelector('.SuccessMessage').classList.remove('d-block');
+            document.querySelector('.SuccessMessage').classList.add('d-none');
+            navigate('/');
+        }, 3000);
+    }
+
+    const validateForm = () => {
+        let isValid = true;
+        const newErrors = {};
+
+        // Validate username
+        if (!ValidationClass.isNotEmpty(user["FirstName"])) {
+            newErrors.FirstName = t('Form Name Error');
+            isValid = false;
         }
-        else{
-            document.querySelector('.AlertMessage').innerHTML = "Something went wrong!";
-            document.querySelector('.AlertMessage').classList.remove('d-none');
-            document.querySelector('.AlertMessage').classList.add('d-block');
-            setTimeout(() => {
-                document.querySelector('.AlertMessage').classList.remove('d-block');
-                document.querySelector('.AlertMessage').classList.add('d-none');
-            }, 3000);
+        if (!ValidationClass.isNotEmpty(user["LastName"])) {
+            newErrors.LastName = t('Form Name Error');
+            isValid = false;
+        }
+        // Validate email
+        if (!ValidationClass.isNotEmpty(user["PhoneNumber"]) && !ValidationClass.isPhoneNumber(user["PhoneNumber"])) {
+            newErrors.PhoneNumber = t("Form Phone Error");
+            isValid = false;
         }
 
+        if (!ValidationClass.isNotEmpty(user["Address"])) {
+            newErrors.Address = t("Form Address Error");
+            isValid = false;
+        }
+        if (!ValidationClass.isNotEmpty(user["Email"]) && !ValidationClass.isEmail(user["Email"])) {
+            newErrors.Email = t("Form Email Error");
+            isValid = false;
+        }
+
+        // Validate password
+        if (!ValidationClass.isNotEmpty(user["Password"]) && !ValidationClass.isPassword(user["Password"])) {
+            newErrors.Password = t("Form Password Error");
+            isValid = false;
+        }
+
+        // // Validate confirmPassword
+        // if (user.password !== user.confirmPassword) {
+        //     newErrors.confirmPassword = 'Passwords do not match';
+        //     isValid = false;
+        // }
+
+        setErrors(newErrors);
+        return isValid;
+    };
+    const validateSuccessInput = (e) => {
+        e.target.classList.remove('is-invalid');
+        e.target.classList.add('is-valid');
+        createUser(e);
+        setErrors({ ...errors, [e.target.name]: '' });
     }
+    const validateFailInput = (e) => {
+        e.target.classList.remove('is-valid');
+        e.target.classList.add('is-invalid');
+    }
+    const handelChange = (e,erorrMessage) => { if (validate(e.target)) {
+        validateSuccessInput(e);
+    }
+    else {
+        validateFailInput(e);
+        setErrors({ ...errors, [e.target.name]: erorrMessage });
+    }};
     return (
         <React.Fragment>
-            <div class="row justify-content-center align-items-center h-100">
-                <div class="col-12 col-lg-9 col-xl-7">
-                    <div class={"card shadow-2-strong text-primColor  " + style.card_registration} style={{ borderRadius: "15px" }}  >
-                        <div class="card-body p-4 p-md-5">
+            <div className="row justify-content-center align-items-center h-100">
+                <div className="col-12 col-lg-9 col-xl-7">
+                    <div className={"card shadow-2-strong text-primColor  " + style.card_registration} style={{ borderRadius: "15px" }}  >
+                        <div className="card-body p-4 p-md-5">
                             <div className='d-flex justify-content-between'>
 
-                                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">{t("Register")}</h3>
+                                <h3 className="mb-4 pb-2 pb-md-0 mb-md-5">{t("Register")}</h3>
                                 <div className={style.languageSwitch}
                                     onClick={() => {
                                         let flagDirection = i18n.language == 'en';
@@ -88,7 +139,7 @@ export default function Signup() {
 
                                     }}
                                 >
-                                    <i class="fa-solid fa-earth-americas text-secondary mx-1"></i>
+                                    <i className="fa-solid fa-earth-americas text-secondary mx-1"></i>
                                     {i18n.language == "ar" ?
                                         <span className=' p-1' >
                                             English
@@ -102,86 +153,119 @@ export default function Signup() {
                             </div>
                             <form onSubmit={handleSubmit} className='fs-4'>
 
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
+                                <div className="row">
+                                    <div className="col-md-6 mb-4">
 
-                                        <div class="form-outline">
-                                            <label class="form-label" for="firstName">{t("Register FirstName")}</label>
-                                            <input onChange={(e) => createUser(e)} type="text" id="firstName" name='FirstName' class="form-control form-control-lg" />
+                                        <div className="form-outline">
+                                            <label className="form-label" htmlFor="firstName">{t("Register FirstName")}</label>
+                                            <input onChange={(e) => handelChange(e,t('Form Name Error'))
+                                            } type="text" id="firstName" name='FirstName' className="form-control form-control-lg" />
+                                            {errors.FirstName && <p className="text-danger">{errors.FirstName}</p>}
                                         </div>
 
                                     </div>
-                                    <div class="col-md-6 mb-4">
+                                    <div className="col-md-6 mb-4">
 
-                                        <div class="form-outline">
-                                            <label class="form-label" for="lastName">{t("Register LastName")}</label>
-                                            <input onChange={(e) => createUser(e)} type="text" id="lastName" name='LastName' class="form-control form-control-lg" />
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                                <div class="row">
-                                    <div class="col-md-6 mb-4 pb-2">
-
-                                        <div class="form-outline">
-                                            <label class="form-label" for="emailAddress">{t("Register Email")}</label>
-                                            <input onChange={(e) => createUser(e)} type="email" id="emailAddress" name='Email' class="form-control form-control-lg" />
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-6 mb-4 pb-2">
-
-                                        <div class="form-outline">
-                                            <label class="form-label" for="phoneNumber">{t("Register PhoneNumber")}</label>
-                                            <input onChange={(e) => createUser(e)} type="tel" id="phoneNumber" name='PhoneNumber' class="form-control form-control-lg" />
+                                        <div className="form-outline">
+                                            <label className="form-label" htmlFor="lastName">{t("Register LastName")}</label>
+                                            <input onChange={(e) =>handelChange(e,t('Form Name Error'))
+                                            } type="text" id="lastName" name='LastName' className="form-control form-control-lg" />
+                                            {errors.LastName && <p className="text-danger">{errors.LastName}</p>}
                                         </div>
 
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-6 mb-4 pb-2">
 
-                                        <div class="form-outline">
-                                            <label class="form-label" for="password">{t("Register Password")}</label>
-                                            <input onChange={(e) => createUser(e)} type="password" id="password" name='Password' class="form-control form-control-lg" />
+                                <div className="row">
+                                    <div className="col-md-6 mb-4 pb-2">
+
+                                        <div className="form-outline">
+                                            <label className="form-label" htmlFor="emailAddress">{t("Register Email")}</label>
+                                            <input onChange={(e) => handelChange(e,t('Form Email Error'))
+                                            } type="email" id="emailAddress" name='Email' className="form-control form-control-lg" />
+                                            {errors.Email && <p className="text-danger">{errors.Email}</p>}
                                         </div>
 
                                     </div>
-                                    <div class="col-md-6 mb-4 pb-2">
+                                    <div className="col-md-6 mb-4 pb-2">
 
-                                        <div class="form-outline">
-                                            <label class="form-label" for="password">{t("Register Confirm Password")}</label>
-                                            <input onChange={(e) => createUser(e)} type="password" id="password" name='ConfirmPassword' class="form-control form-control-lg" />
+                                        <div className="form-outline">
+                                            <label className="form-label" htmlFor="phoneNumber">{t("Register PhoneNumber")}</label>
+                                            <input onChange={(e) => 
+                                                handelChange(e,t('Form Phone Error'))}
+                                                type="tel" id="phoneNumber" name='PhoneNumber' className="form-control form-control-lg" />
+                                            {errors.PhoneNumber && <p className="text-danger">{errors.PhoneNumber}</p>}
+
                                         </div>
 
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-4 d-flex align-items-center">
 
-                                        <div class="form-outline datepicker w-100">
-                                            <label for="address" class="form-label">{t("Register Address")}</label>
-                                            <input onChange={(e) => createUser(e)} type="text" name='Address' class="form-control form-control-lg" id="address" />
+                                <div className="row">
+                                    <div className="col-md-6 mb-4 pb-2">
+
+                                        <div className="form-outline">
+                                            <label className="form-label" htmlFor="password">{t("Register Password")}</label>
+                                            <input onChange={(e) =>handelChange(e,t('Form Password Error')) } type="password" id="password" name='Password' autoComplete="new-password" className="form-control form-control-lg PasswordValidation" />
+                                        </div>
+                                        {errors.Password && <p className="text-danger">{errors.Password}</p>}
+
+                                    </div>
+                                    <div className="col-md-6 mb-4 pb-2">
+
+                                        <div className="form-outline">
+                                            <label className="form-label" htmlFor="password">{t("Register Confirm Password")}</label>
+                                            <input onChange={(e) =>
+                                                handelChange(e, t("Form Confirm Password Error"))
+                                            } onClick={(e) => {
+                                                if (validate(e.target)) {
+                                                    validateSuccessInput(e);
+                                                }
+                                                else {
+                                                    validateFailInput(e);
+                                                    setErrors({ ...errors, [e.target.name]: t("Form Confirm Password Error") });
+                                                }
+                                            }} type="password" id="ConfirmPassword" autoComplete="new-password" name='ConfirmPassword' className="form-control form-control-lg " />
+                                            {errors.ConfirmPassword && <p className="text-danger">{errors.ConfirmPassword}</p>}
                                         </div>
 
                                     </div>
-                                    <div class="col-md-6 m d-flex justify-content-center flex-column ">
-                                        <h6 class="mb-2 p ">{t("Register Gender")} </h6>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-6 mb-4 d-flex align-items-center">
+
+                                        <div className="form-outline datepicker w-100">
+                                            <label htmlFor="address" className="form-label">{t("Register Address")}</label>
+                                            <input onChange={(e) => {
+                                                if (validate(e.target)) {
+                                                    validateSuccessInput(e);
+                                                }
+                                                else {
+                                                    validateFailInput(e);
+                                                    setErrors({ ...errors, [e.target.name]: t("Form Address Error") });
+
+                                                }
+
+                                            }} type="text" name='Address' className="form-control form-control-lg" id="address" />
+                                            {errors.Address && <p className="text-danger">{errors.Address}</p>}
+                                        </div>
+
+                                    </div>
+                                    <div className="col-md-6 m d-flex justify-content-center flex-column ">
+                                        <h6 className="mb-2 p ">{t("Register Gender")} </h6>
                                         <div>
 
-                                            <div class="form-check form-check-inline">
-                                                <input onChange={() => setUser({ ...user, "Gender": "M" })} class="form-check-input" type="radio" name="Gender" id="femaleGender"
+                                            <div className="form-check form-check-inline">
+                                                <input onChange={() => setUser({ ...user, "Gender": "M" })} className="form-check-input" type="radio" name="Gender" id="femaleGender"
                                                     value="M" checked />
-                                                <label class="form-check-label" for="femaleGender">{t("Register Male")}</label>
+                                                <label className="form-check-label" htmlFor="femaleGender">{t("Register Male")}</label>
                                             </div>
 
-                                            <div class="form-check form-check-inline">
-                                                <input onChange={() => setUser({ ...user, "Gender": "F" })} class="form-check-input" type="radio" name="Gender" id="maleGender"
+                                            <div className="form-check form-check-inline">
+                                                <input onChange={() => setUser({ ...user, "Gender": "F" })} className="form-check-input" type="radio" name="Gender" id="maleGender"
                                                     value="F" />
-                                                <label class="form-check-label" for="maleGender">{t("Register Female")}</label>
+                                                <label className="form-check-label" htmlFor="maleGender">{t("Register Female")}</label>
                                             </div>
                                         </div>
 
@@ -189,8 +273,8 @@ export default function Signup() {
                                 </div>
 
 
-                                <div class="mt-4 pt-2 text-center">
-                                    <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                                <div className="mt-4 pt-2 text-center">
+                                    <input className="btn btn-primary btn-lg" type="submit" value="Submit" />
                                     <Link className={'nav-link m-auto  mt-2 ' + style.link2Home} aria-current='page' to='/'>
                                         {t("Registar Home")}
                                     </Link>

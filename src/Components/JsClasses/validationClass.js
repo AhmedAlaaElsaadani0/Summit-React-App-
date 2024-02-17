@@ -1,9 +1,9 @@
-class ValidationClass {
+export class ValidationClass {
   static isNotEmpty(value) {
     return value.trim() !== '';
   }
   static isUsername(value) {
-    return this.isNotEmpty(value) && value.split(" ").length >= 4;
+    return this.isNotEmpty(value) && value.length >= 4;
   }
 
   static isEmail(value) {
@@ -37,35 +37,23 @@ class ValidationClass {
 }
 // ==========  Validation ===============
 export default function validate(input) {
-  let studentPhoneNumber;
   switch (input.name) {
-    case 'Name':
+    case 'FirstName'||"LastName"||"EmailOrPhone":
       return ValidationClass.isUsername(input.value);
     case 'Email' || "email":
       return ValidationClass.isEmail(input.value);
     case 'Password':
       return ValidationClass.isPassword(input.value);
-    case 'confirmPassword':
-      let passwordInput = document.querySelector('.Password');
+    case 'ConfirmPassword':
+      let passwordInput = document.querySelector('.PasswordValidation');
       if (passwordInput) {
         let passwordValue = passwordInput.value;
         return ValidationClass.confirmPassword(passwordValue, input.value);
       }
       // Handle case where actual password input is not found.
       return false;
-    case 'StudentPhoneNumber':
+    case "PhoneNumber"||'phoneNumber':
       return ValidationClass.isPhoneNumber(input.value);
-    case 'phoneNumber':
-      return ValidationClass.isPhoneNumber(input.value);
-
-    case 'ParentPhoneNumber':
-      studentPhoneNumber = document.querySelector('.phoneNumber');
-      return ValidationClass.isPhoneNumber(input.value) && input.value !== studentPhoneNumber.value;
-    case 'parentPhoneNumber':
-      studentPhoneNumber = document.querySelector('.phoneNumber');
-      return ValidationClass.isPhoneNumber(input.value) && input.value !== studentPhoneNumber.value;
-    case 'Picture':
-      return ValidationClass.ifFileIsGood(input);
     default:
       return ValidationClass.isNotEmpty(input.value);
 

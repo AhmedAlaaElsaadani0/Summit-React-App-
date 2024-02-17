@@ -10,17 +10,17 @@ export default function Filter({ getAllApartments, setResponse, loading, respons
         regionId: ""
 
     });
-    const[price,setPrice]=useState( {
+    const [price, setPrice] = useState({
         min: 0,
         max: 10000
     });
-    const handelonChangeSelector = ( regionId, areaId=objSearchSelctor.areaId,govId=objSearchSelctor.govId) => {
-        setObjSearch({  govId, areaId, regionId })
+    const handelonChangeSelector = (regionId, areaId = objSearchSelctor.areaId, govId = objSearchSelctor.govId) => {
+        setObjSearch({ govId, areaId, regionId })
     }
-    const handleSubmit=(e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
         setLoading(true);
-        setResponse({ 
+        setResponse({
             ...response,
             ...objSearchSelctor,
             pageIndex: 1,
@@ -30,6 +30,14 @@ export default function Filter({ getAllApartments, setResponse, loading, respons
     }
     const [flag, setFlag] = useState(true)
     const { t, i18n } = useTranslation();
+
+
+    /**
+      //////////////
+    style for filter 
+     /////////////////////
+     
+     */
     let filterDiv;
     let filterButton;
     useEffect(() => {
@@ -61,9 +69,16 @@ export default function Filter({ getAllApartments, setResponse, loading, respons
         }, 500);
         setFlag(false);
     }
+
+
+
+
+
+
+
     return (
         <React.Fragment>
-            <div className={"position-fixed top-0 bottom-0 d-flex align-items-center vh-100 "} style={{ zIndex: "999999" }}>
+            <div className={"position-fixed top-0 bottom-0 d-flex align-items-center vh-100 "} style={{ zIndex: "999" }}>
                 <div className={' rounded-4 py-3 p-1 align-items-center mb-5  ' + style.filterDivShow} id='filterDiv' style={{ width: "300px" }}>
                     <div className="bg-white shadow py-5 w-100 rounded-5 d-flex flex-column justify-content-center align-items-center px-2 position-relative">
                         {/* button close */}
@@ -79,9 +94,13 @@ export default function Filter({ getAllApartments, setResponse, loading, respons
                             X
                         </button>
                         <h3 className='Filter text-primColor fw-bolder'>{t("Filter")}</h3>
-                        <form action=" " className='d-flex flex-column' onSubmit={(e)=>handleSubmit(e)}>
-
-                            <PriceRange t={t} i18n={i18n} />
+                        <form action=" " className='w-100 px-3 d-flex flex-column' onSubmit={(e) => handleSubmit(e)}>
+{/* 
+                            <PriceRange t={t} i18n={i18n} price={{
+                                minPrice:response.minPrice??0,
+                                maxPrice: response.maxPrice??10000,
+                            }} setPrice={setPrice}
+                            /> */}
                             <SelectFilter t={t} i18n={i18n} handelonChangeSelector={handelonChangeSelector} />
                             <button type='submit' className='sButton sButtonGreen '>
                                 {t("Search")}

@@ -88,6 +88,15 @@
     "Cairo":"الفاهرة",
     "Giza":"الجيزة",
     
-  "we are sorry but this appartment was sold":"عذراً، لكن هذه الشقة تم بيعها"
+  "we are sorry but this appartment was sold":"عذراً، لكن هذه الشقة تم بيعها",
+  "Form Name Error":"الاسم يجب أن يكون أكبر من 4 أحرف",
+    "Form Email Error":"البريد الإلكتروني يجب أن يكون صالحاً",
+    "Form Phone Error":"رقم الهاتف يجب أن يكون صالحاً مكون من 11 رقم ويبدأ ب 01",
+    "Form Password Error":"كلمة المرور يجب أن تكون أكبر من 6 أحرف",
+    "Form Confirm Password Error":"كلمة المرور يجب أن تتطابق مع كلمة المرور السابقة",
+    "Form Address Error":"العنوان يجب أن لا يكون فارغ",  
+    "Form Password Login Error":"نتوقع من ادخال باسورد اكثر من 6 حروف",
+    "Form Username Error":"يجب ان يكون إيميل صالح او إسم المستخدم"
+
   
 }

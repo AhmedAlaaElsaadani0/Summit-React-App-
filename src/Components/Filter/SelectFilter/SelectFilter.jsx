@@ -109,7 +109,7 @@ export default function SelectFilter({ t, i18n ,handelonChangeSelector}) {
 
     return (
         <div className='w-100'>
-            <div className={'py-1 rounded-3 ' + style.borderBottomSelect}>
+            <div className={'py-1 rounded-3  ' + style.borderBottomSelect}>
                 <select
                     onChange={handleSearchByGovId} onKeyDown={handleSearchByGovId}
                     name='govId' className={'form-select-Amoor fw-bold  mt-3 px-3 py-2 rounded-5 ' + style.borderBottomSelect} id='selectorGovs'>

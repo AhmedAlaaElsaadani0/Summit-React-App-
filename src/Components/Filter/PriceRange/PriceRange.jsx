@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styles from './PriceRangeStyle.module.css';
 
-export default function PriceRange({ t, i18n }) {
+export default function PriceRange({ t, i18n,price, setPrice}) {
     const [rangeInput, setRangeInput] = useState([]);
     const [priceInput, setPriceInput] = useState([]);
     const [range, setRange] = useState(null);
     const [priceGap] = useState(1000);
-
     useEffect(() => {
         const priceInputs = document.querySelectorAll(`.${styles['price-input']} input`);
         const rangeInputs = document.querySelectorAll(`.${styles['range-input']} input`);
@@ -83,20 +82,20 @@ export default function PriceRange({ t, i18n }) {
             <div dir='ltr' className={styles['price-input']}>
                 <div className={styles.field}>
                     <span>{t("Filter Min")}</span>
-                    <input type="number" className={styles['input-min']+" m-0 "} defaultValue="2500" onChange={handlePriceInputChange} />
+                    <input type="number" className={styles['input-min']+" m-0 "} defaultValue={`${price.minPrice*.25}`} onChange={handlePriceInputChange} />
                 </div>
                 <div className={styles.separator}>-</div>
                 <div className={styles.field}>
                     <span>{t("Filter Max")}</span>
-                    <input type="number" className={styles['input-max']+" m-0 "} defaultValue="7500" onChange={handlePriceInputChange} />
+                    <input type="number" className={styles['input-max']+" m-0 "} defaultValue={`${(price.maxPrice+10000)*.75}`} onChange={handlePriceInputChange} />
                 </div>
             </div>
             <div className={styles.slider}>
                 <div className={styles.progress}></div>
             </div>
             <div dir='ltr' className={styles['range-input']}>
-                <input type="range" className={styles['range-min']} min="0" max="10000" defaultValue="2500" step="100" onChange={handleRangeInputChange} />
-                <input type="range" className={styles['range-max']} min="0" max="10000" defaultValue="7500" step="100" onChange={handleRangeInputChange} />
+                <input type="range" className={styles['range-min']} min={price.minPrice} max={price.maxPrice+10000} defaultValue={`${price.minPrice*.25}`} step="100" onChange={handleRangeInputChange} />
+                <input type="range" className={styles['range-max']} min={price.minPrice} max={price.maxPrice+10000} defaultValue={`${(price.maxPrice+10000)*.75}`} step="100" onChange={handleRangeInputChange} />
             </div>
         </div>
     );

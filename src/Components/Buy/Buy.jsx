@@ -137,7 +137,7 @@ const Buy = () => {
           } className="sButton sButtonGreen" id='loadMore'>{t("Load More")}</button> : ""}
         </div>
       </div>
-    <Filter getAllApartments={getAllApartments} loading={loading} setLoading={setLoading} setResponse={setResponse} response={response} />
+    <Filter getAllApartments={getAllApartments} loading={loading} setLoading={setLoading} setResponse={setResponse} response={response}  />
     </React.Fragment>
   );
 };
