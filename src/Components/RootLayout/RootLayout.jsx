@@ -1,5 +1,6 @@
-import React, { lazy } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import i18n from "../../i18n";
 // Wrap your components with React.lazy
 const Navbar = lazy(() => import('../Navbar/Navbar'));
 const SocialWhats = lazy(() => import('../SocialComponent/SocialWhats'));
@@ -7,10 +8,14 @@ const AnimatBars = lazy(() => import('../AnimatedBarsComponent/AnimatBars'));
 const Footer = lazy(() => import('../Footer/Footer'));
 
 export default function RootLayout() {
- 
-return (<React.Fragment>
+  const [languageFlagArabic, setLanguageFlagArabic] = useState(localStorage.getItem("i18nextLng") == "ar" ? true : false);
+  i18n.on('languageChanged', (lng) => {
+    setLanguageFlagArabic(lng === "ar");
+  });
 
-    <div className="mainContainer"  >
+  return (<React.Fragment>
+
+    <div className={"mainContainer " + (languageFlagArabic?"cairoFont":"")}  >
       <Navbar />
       <Outlet ></Outlet>
       <AnimatBars />
@@ -19,10 +24,10 @@ return (<React.Fragment>
     <button className="scroll2top fa-solid fa-arrow-up"/>
     </a> */}
 
-    <Footer />  
+      <Footer />
     </div>
 
-   </React.Fragment>
+  </React.Fragment>
 
   );
 }

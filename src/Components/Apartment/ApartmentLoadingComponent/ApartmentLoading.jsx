@@ -8,7 +8,7 @@ const ApartmentLoading = ({ flag }) => {
         <div className={`w-75 w-sm-90 p-0 mb-3 rounded-4 placeholder-glow overflow-hidden m-auto shadow ${flag ? 'bg-primColor' : 'bg-white'}`}>
             <div className="container-fluid overflow-hidden">
                 <div className="row">
-                    <div className="col-md-4 AbartmentImage p-0" >
+                    <div className="col-md-4 AbartmentImage p-0 overflow-hidden" >
                         <img src="Images/RandomBuilding.jpg" className="w-100 h-100" alt="apartment Picture" />
                     </div>
                     <div className={`col-md-8 fs-3 fw-bolder AbartmentDesc ${flag ? 'text-white' : 'text-primColor'}`}>

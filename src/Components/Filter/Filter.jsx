@@ -95,7 +95,7 @@ export default function Filter({ getAllApartments, setResponse, loading, respons
                         </button>
                         <h3 className='Filter text-primColor fw-bolder'>{t("Filter")}</h3>
                         <form action=" " className='w-100 px-3 d-flex flex-column' onSubmit={(e) => handleSubmit(e)}>
-{/* 
+                            {/* 
                             <PriceRange t={t} i18n={i18n} price={{
                                 minPrice:response.minPrice??0,
                                 maxPrice: response.maxPrice??10000,
@@ -117,7 +117,7 @@ export default function Filter({ getAllApartments, setResponse, loading, respons
 
                         className={" sButton sButtonGreen rounded-circle p-2 border-0  " + style.filterButton}
                         style={{ width: "75px", height: "75px", fontWeight: "bolder", fontSize: "32px", display: "none" }}>
-                        <i class="fa-solid fa-sliders"></i>
+                        <i class="fa-solid fa-bars-staggered"></i>
                     </button>
 
                 </div>

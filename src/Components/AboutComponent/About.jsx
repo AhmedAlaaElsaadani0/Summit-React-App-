@@ -29,7 +29,7 @@ const About = (props) => {
           </div>
           <div className="col-lg-6">
             <div className={`${styleAbout.myWidth} d-flex justify-content-start h-100 m-auto flex-column flex-wrap`}>
-              <p className={styleAbout.MainHeading}>{t("About Header")}</p>
+              <p className={styleAbout.MainHeading + " headingForSeactions"}>{t("About Header")}</p>
               <p className={styleAbout.SecondaryHeading}>
                 {t("About Paragraph")}
               </p>

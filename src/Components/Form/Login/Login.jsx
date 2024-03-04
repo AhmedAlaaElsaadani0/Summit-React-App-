@@ -3,6 +3,7 @@ import Link from '../../Link/Link'
 import { useTranslation } from 'react-i18next';
 import validate from '../../JsClasses/validationClass';
 import ApiManger from '../../JsClasses/apiManager';
+import { startANewSession } from '../../JsClasses/CheckUser';
 
 export default function Login() {
   const { t, i18n } = useTranslation();
@@ -21,6 +22,8 @@ export default function Login() {
       const response = await ApiManger.loginUser(user);
       if (response.token) {
         successSubmit("Login Successfully");
+        localStorage.setItem("tokenSum",response.token);
+        startANewSession();
       }
       else if (response.code == 401) {
         failSubmit(response.message);
