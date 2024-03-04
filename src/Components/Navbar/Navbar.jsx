@@ -132,7 +132,7 @@ const Navbar = () => {
                 </button>
               </li>
               <li className='nav-item'>
-                <Link className='sButton p-2 sButtonGreen  '  to='/forms#SignUp'>
+                <Link className='sButton p-2 sButtonGreen  '  to='/forms/SignUp'>
                   {t("Navbar Register")}
                 </Link>
               </li>
