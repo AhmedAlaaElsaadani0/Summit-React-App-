@@ -1,5 +1,5 @@
 nav a {
-    color: inherit;
+    color: var(--blackToWhite) !important;
     cursor: pointer;
     text-decoration: none;
     -moz-text-decoration: none;
@@ -90,6 +90,12 @@ nav a {
 
 .languageSwitch {
     cursor: pointer;
+}
+.languageSwitch span{
+    color: var(--blackToWhite);
+}
+.languageSwitch i{
+    color: var(--blackToWhite);
 }
 
 @media (max-width: 991px) {

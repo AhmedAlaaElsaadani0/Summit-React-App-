@@ -78,7 +78,7 @@ export default function Filter({ getAllApartments, setResponse, loading, respons
 
     return (
         <React.Fragment>
-            <div className={"position-fixed top-0 bottom-0 d-flex align-items-center vh-100 "} style={{ zIndex: "999" }}>
+            <div className={"position-fixed top-0 bottom-0 d-flex align-items-center  vh-100 "} style={{ zIndex: "999" }}>
                 <div className={' rounded-4 py-3 p-1 align-items-center mb-5  ' + style.filterDivShow} id='filterDiv' style={{ width: "300px" }}>
                     <div className="bg-white shadow py-5 w-100 rounded-5 d-flex flex-column justify-content-center align-items-center px-2 position-relative">
                         {/* button close */}

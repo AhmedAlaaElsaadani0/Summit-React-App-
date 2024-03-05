@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import "./styleNavBar.css";
 import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -7,6 +7,7 @@ const Link = React.lazy(() => import("../Link/Link"))
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
+  const [lightFlag, setLightFlag] = useState(true)
   let navbarCollapse;
 
 
@@ -29,6 +30,7 @@ const Navbar = () => {
         element.classList.remove('selectedNavElement');
       }
     });
+    navbarCollapse.toggle();
   }
 
   useEffect(() => {
@@ -69,11 +71,30 @@ const Navbar = () => {
     }
   };
 
+
+  const turnOnDarkMode = () => {
+    document.querySelector('body').classList.toggle('dark');
+    //change label inner text to light mode
+    let darkModeButton = document.querySelector("nav button#darkmode")
+    console.log(darkModeButton.innerHTML);
+    darkModeButton.classList.replace('btn-outline-light', 'btn-outline-dark')
+
+    if (lightFlag) {
+      darkModeButton.classList.add('btn-outline-light')
+      darkModeButton.classList.remove('btn-outline-dark')
+      setLightFlag(false);
+    }
+    else {
+      darkModeButton.classList.add('btn-outline-dark')
+      darkModeButton.classList.remove('btn-outline-light')
+      setLightFlag(true);
+    }
+  }
   return (
     <>
       <nav
         id='navBarMain'
-        className='navbar navbar-expand-lg mt-2 bg-responsiveTransparentAndPrimColorWhenPhone'
+        className='navbar navbar-expand-lg pt-2 bg-responsiveTransparentAndPrimColorWhenPhone'
         data-bs-theme='dark'
       >
         <div className='container-fluid mx-3 d-flex justify-content-between '>
@@ -150,16 +171,25 @@ const Navbar = () => {
 
                 }}
               >
-                <i class="fa-solid fa-earth-americas text-secondary mx-1"></i>
+                <i className="fa-solid fa-earth-americas mx-1 text-blackToWhite " ></i>
                 {i18n.language == "ar" ?
                   <span className=' p-1' >
                     English
                   </span>
                   :
-                  <span className='' >
+                  <span className='p-1' >
                     عربي
                   </span>
                 }
+              </li>
+
+              <li>
+                <button type="button" className='btn btn-outline-dark ' name='dark mode button' id='darkmode' onClick={turnOnDarkMode}>
+                  <i className="fa-solid fa-circle-half-stroke">
+
+                  </i>
+                </button>
+
               </li>
 
             </ul>
