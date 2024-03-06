@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-
+import { Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
 export default class AparmetSlider extends Component {
   render() {
     let uniqeNum = this.props.uniqeNum;
     let flagDetails = this.props.flagDetails?? false;
     return <React.Fragment>
-      <div id={"carouselExampleWhite"+uniqeNum}  className="carousel  carousel-white hide slide" style={
+      {/* <div id={"carouselExampleWhite"+uniqeNum}  className="carousel  carousel-white hide slide" style={
         flagDetails?{ 
 
           height: "100%",
@@ -42,7 +45,54 @@ export default class AparmetSlider extends Component {
  
           }
         </div>
-      </div>
+      </div> */}
+            <style>
+        {`
+          .swiper-pagination {
+            bottom: 15px;
+            text-align: center;
+            width: 100%;
+          }
+
+          .swiper-pagination-bullet {
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            opacity: 1;
+            margin: 0 5px;
+          }
+
+          .swiper-pagination-bullet-active {
+            background-color: #377474;
+            opacity: 1;
+          }
+            `}
+      </style>
+      <Swiper
+        modules={[Pagination]}
+        spaceBetween={25}
+        slidesPerView={1}
+        loop={true}
+        pagination={{ clickable: true }}
+        onSwiper={(swiper) => console.log(swiper)}
+        onSlideChange={() => console.log('slide change')}
+
+      >
+
+        {
+          this.props.flatImages.length > 0 ?
+            this.props.flatImages.map((item, index) => {
+              return <SwiperSlide key={index}  >
+                <img src={item.url} className="d-block rounded-3" style={{ height: `350px`, width: `100%` }} alt="apartment Picture" />
+              </SwiperSlide>
+            })
+            :
+            <SwiperSlide  >
+              <img src="Images/RandomBuilding.jpg" className="w-100 h-100 d-block" alt="apartment Picture" />
+            </SwiperSlide>
+        }
+      </Swiper>
+
     </React.Fragment>
   }
 }
