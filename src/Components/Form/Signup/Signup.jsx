@@ -5,6 +5,7 @@ import Link from '../../Link/Link';
 import ApiManager from '../../JsClasses/apiManager';
 import { useNavigate } from 'react-router-dom';
 import validate, { ValidationClass } from '../../JsClasses/validationClass';
+import { startANewSession } from '../../JsClasses/CheckUser';
 export default function Signup() {
     const { t, i18n } = useTranslation();
     const navigate = useNavigate()
@@ -30,6 +31,9 @@ export default function Signup() {
             const response = await ApiManager.registerUser(user);
             if (response.code == 200) {
                 successSubmit(response.message);
+                localStorage.setItem("tokenSum", response.token);
+                startANewSession();
+                navigate("/")
             }
             else if (response.code == 400) {
                 failSubmit(response.errors[0]);
@@ -95,8 +99,7 @@ export default function Signup() {
 
         // Validate confirmPassword
         if (user.Password !== user.ConfirmPassword) {
-            alert('confirm password'
-            )
+            // alert('confirm password')
             newErrors.ConfirmPassword = t("Form Confirm Password Error");
             isValid = false;
         }

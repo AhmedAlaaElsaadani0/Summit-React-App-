@@ -31,13 +31,6 @@ const Home = () => {
               </p>
               <Link
                 style={{
-                  fontWeight: '500',
-                  color: 'white',
-                  borderRadius: '10px',
-                  textAlign: 'center',
-                  textDecoration: 'none',
-                  marginTop: '20px',
-                  cursor: 'pointer',
                 }}
                 to="./Buy"
                 className={`${homeStyle.SearchLink} `}

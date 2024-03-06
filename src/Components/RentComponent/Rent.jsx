@@ -33,13 +33,28 @@ const Rent = () => {
       const apiResponse = await ApiManger.getAllApartments(endpoint);
 
       // Update state
-      setResponse(prevResponse => ({
-        ...prevResponse,
-        ...apiResponse,
-        pageIndex: apiResponse?.data?.length === 0 ? apiResponse.pageIndex : apiResponse.pageIndex+1,
-        data: replaceApartmentFlag ? apiResponse.data : [...prevResponse.data, ...apiResponse.data]
-      })
-      );
+      if (apiResponse.data) {
+        // Update state
+        setResponse(prevResponse => ({
+          ...prevResponse,
+          ...apiResponse,
+          pageIndex: apiResponse?.data?.length === 0 ? apiResponse.pageIndex : apiResponse.pageIndex + 1,
+          data: replaceApartmentFlag ? apiResponse.data : [...prevResponse.data, ...apiResponse.data]
+        })
+        );
+      }
+      else {
+        setResponse(
+          prevResponse =>
+          ({
+
+            ...prevResponse,
+            ...apiResponse,
+            pageIndex: apiResponse.pageIndex,
+            data: []
+          })
+        )
+      }
       setLoading(false);
     } catch (error) {
       // Handle errors
@@ -137,7 +152,7 @@ const Rent = () => {
           } className="sButton sButtonGreen" id='loadMore'>{t("Load More")}</button> : ""}
         </div>
       </div>
-    <Filter getAllApartments={getAllApartments} loading={loading} setLoading={setLoading} setResponse={setResponse} response={response} />
+      <Filter getAllApartments={getAllApartments} loading={loading} setLoading={setLoading} setResponse={setResponse} response={response} />
     </React.Fragment>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import "./styleNavBar.css";
 import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -7,6 +7,7 @@ const Link = React.lazy(() => import("../Link/Link"))
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
+  const [lightFlag, setLightFlag] = useState(true)
   let navbarCollapse;
 
 
@@ -22,15 +23,16 @@ const Navbar = () => {
     });
   };
   // change color of nav item when click on it
-  const changeStyleClassFotNavItem=(e)=>{
+  const changeStyleClassFotNavItem = (e) => {
     e.target.classList.add('selectedNavElement');
     document.querySelectorAll('.nav-link').forEach((element) => {
       if (element !== e.target) {
         element.classList.remove('selectedNavElement');
       }
     });
+    navbarCollapse.toggle();
   }
-  
+
   useEffect(() => {
     specifyStyleForNav();
     // Call the function initially and listen for window resize events
@@ -41,7 +43,7 @@ const Navbar = () => {
     navbarCollapse = new bootstrap.Collapse(document.getElementById('navbarSupportedContent'), {
       toggle: false // Set to false to manually control the collapse state
     });
-    
+
 
     // Cleanup on component unmount
     return () => {
@@ -69,17 +71,36 @@ const Navbar = () => {
     }
   };
 
+
+  const turnOnDarkMode = () => {
+    document.querySelector('body').classList.toggle('dark');
+    //change label inner text to light mode
+    let darkModeButton = document.querySelector("nav button#darkmode")
+    console.log(darkModeButton.innerHTML);
+    darkModeButton.classList.replace('btn-outline-light', 'btn-outline-dark')
+
+    if (lightFlag) {
+      darkModeButton.classList.add('btn-outline-light')
+      darkModeButton.classList.remove('btn-outline-dark')
+      setLightFlag(false);
+    }
+    else {
+      darkModeButton.classList.add('btn-outline-dark')
+      darkModeButton.classList.remove('btn-outline-light')
+      setLightFlag(true);
+    }
+  }
   return (
     <>
       <nav
         id='navBarMain'
-        className='navbar navbar-expand-lg mt-2 bg-responsiveTransparentAndPrimColorWhenPhone'
+        className='navbar navbar-expand-lg pt-2 bg-responsiveTransparentAndPrimColorWhenPhone'
         data-bs-theme='dark'
       >
         <div className='container-fluid mx-3 d-flex justify-content-between '>
 
           <Link className='navbar-brand ' to='/'>
-            <img src='Images/Logo.png' style={{ width: '120px' }} alt='logo website ' />
+            <img src='Images/Logo.png' className='noneImageHover' style={{ width: '120px' }} alt='logo website ' />
           </Link>
 
           <button
@@ -97,28 +118,28 @@ const Navbar = () => {
             <div />
             <ul className='navbar-nav gap-3  d-flex justify-content-between mb-2 mb-lg-0'>
               <li className='nav-item '>
-                <Link className='nav-link active selectedNavElement'  onClick={(e)=>changeStyleClassFotNavItem(e)} to='/'>
+                <Link className='nav-link active selectedNavElement' onClick={(e) => changeStyleClassFotNavItem(e)} to='/'>
                   {t("Navbar Home")}
                 </Link>
               </li>
               <li className='nav-item '>
-                <Link className='nav-link active' aria_current='About' onClick={(e)=>changeStyleClassFotNavItem(e)} to='/About'>
+                <Link className='nav-link active' aria_current='About' onClick={(e) => changeStyleClassFotNavItem(e)} to='/About'>
                   {t("Navbar About")}
                 </Link>
               </li>
               <li className='nav-item '>
-                <Link className='nav-link active' aria_current='Buy' onClick={(e)=>changeStyleClassFotNavItem(e)} to='/Buy'>
+                <Link className='nav-link active' aria_current='Buy' onClick={(e) => changeStyleClassFotNavItem(e)} to='/Buy'>
                   {t("Navbar Buy")}
                 </Link>
               </li>
               <li className='nav-item '>
-                <Link className='nav-link active' aria_current='Rent' onClick={(e)=>changeStyleClassFotNavItem(e)} to='/Rent'>
+                <Link className='nav-link active' aria_current='Rent' onClick={(e) => changeStyleClassFotNavItem(e)} to='/Rent'>
                   {t("Navbar Rent")}
 
                 </Link>
               </li>
               <li className='nav-item'>
-                <Link className='nav-link active' aria_current='Contact' onClick={(e)=>changeStyleClassFotNavItem(e)} to='/Contact'>
+                <Link className='nav-link active' aria_current='Contact' onClick={(e) => changeStyleClassFotNavItem(e)} to='/Contact'>
                   {t("Navbar Contact")}
 
                 </Link>
@@ -126,44 +147,60 @@ const Navbar = () => {
             </ul>
             <ul className='navbar-nav d-flex gap-3  mb-2 mb-lg-0'>
               {/* login and sign uo button with language switch */}
-              <li className='nav-item'>
+              {/*
+//Login system
+
+               <li className='nav-item'>
                 <button className='navbar-button   '  to='/Login' data-bs-toggle="modal" data-bs-target="#login">
                   {t("Navbar Login")}
                 </button>
               </li>
               <li className='nav-item'>
-                <Link className='sButton p-2 sButtonGreen  '  to='/forms#SignUp'>
+                <Link className='sButton p-2 sButtonGreen  '  to='/forms/SignUp'>
                   {t("Navbar Register")}
                 </Link>
-              </li>
-              <li className='languageSwitch' 
-              onClick={() => {
-                let flagDirection = i18n.language == 'en';
+              </li> */}
+              <li className='languageSwitch'
+                onClick={() => {
+                  let flagDirection = i18n.language == 'en';
 
-                flagDirection ? 
-                i18n.changeLanguage('ar') :
-                i18n.changeLanguage('en');
-                flagDirection? document.body.style.direction = 'rtl' : document.body.style.direction = 'ltr';
+                  flagDirection ?
+                    i18n.changeLanguage('ar') :
+                    i18n.changeLanguage('en');
+                  flagDirection ? document.body.style.direction = 'rtl' : document.body.style.direction = 'ltr';
 
-              }}
+                }}
               >
-              <i class="fa-solid fa-earth-americas text-secondary mx-1"></i>
-              {i18n.language == "ar" ? 
-                <span className=' p-1' >
-                  English
-                </span>
-                :
-                  <span className='' >
+                <i className="fa-solid fa-earth-americas mx-1 text-blackToWhite " ></i>
+                {i18n.language == "ar" ?
+                  <span className=' p-1' >
+                    English
+                  </span>
+                  :
+                  <span className='p-1' >
                     عربي
                   </span>
-              }
+                }
+              </li>
+
+              <li>
+                <button type="button" className='btn btn-outline-dark ' name='dark mode button' id='darkmode' onClick={turnOnDarkMode}>
+                  <i className="fa-solid fa-circle-half-stroke">
+
+                  </i>
+                </button>
+
               </li>
 
             </ul>
           </div>
         </div>
       </nav>
-      <Login/>
+
+      {/*
+      //Login system
+
+       <Login/> */}
     </>
   );
 };
