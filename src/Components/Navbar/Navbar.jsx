@@ -174,11 +174,11 @@ const Navbar = () => {
                 <i className="fa-solid fa-earth-americas mx-1 text-blackToWhite " ></i>
                 {i18n.language == "ar" ?
                   <span className=' p-1' >
-                    English
+                    English - EN
                   </span>
                   :
                   <span className='p-1' >
-                    عربي
+                    العربية - AR
                   </span>
                 }
               </li>
