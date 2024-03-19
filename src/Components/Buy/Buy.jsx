@@ -129,6 +129,8 @@ const Buy = () => {
           </div>
         </form> */}
         <div className="Apartments mt-5  w-100    ">
+        <div className="container-fluid w-90 m-auto">
+                 <div className="row column-gap-2">
           {loading ?
             [true, false, true].map((item, index) => {
               return <ApartmentLoading key={index} flag={item} />
@@ -140,6 +142,8 @@ const Buy = () => {
               response?.data.map((item, index) => {
                 return <ApartmentPoster key={index} index={index} previousPage="Area" loading={loading} flat={item} flag={index % 2 == 0 ? false : true} />
               })}
+                  </div>
+                  </div>
         </div>
         <div>
           {(response?.count > 0 && (response?.count / response?.pageSize) >= response?.pageIndex) ? <button onClick={(e) => {

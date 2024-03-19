@@ -14,7 +14,7 @@ export default function Filter({ getAllApartments, setResponse, loading, respons
         min: 0,
         max: 10000
     });
-    const handelonChangeSelector = (regionId, areaId = objSearchSelctor.areaId, govId = objSearchSelctor.govId) => {
+    const handleOnChangeSelector = (regionId, areaId = objSearchSelctor.areaId, govId = objSearchSelctor.govId) => {
         setObjSearch({ govId, areaId, regionId })
     }
     const handleSubmit = (e) => {
@@ -28,7 +28,7 @@ export default function Filter({ getAllApartments, setResponse, loading, respons
         });
         getAllApartments(1, true, objSearchSelctor.govId, objSearchSelctor.areaId, objSearchSelctor.regionId);
     }
-    const [flag, setFlag] = useState(true)
+    const [flag, setFlag] = useState(false)
     const { t, i18n } = useTranslation();
 
 
@@ -79,7 +79,7 @@ export default function Filter({ getAllApartments, setResponse, loading, respons
     return (
         <React.Fragment>
             <div className={"position-fixed top-0 bottom-0 d-flex align-items-center  vh-100 "} style={{ zIndex: "999" }}>
-                <div className={' rounded-4 py-3 p-1 align-items-center mb-5  ' + style.filterDivShow} id='filterDiv' style={{ width: "300px" }}>
+                <div className={' rounded-4 py-3 p-1 align-items-center mb-5  ' + style.filterDivHide} id='filterDiv' style={{ width: "300px" }}>
                     <div className="bg-white shadow py-5 w-100 rounded-5 d-flex flex-column justify-content-center align-items-center px-2 position-relative">
                         {/* button close */}
                         <button type='button'
@@ -101,7 +101,7 @@ export default function Filter({ getAllApartments, setResponse, loading, respons
                                 maxPrice: response.maxPrice??10000,
                             }} setPrice={setPrice}
                             /> */}
-                            <SelectFilter t={t} i18n={i18n} handelonChangeSelector={handelonChangeSelector} />
+                            <SelectFilter t={t} i18n={i18n} handleOnChangeSelector={handleOnChangeSelector} />
                             <button type='submit' className='sButton sButtonGreen '>
                                 {t("Search")}
                             </button>
@@ -115,9 +115,9 @@ export default function Filter({ getAllApartments, setResponse, loading, respons
                     <button type='button' id='filterButton'
                         onClick={(e) => (flag ? hideFilter() : showFilter(e))}
 
-                        className={" sButton sButtonGreen rounded-circle p-2 border-0  " + style.filterButton}
-                        style={{ width: "75px", height: "75px", fontWeight: "bolder", fontSize: "32px", display: "none" }}>
-                        <i class="fa-solid fa-bars-staggered"></i>
+                        className={" sButton sButtonGreen rounded-circle p-2 border-0 shadow  " + style.filterButton}
+                        style={{ width: "75px", height: "75px", fontWeight: "bolder", fontSize: "32px" }}>
+                        <i className="fa-solid fa-bars-staggered"></i>
                     </button>
 
                 </div>

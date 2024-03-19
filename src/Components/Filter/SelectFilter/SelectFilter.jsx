@@ -1,14 +1,14 @@
 import React from 'react'
 import style from "./select.module.css"
 import ApiManger from '../../JsClasses/apiManager.js';
-export default function SelectFilter({ t, i18n ,handelonChangeSelector}) {
+export default function SelectFilter({ t, i18n ,handleOnChangeSelector}) {
 
     // this function to get the value of search input and set it to govId
     const handleSearchByGovId = (e) => {
         e.preventDefault();
         clearAreaSelector();
         clearRegionsSelector();
-        handelonChangeSelector("", "", e.target.value);
+        handleOnChangeSelector("", "", e.target.value);
         if (e.target.value != "") {
             ApiManger.getAreasOfGov(e.target.value).then((response) => {
                 appendChildToAreasSelector(response);
@@ -25,7 +25,7 @@ export default function SelectFilter({ t, i18n ,handelonChangeSelector}) {
     const handleSearchByAreaId = (e) => {
         e.preventDefault();
         clearRegionsSelector();
-        handelonChangeSelector("", e.target.value);
+        handleOnChangeSelector("", e.target.value);
         ApiManger.getRegionsOfArea(e.target.value).then((response) => {
             if (response.code != 401)
                 appendChildToRegionsSelector(response);
@@ -36,7 +36,7 @@ export default function SelectFilter({ t, i18n ,handelonChangeSelector}) {
     // this function to get the value of search input and set it to regionId and get all apartments by regionId
     const handleSearchByRegionId = (e) => {
         e.preventDefault();
-        handelonChangeSelector(e.target.value);
+        handleOnChangeSelector(e.target.value);
     }
 
     /* Helper Functions */

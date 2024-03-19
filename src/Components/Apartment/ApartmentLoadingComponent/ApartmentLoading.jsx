@@ -5,13 +5,13 @@ const ApartmentLoading = ({ flag }) => {
     const{t}=useTranslation();
     return (
 
-        <div className={`w-75 w-sm-90 p-0 mb-3 rounded-4 placeholder-glow overflow-hidden m-auto shadow ${flag ? 'bg-primColor' : 'bg-whiteToBlack'}`}>
+        <div className={`col-lg-5 w-sm-90 p-0 mb-3 rounded-4 placeholder-glow overflow-hidden m-auto shadow ${flag ? 'bg-primColor' : 'bg-whiteToBlack'}`}>
             <div className="container-fluid overflow-hidden">
                 <div className="row">
-                    <div className="col-md-4 AbartmentImage p-0 overflow-hidden" >
+                    <div className="col-md-5 AbartmentImage p-0 overflow-hidden" >
                         <img src="Images/RandomBuilding.jpg" className="w-100 h-100" alt="apartment Picture" />
                     </div>
-                    <div className={`col-md-8 fs-3 fw-bolder AbartmentDesc ${flag ? 'text-white' : 'text-primColor'}`}>
+                    <div className={`col-md-7 fs-3 fw-bolder AbartmentDesc ${flag ? 'text-white' : 'text-primColor'}`}>
                         <div className="fs-3 px-3 fw-bolder w-100">
                             <h2 className="py-2"> <span className="placeholder col-7"></span> </h2>
                             <h2 className="py-2"> <span className="placeholder col-10"></span></h2>

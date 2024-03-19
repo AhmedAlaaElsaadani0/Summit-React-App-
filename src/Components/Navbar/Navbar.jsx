@@ -62,12 +62,12 @@ const Navbar = () => {
       // add the attribute data-bs-theme and set its value dark
       element.setAttribute('data-bs-theme', 'dark');
       // change image src to icon.png
-      document.querySelector('#navBarMain img').src = 'Images/Icon.png';
+      document.querySelector('#navBarMain img').src = './Images/Icon.png';
     } else {
       // Reset the attribute to its initial value when the screen width is not less than 789px
       element.removeAttribute('data-bs-theme'); // Change 'initial-value' to your initial attribute value
       // change image src to logo.png
-      document.querySelector('#navBarMain img').src = 'Images/Logo.png';
+      document.querySelector('#navBarMain img').src = './Images/Logo.png';
     }
   };
 
@@ -100,7 +100,7 @@ const Navbar = () => {
         <div className='container-fluid mx-3 d-flex justify-content-between '>
 
           <Link className='navbar-brand ' to='/'>
-            <img src='Images/Logo.png' className='noneImageHover' style={{ width: '120px' }} alt='logo website ' />
+            <img src='./Images/Logo.png' className='noneImageHover' style={{ width: '120px' }} alt='logo website ' />
           </Link>
 
           <button

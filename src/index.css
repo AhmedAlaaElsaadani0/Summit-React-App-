@@ -64,7 +64,9 @@ body{
 .text-secColor{
   color: var(--SecColor)!important;
 }
-
+.w-90{
+  width: 90%!important;
+}
 
 .myVh-100{
   height: calc(100dvh - 120px);

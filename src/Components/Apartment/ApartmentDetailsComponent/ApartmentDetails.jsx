@@ -8,13 +8,13 @@ import ApartmentLoading from '../ApartmentLoadingComponent/ApartmentLoading';
 
 const ApartmentDetails = (props) => {
   const { t, i18n } = useTranslation();
-  const [flat, setflat] = useState(null);
+  const [flat, setFlat] = useState(null);
   const { id } = useParams();
   const [apartmentSoldFlag, setApartmentSoldFlag] = useState(false)
   useEffect(() => {
-    setflat(null)
-    document.querySelectorAll('.AbartmentImage').forEach((apartmentImage) => {
-      document.querySelectorAll('.AbartmentDesc').forEach((apartmentDesc) => {
+    setFlat(null)
+    document.querySelectorAll('.ApartmentImage').forEach((apartmentImage) => {
+      document.querySelectorAll('.ApartmentDesc').forEach((apartmentDesc) => {
         apartmentImage.style.height = `${apartmentDesc.clientHeight}px`;
       });
     });
@@ -29,7 +29,7 @@ const ApartmentDetails = (props) => {
       setApartmentSoldFlag(true)
     }
     else{
-      setflat(data[0]);
+      setFlat(data[0]);
       setApartmentSoldFlag(false)
 
     }
@@ -42,7 +42,7 @@ const ApartmentDetails = (props) => {
         <div className='d-flex flex-column align-items-center'>
           <img src="/Images/Sold.png" alt="sold images"  style={{width:"300px"}}/>
           <h3 className='text-primColor fw-bolder'>
-            {t("we are sorry but this appartment was sold")}
+            {t("we are sorry but this apartment was sold")}
           </h3>
 
 
@@ -54,19 +54,19 @@ const ApartmentDetails = (props) => {
     (flat==null? <ApartmentLoading/> : 
         
     <div className={`w-75 w-sm-90 p-0 rounded-4 m-auto shadow bg-primColor `} >
-      <div className="container-fluied overflow-hidden">
+      <div className="overflow-hidden">
         <div className="row position-relative">
-          <div className="col-md-4 AbartmentImage">
+          <div className="col-md-4 ApartmentImage">
             <div className="w-100 h-100">
 
               <AparmentSlider flagDetails={true} flatImages={flat.pictures} />
 
             </div>
           </div>
-          <div className={`col-md-8 fs-3 fw-bolder AbartmentDesc text-white`}>
+          <div className={`col-md-8 fs-3 fw-bolder ApartmentDesc text-white`}>
             <div className="fs-3 px-3 fw-bolder w-100">
               <h2 className="py-2">{flat.title} </h2>
-              <h2 className="py-2">{flat.governorate + "/ " + flat.area + "/ " + flat.region}</h2>
+              <p className="pt-2 fs-4">{flat.governorate + "- " + flat.area + "- " + flat.region}</p>
               <div className={`text-black fs-4 p-4 text-white`}>
                 <p id="Floor">
                   {t("Apart Floor")}  <span className="fw-normal"> {flat.floor} </span>
@@ -74,10 +74,10 @@ const ApartmentDetails = (props) => {
                 <p id="Price">
                   {t("Apart Price")} <span className="fw-normal"> {flat.price} </span>
                 </p>
-                <p id="Apartmentn">
+                <p id="Apartment">
                   {t("Apart Condition")} <span className="fw-normal">{flat.condition}</span>
                 </p>
-                <p id="Descripition">
+                <p id="Description">
                   {t("Apart Descrp")} <span className="fw-normal">{flat.description}</span>
                 </p>   <div className="w-100  d-flex justify-content-between">
                   <div className="contact text-white">
