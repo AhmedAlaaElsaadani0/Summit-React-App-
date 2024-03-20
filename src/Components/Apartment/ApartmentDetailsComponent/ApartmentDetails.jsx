@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import ApartmentSlider from "../ApartmentSliderComponent/ApartmentSlider";
-import ErrorPage from "../../ErrorPage/ErrorPage";
 import { useTranslation } from "react-i18next";
 import ApiCalling from "../../JsClasses/apiManager";
 import ApartmentLoading from "../ApartmentLoadingComponent/ApartmentLoading";
-
+import style from "./ApartmentDetails.module.css"
 const ApartmentDetails = (props) => {
   const { t, i18n } = useTranslation();
   const [flat, setFlat] = useState(null);
@@ -95,11 +94,8 @@ const ApartmentDetails = (props) => {
                             }
                           >
                             <div
-                              className={"rounded-circle d-flex justify-content-center align-items-center bg-white me-2 "}
-                              style={{
-                                width: "25px",
-                                height: "25px",
-                              }}
+                              className={style.socialMember}
+                          
                             >
                               <a
                                 href="https://www.facebook.com/Summit.develpmentegy?sfnsn=scwspmo&mibextid=RUbZ1f"
@@ -113,7 +109,7 @@ const ApartmentDetails = (props) => {
                             </div>
 
                             <div
-                              className={"rounded-circle d-flex justify-content-center align-items-center bg-white me-2"}
+                              className={style.socialMember}
                               style={{
                                 width: "25px",
                                 height: "25px",
@@ -131,7 +127,7 @@ const ApartmentDetails = (props) => {
                             </div>
 
                             <div
-                              className={"rounded-circle d-flex justify-content-center align-items-center bg-white me-2"}
+                              className={style.socialMember}
                               style={{
                                 width: "25px",
                                 height: "25px",
