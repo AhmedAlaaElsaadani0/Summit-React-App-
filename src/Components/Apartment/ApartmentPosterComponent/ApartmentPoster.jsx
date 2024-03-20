@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ApartmentSlider from '../ApartmentSliderComponent/AparmentSlider';
+import ApartmentSlider from '../ApartmentSliderComponent/ApartmentSlider';
 import { useTranslation } from 'react-i18next';
 
 const ApartmentPoster = (props) => {
@@ -56,9 +56,9 @@ const ApartmentPoster = (props) => {
                   </div>
                 </div>
               </div>
-              <div className={`data position-absolute fw-bolder top-0 ${i18n.language=="ar"?"end-0 me-3":"start-0 ms-3"} mt-2 rounded   ${!flag ? "bg-primColor text-white" : "bg-white  text-primColor"} `} style={{ width: "fit-content",fontSize:"11px" }}>
+              <div className={`data position-absolute fw-bolder z-1 top-0 ${i18n.language=="ar"?"end-0 me-3":"start-0 ms-3"} mt-2 rounded   ${!flag ? "bg-primColor text-white" : "bg-white  text-primColor"} `} style={{ width: "fit-content",fontSize:"11px" }}>
 
-                <p id="date" className='mb-0' >
+                <p id="date" className='mb-0 ' >
                   {t("Apart Post")} <span className=""> {flat.createdAt} </span>
                 </p>
 

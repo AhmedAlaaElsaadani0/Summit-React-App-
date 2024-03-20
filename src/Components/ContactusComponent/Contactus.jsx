@@ -1,9 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import styleContactus from './Contactus.module.css';
+import styleContactUs from './Contactus.module.css';
 import { useTranslation } from 'react-i18next';
 
-const Contactus = (props) => {
+const ContactUs = (props) => {
   const { t, i18n } = useTranslation();
   return (
     <>
@@ -21,38 +21,58 @@ const Contactus = (props) => {
         </Helmet>
       ) : null}
       <div className='d-flex justify-content-center align-items-center mt-5 ' id='Contact'>
-        <div className={`${styleContactus.widthEle} container p-5 justify-content-center d-flex bg-primColor mob-style rounded-5 align-items-center flex-column `}>
-          <h2 className={` mb-5 headingForSeactions  ${styleContactus.headingContact}`}>{t('Contact Paragraph')}</h2>
-          <button className='btn bg-white btn-toolbar text-primColor fs-1 px-4 py-1 fw-bolder mb-5 '>{t("Contact Header")}</button>
-          <div className={`d-flex justify-content-between socialMedia mb-5 ${styleContactus.socialMedia}`}>
+        <div className={`${styleContactUs.widthEle} container p-5 justify-content-center d-flex bg-primColor mob-style rounded-5 align-items-center flex-column `}>
+          <h2 className={` mb-5 headingForSeactions  ${styleContactUs.headingContact}`}>{t('Contact Paragraph')}</h2>
+          <button className='btn bg-white btn-toolbar text-primColor fs-1 px-4 py-1 fw-bolder mb-5 '>{t("Contact Header")}          </button>
+          <div className={`d-flex justify-content-between socialMedia mb-5 ${styleContactUs.socialMedia}`}>
             <div
-              className={`rounded-circle ${styleContactus.socialMediaMember}`}
+              className={`rounded-circle d-flex justify-content-center align-items-center ${styleContactUs.socialMediaMember}`}
               style={{
                 width: '50px',
                 height: '50px',
               }}
-            ></div>
+            > 
+            <a href='https://www.facebook.com/Summit.develpmentegy?sfnsn=scwspmo&mibextid=RUbZ1f' className='text-decoration-none  '>
+
+            <i style={{fontSize:"2rem"}} className="fa-brands fa-facebook"></i>
+            </a>
+            </div>
 
             <div
-              className={`rounded-circle ${styleContactus.socialMediaMember}`}
+              className={`rounded-circle d-flex justify-content-center align-items-center ${styleContactUs.socialMediaMember}`}
               style={{
                 width: '50px',
                 height: '50px',
               }}
-            ></div>
+            > 
+            <a href='https://www.instagram.com/invites/contact/?i=jfc5f4kwlaj8&utm_content=ttcxci2' className='text-decoration-none  '>
+
+            <i style={{fontSize:"2rem"}} className="fa-brands fa-instagram"></i>
+            </a>
+            </div>
 
             <div
-              className={`rounded-circle ${styleContactus.socialMediaMember}`}
+              className={`rounded-circle d-flex justify-content-center align-items-center ${styleContactUs.socialMediaMember}`}
               style={{
                 width: '50px',
                 height: '50px',
               }}
-            ></div>
+            > 
+            <a href='https://wa.me/message/T4HZAXRBWHYTP1?src=qr' className='text-decoration-none  '>
+
+            <i style={{fontSize:"2rem"}} className="fa-brands fa-whatsapp"></i>
+            </a>
+            </div>
           </div>
+          <p dir='ltr' className='text-bg-white fs-3  m-0'>
+            
+             +201024128886
+
+          </p>
         </div>
       </div>
     </>
   );
 };
 
-export default Contactus;
+export default ContactUs;

@@ -3,10 +3,8 @@ import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-export default class AparmetSlider extends Component {
+export default class ApartmentSlider extends Component {
   render() {
-    let uniqeNum = this.props.uniqeNum;
-    let flagDetails = this.props.flagDetails?? false;
     return <React.Fragment>
       {/* <div id={"carouselExampleWhite"+uniqeNum}  className="carousel  carousel-white hide slide" style={
         flagDetails?{ 
@@ -66,6 +64,10 @@ export default class AparmetSlider extends Component {
             background-color: #377474;
             opacity: 1;
           }
+          .swiper-initialized{
+            height: 100%;
+            width: 100%;
+          }
             `}
       </style>
       <Swiper
@@ -83,12 +85,12 @@ export default class AparmetSlider extends Component {
           this.props.flatImages.length > 0 ?
             this.props.flatImages.map((item, index) => {
               return <SwiperSlide key={index}  >
-                <img src={item.url} className="d-block rounded-3" style={{ height: `350px`, width: `100%` }} alt="apartment Picture" />
+                <img src={item.url} className="d-block rounded-3" style={{ height: `100%`, width: `100%` }} alt="apartment Picture" />
               </SwiperSlide>
             })
             :
             <SwiperSlide  >
-              <img src="Images/RandomBuilding.jpg" className="w-100 h-100 d-block" alt="apartment Picture" />
+              <img src="Images/RandomBuilding.jpg" style={{ height: `100%`, width: `100%` }}  alt="apartment Picture" />
             </SwiperSlide>
         }
       </Swiper>
