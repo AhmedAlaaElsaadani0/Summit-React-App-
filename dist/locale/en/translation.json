@@ -87,7 +87,7 @@
         "Cairo":"Cairo",
         "Giza":"Giza",
         
-    "we are sorry but this apartment was sold":"we are sorry but this apartment was sold",
+    "we are sorry but this appartment was sold":"we are sorry but this appartment was sold",
     "Form Name Error":"Name must be at least 4 characters",
     "Form Email Error":"Email must be a valid email address",
     "Form Phone Error":"Phone must be at least 11 characters and start with 01",

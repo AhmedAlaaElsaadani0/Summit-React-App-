@@ -22,7 +22,7 @@ export default class ApiCalling {
                 'Content-Type': 'application/json'
             }
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
   /////////////////////////// login ///////////////////////////
@@ -45,7 +45,7 @@ export default class ApiCalling {
                 body: JSON.stringify(user)
     
             }).then(response => response.json())
-            console.log(response);
+            
             return response;
         }
 
@@ -72,7 +72,7 @@ export default class ApiCalling {
                 body: JSON.stringify(user)
     
             }).then(response => response.json())
-            console.log(response);
+            
             return response;
         }
       /////////////////// verify Account ///////////////////////////
@@ -89,7 +89,7 @@ export default class ApiCalling {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     };
     /**
@@ -106,7 +106,7 @@ export default class ApiCalling {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     };
     ////////////////// General ///////////////////////////
@@ -141,7 +141,7 @@ export default class ApiCalling {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
     /////////////////////////// Admin ///////////////////////////
@@ -164,7 +164,7 @@ export default class ApiCalling {
             body: JSON.stringify(user)
 
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
     /**
@@ -226,7 +226,7 @@ export default class ApiCalling {
             body: JSON.stringify(user)
 
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     };
    
@@ -251,7 +251,7 @@ export default class ApiCalling {
             body: JSON.stringify(area)
 
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
 
@@ -275,7 +275,7 @@ export default class ApiCalling {
             body: JSON.stringify(area)
 
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
      /**
@@ -290,7 +290,7 @@ export default class ApiCalling {
                     "Authorization": `Bearer ${token}`
                 },
             }).then(response => response.json())
-            console.log(response);
+            
             return response;
         }
     /**
@@ -305,7 +305,7 @@ export default class ApiCalling {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
     /////////////////////////// Regions ///////////////////////////
@@ -329,7 +329,7 @@ export default class ApiCalling {
                 body: JSON.stringify(region)
     
             }).then(response => response.json())
-            console.log(response);
+            
             return response;
         }  
          /**
@@ -352,7 +352,7 @@ export default class ApiCalling {
             body: JSON.stringify(region)
 
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }  
      /**
@@ -367,7 +367,7 @@ export default class ApiCalling {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
     
@@ -383,7 +383,7 @@ export default class ApiCalling {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
     /////////////////////////// Aparetments ///////////////////////////
@@ -423,7 +423,7 @@ export default class ApiCalling {
                 body: formData
     
             }).then(response => response.json())
-            console.log(response);
+            
             return response;
         }
         /**
@@ -463,7 +463,7 @@ export default class ApiCalling {
                 body: formData
     
             }).then(response => response.json())
-            console.log(response);
+            
             return response;
         }
 
@@ -475,7 +475,7 @@ export default class ApiCalling {
         const response = await fetch(`${ApartmentBaseURl}${param}`, {
             method: 'GET',
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
 
@@ -487,7 +487,7 @@ export default class ApiCalling {
         const response = await fetch(`${ApartmentBaseURl}?Id=${id}&language=${lng}`, {
             method: 'GET',
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
 
@@ -503,7 +503,7 @@ export default class ApiCalling {
                 "Authorization": `Bearer ${token}`
             },
         }).then(response => response.json())
-        console.log(response);
+        
         return response;
     }
 

@@ -9,6 +9,7 @@ import RootLayout from './Components/RootLayout/RootLayout';
 // import Form from './Components/Form/Form';
 // import Signup from './Components/Form/Signup/Signup';
 import { UserContextProvider } from './Context/UserContextProvider';
+import Error from './Components/Error/Error';
 // Wrap your components with React.lazy
 const Home = lazy(() => import('./Components/HomeComponent/Home'));
 const About = lazy(() => import('./Components/AboutComponent/About'));
@@ -22,6 +23,7 @@ const ErrorPage = lazy(() => import('./Components/ErrorPage/ErrorPage'));
 
 let routers = createBrowserRouter([
   {
+    errorElement:<Error/>,
     path: '/', element: <RootLayout />, children: [
       { index: true, element: <Home /> },
       { path: 'About', element: <About headFlag={true} /> },
@@ -32,8 +34,8 @@ let routers = createBrowserRouter([
 
 
 
-    ]
-  }
+    ],
+    }
   //Login system
   // ,
   // {
@@ -57,12 +59,12 @@ function App() {
     document.body.dir = "ltr";
 
 
-
   return <>
-
+  <ErrorTracking>
     <UserContextProvider>
       <RouterProvider router={routers} />
     </UserContextProvider>
+  </ErrorTracking>
 
   </>
 }
