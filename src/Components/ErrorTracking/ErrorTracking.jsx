@@ -15,8 +15,6 @@ async function sendErrorDetailsToAPI(errorDetails) {
       }),
       redirect: "follow",
     });
-
-    console.log(response);
   } catch (error) {
     console.error("Error sending error details to API:", error);
   }
