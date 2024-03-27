@@ -8,7 +8,7 @@ async function sendErrorDetailsToAPI(errorDetails) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        ProjectId: "8d4ba975-4ae7-48d0-9c68-b0e5d66c4516",
+        ProjectId: "e31b412d-258c-4ef7-ba62-14379fc64df7",
         Source: 2,
         Message: JSON.stringify(errorDetails.error),
         StackTrace: JSON.stringify(errorDetails.errorInfo),
