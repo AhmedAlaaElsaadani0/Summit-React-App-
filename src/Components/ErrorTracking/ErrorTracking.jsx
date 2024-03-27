@@ -33,12 +33,6 @@ class ErrorTracking extends Component {
 
   componentDidMount() {
     window.onerror = (msg, url, lineNo, columnNo, error) => {
-      alert("An error occurred:"+
-        "Error: " + msg+
-        "URL: " + url+
-        "Line: " + lineNo+
-        "Column: " + columnNo+
-        "Stack: " + error);
       sendErrorDetailsToAPI({
         error: "Error: " + msg,
         errorInfo: "URL: " + url + " Line: " + lineNo + " Column: " + columnNo + " Stack: " + error,

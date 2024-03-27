@@ -8,8 +8,9 @@ import RootLayout from './Components/RootLayout/RootLayout';
 //Login system
 // import Form from './Components/Form/Form';
 // import Signup from './Components/Form/Signup/Signup';
-import { UserContextProvider } from './Context/UserContextProvider';
+// import { UserContextProvider } from './Context/UserContextProvider';
 import Error from './Components/Error/Error';
+import ErrorTracking from './Components/ErrorTracking/ErrorTracking';
 // Wrap your components with React.lazy
 const Home = lazy(() => import('./Components/HomeComponent/Home'));
 const About = lazy(() => import('./Components/AboutComponent/About'));
@@ -61,9 +62,9 @@ function App() {
 
   return <>
   <ErrorTracking>
-    <UserContextProvider>
+    {/* <UserContextProvider> */}
       <RouterProvider router={routers} />
-    </UserContextProvider>
+    {/* </UserContextProvider> */}
   </ErrorTracking>
 
   </>
