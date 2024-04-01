@@ -30,7 +30,7 @@ const Navbar = () => {
         element.classList.remove('selectedNavElement');
       }
     });
-    navbarCollapse.toggle();
+    navbarCollapse.hide();
   }
 
   useEffect(() => {
