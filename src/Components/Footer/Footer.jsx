@@ -55,9 +55,9 @@ export default function Footer() {
         <div className='row justify-content-between w-100 '>
             <p className='mb-0'>{t("Footer Copy")}</p>
             <p dir="rtl" className=" mb-1 text-center m-auto"
-                        style={{fontSize: '12px', color: "rgba(255, 255, 255, 0.5)"}}> تم تطوير وبناء الموقع من قبل شركة <a
+                        style={{fontSize: '12px', color: "rgba(255, 255, 255, 0.5)"}}> {t("Footer IzI1")} <a
                             style={{color: "rgba(255, 255, 255, 0.5)", fontWeight: "600", textDecoration: "none",
-                          }}  href="https://www.izitechs.com">IzItechs</a> للبرمجيات وتطوير المواقع والتطبيقات</p>
+                          }}  href="https://www.izitechs.com">IzI Techs</a> {t("Footer IzI2")}</p>
                
         </div>
       </footer>
