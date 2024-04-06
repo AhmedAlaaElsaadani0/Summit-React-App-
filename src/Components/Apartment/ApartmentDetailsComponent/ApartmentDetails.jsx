@@ -47,20 +47,21 @@ const ApartmentDetails = (props) => {
           <ApartmentLoading />
         ) : (
           <div
-            className={`w-75 w-sm-90 p-0 rounded-4 m-auto shadow bg-primColor `}
+            className={` w-sm-90 p-0 rounded-4 m-auto shadow  ` } style={{width:"60%"}} 
           >
             <div className="overflow-hidden">
-              <div className="row position-relative">
-                <div className="col-md-4 ApartmentImage">
-                  <div className="w-100 h-100">
+              <div className="row position-relative" >
+                <div className="col-md-12 ApartmentImage" >
+                  <div className=" m-auto " style={{height:"550px"}} >
                     <ApartmentSlider
+                      key={flat.id}
                       flagDetails={true}
                       flatImages={flat.pictures}
                     />
                   </div>
                 </div>
                 <div
-                  className={`col-md-8 fs-3 fw-bolder ApartmentDesc text-white`}
+                  className={`col-md-12 fs-3 fw-bolder ApartmentDesc bg-primColor text-white`}
                 >
                   <div className="fs-3 px-3 fw-bolder w-100">
                     <h2 className="py-2">{flat.title} </h2>

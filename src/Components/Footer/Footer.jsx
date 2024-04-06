@@ -3,7 +3,7 @@ import FooterStyle from './Footer.module.css'
 import { useTranslation } from 'react-i18next';
 const Link=lazy(()=>import('../Link/Link'))
 export default function Footer() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return  (
     <div className={"container-fluid  "}>
       <footer className={"row row-cols-1 row-cols-sm-2 row-cols-md-5 pt-5 mt-5 border-top  "+FooterStyle.FooterBackground}>
@@ -25,7 +25,7 @@ export default function Footer() {
             <li className="nav-item mb-2"><Link to="./Contact" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer Contact")}</Link></li>
           </ul>
         </div>
-        <div className="col-lg col-md-3 text-center col-sm-6 mb-3">
+        {/* <div className="col-lg col-md-3 text-center col-sm-6 mb-3">
           <h5 className="text-primColor ">{t("Footer Support")}</h5>
           <ul className="nav flex-column p-0">
             <li className="nav-item mb-2"><Link to="#" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer Help")}</Link></li>
@@ -33,15 +33,14 @@ export default function Footer() {
             <li className="nav-item mb-2"><Link to="#" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer Terms")}</Link></li>
             
           </ul>
-        </div>
+        </div> */}
 
         <div className="col-lg col-md-3 text-center col-sm-6 mb-3">
           <h5 className="text-primColor ">{t("Footer Social")}</h5>
           <ul className="nav flex-column p-0">
-            <li className="nav-item mb-2"><Link to="#" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer Facebook")}</Link></li>
-            <li className="nav-item mb-2"><Link to="#" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer Linkedin")}</Link></li>
-            <li className="nav-item mb-2"><Link to="#" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer Instagram")}</Link></li>
-            <li className="nav-item mb-2"><Link to="#" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer X")}</Link></li>
+            <li className="nav-item mb-2"><a href="https://www.facebook.com/Summit.develpmentegy?sfnsn=scwspmo&mibextid=RUbZ1f" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer Facebook")}</a></li>
+            <li className="nav-item mb-2"><a href="https://www.instagram.com/invites/contact/?i=jfc5f4kwlaj8&utm_content=ttcxci2" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer Instagram")}</a></li>
+            <li className="nav-item mb-2"><a href="https://wa.me/message/T4HZAXRBWHYTP1?src=qr" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer whats")}</a></li>
           </ul>
         </div>
         <div className="col-lg col-md-12  col-sm-6 mb-3">

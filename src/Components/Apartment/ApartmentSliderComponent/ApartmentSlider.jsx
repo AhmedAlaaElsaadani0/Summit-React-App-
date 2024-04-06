@@ -4,7 +4,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 export default class ApartmentSlider extends Component {
+  
   render() {
+
+  
+
+
+
     return <React.Fragment>
       {/* <div id={"carouselExampleWhite"+uniqeNum}  className="carousel  carousel-white hide slide" style={
         flagDetails?{ 
@@ -76,8 +82,6 @@ export default class ApartmentSlider extends Component {
         slidesPerView={1}
         loop={true}
         pagination={{ clickable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
 
       >
 
@@ -85,12 +89,12 @@ export default class ApartmentSlider extends Component {
           this.props.flatImages.length > 0 ?
             this.props.flatImages.map((item, index) => {
               return <SwiperSlide key={index}  >
-                <img src={item.url} className="d-block rounded-3" style={{ height: `100%`, width: `100%` }} alt="apartment Picture" />
+                <img src={item.url} className="d-block rounded-3 rounded-bottom-0 object-fit-cover" style={{ height: `100%`, width: `100%` }} alt="apartment Picture" />
               </SwiperSlide>
             })
             :
             <SwiperSlide  >
-              <img src="Images/RandomBuilding.jpg" style={{ height: `100%`, width: `100%` }}  alt="apartment Picture" />
+              <img src="Images/RandomBuilding.jpg " style={{ height: `100%`, width: `100%` }} className='rounded-bottom-0'  alt="apartment Picture" />
             </SwiperSlide>
         }
       </Swiper>

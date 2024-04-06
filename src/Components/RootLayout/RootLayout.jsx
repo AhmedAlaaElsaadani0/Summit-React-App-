@@ -13,6 +13,7 @@ export default function RootLayout() {
     setLanguageFlagArabic(lng === "ar");
   });
 
+  // throw new Error("This is an error");  
   return (<React.Fragment>
 
     <div className={"mainContainer " + (languageFlagArabic?"cairoFont":"")}  >
