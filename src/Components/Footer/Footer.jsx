@@ -40,14 +40,14 @@ export default function Footer() {
           <ul className="nav flex-column p-0">
             <li className="nav-item mb-2"><a href="https://www.facebook.com/Summit.develpmentegy?sfnsn=scwspmo&mibextid=RUbZ1f" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer Facebook")}</a></li>
             <li className="nav-item mb-2"><a href="https://www.instagram.com/invites/contact/?i=jfc5f4kwlaj8&utm_content=ttcxci2" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer Instagram")}</a></li>
-            <li className="nav-item mb-2"><a href="https://wa.me/message/T4HZAXRBWHYTP1?src=qr" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer whats")}</a></li>
+            <li className="nav-item mb-2"><a href="https://wa.me/message/T4HZAXRBWHYTP1?src=qr" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer Whatsapp")}</a></li>
           </ul>
         </div>
         <div className="col-lg col-md-12  col-sm-6 mb-3">
         <ul className="nav  jsutify-content-center align-items-center h-100 d-flex flex-wrap">
-            <li className="nav-item mb-2 w-100"><i className="fa-solid fa-location-dot "></i>    {t("Footer Address Details")}</li>
-            <li className="nav-item mb-2 w-100"><i className="fa-solid fa-phone "></i>   {t("Footer Phone Details")} </li>
-            <li className="nav-item mb-2 w-100"><i className="fa-solid fa-envelope "></i>     {t("Footer Email Details")}</li>
+            <li className="nav-item mb-2 w-100"><i className="fa-solid fa-location-dot "></i>   <p dir='rtl'> {t("Footer Address Details")}</p></li>
+            <li className="nav-item mb-2 w-100"><i className="fa-solid fa-phone " ></i>   <p dir='ltr'>{t("Footer Phone Details")}</p> </li>
+            <li className="nav-item mb-2 w-100"><i className="fa-solid fa-envelope "></i>    <p dir='rtl'> {t("Footer Email Details")}</p></li>
           </ul>
         
         </div>

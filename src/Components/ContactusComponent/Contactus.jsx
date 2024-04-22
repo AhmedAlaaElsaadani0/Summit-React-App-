@@ -34,7 +34,7 @@ const ContactUs = (props) => {
             > 
             <a href='https://www.facebook.com/Summit.develpmentegy?sfnsn=scwspmo&mibextid=RUbZ1f' className='text-decoration-none  '>
 
-            <i style={{fontSize:"2rem"}} className="fa-brands fa-facebook"></i>
+            <i style={{fontSize:"2rem"}} className="fa-brands  text-primColor fa-facebook"></i>
             </a>
             </div>
 
@@ -47,7 +47,7 @@ const ContactUs = (props) => {
             > 
             <a href='https://www.instagram.com/invites/contact/?i=jfc5f4kwlaj8&utm_content=ttcxci2' className='text-decoration-none  '>
 
-            <i style={{fontSize:"2rem"}} className="fa-brands fa-instagram"></i>
+            <i style={{fontSize:"2rem"}} className="fa-brands text-primColor fa-instagram"></i>
             </a>
             </div>
 
@@ -60,13 +60,13 @@ const ContactUs = (props) => {
             > 
             <a href='https://wa.me/message/T4HZAXRBWHYTP1?src=qr' className='text-decoration-none  '>
 
-            <i style={{fontSize:"2rem"}} className="fa-brands fa-whatsapp"></i>
+            <i style={{fontSize:"2rem"}} className="fa-brands text-primColor fa-whatsapp"></i>
             </a>
             </div>
           </div>
-          <p dir='ltr' className='text-bg-white fs-3  m-0'>
+          <p dir='ltr' className='text-bg-white fs-3  text-white m-0'>
             
-             +201024128886
+             +2010 241 288 86
 
           </p>
         </div>
