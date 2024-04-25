@@ -45,9 +45,9 @@ export default function Footer() {
         </div>
         <div className="col-lg col-md-12  col-sm-6 mb-3">
         <ul className="nav  jsutify-content-center align-items-center h-100 d-flex flex-wrap">
-            <li className="nav-item mb-2 w-100"><i className="fa-solid fa-location-dot "></i>   <p dir='rtl'> {t("Footer Address Details")}</p></li>
-            <li className="nav-item mb-2 w-100"><i className="fa-solid fa-phone " ></i>   <p dir='ltr'>{t("Footer Phone Details")}</p> </li>
-            <li className="nav-item mb-2 w-100"><i className="fa-solid fa-envelope "></i>    <p dir='rtl'> {t("Footer Email Details")}</p></li>
+            <li className="nav-item mb-2 w-100 d-flex gap-3"><i className="fa-solid fa-location-dot "></i>   <p dir='rtl'> {t("Footer Address Details")}</p></li>
+            <li className="nav-item mb-2 w-100 d-flex gap-3"><i className="fa-solid fa-phone " ></i>   <p dir='ltr'>{t("Footer Phone Details")}</p> </li>
+            <li className="nav-item mb-2 w-100 d-flex gap-3"><i className="fa-solid fa-envelope "></i>    <p dir='rtl'> {t("Footer Email Details")}</p></li>
           </ul>
         
         </div>
