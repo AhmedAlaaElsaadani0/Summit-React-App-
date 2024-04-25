@@ -40,7 +40,7 @@ export default function Footer() {
           <ul className="nav flex-column p-0">
             <li className="nav-item mb-2"><a href="https://www.facebook.com/Summit.develpmentegy?sfnsn=scwspmo&mibextid=RUbZ1f" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer Facebook")}</a></li>
             <li className="nav-item mb-2"><a href="https://www.instagram.com/invites/contact/?i=jfc5f4kwlaj8&utm_content=ttcxci2" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer Instagram")}</a></li>
-            <li className="nav-item mb-2"><a href="https://wa.me/message/T4HZAXRBWHYTP1?src=qr" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer whats")}</a></li>
+            <li className="nav-item mb-2"><a href="https://wa.me/message/T4HZAXRBWHYTP1?src=qr" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Whatsapp")}</a></li>
           </ul>
         </div>
         <div className="col-lg col-md-12  col-sm-6 mb-3">

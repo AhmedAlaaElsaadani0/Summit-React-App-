@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./styleNavBar.css";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
-import Login from "../Form/Login/Login";
+// import Login from "../Form/Login/Login";
 const Link = React.lazy(() => import("../Link/Link"));
 
 const Navbar = () => {
@@ -29,7 +29,7 @@ const Navbar = () => {
         element.classList.remove("selectedNavElement");
       }
     });
-    navbarCollapse.hide();
+    navbarCollapse.toggle();
   };
 
   useEffect(() => {
@@ -100,7 +100,7 @@ const Navbar = () => {
         className="navbar navbar-expand-lg pt-2 bg-responsiveTransparentAndPrimColorWhenPhone"
         data-bs-theme="dark"
       >
-        <div className="container-fluid mx-3 d-flex justify-content-between ">
+        <div className="container d-flex justify-content-between ">
           <Link className="navbar-brand " to="/">
             <img
               src="./Images/Logo.png"
@@ -109,15 +109,11 @@ const Navbar = () => {
               alt="logo website "
             />
           </Link>
-
           <button
             className="navbar-toggler"
             type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+            onClick={() => {
+              navbarCollapse.toggle();}}
           >
             <span className="navbar-toggler-icon"></span>
           </button>

@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import homeStyle from './Home.module.css';
 import { useTranslation } from 'react-i18next';
 const About = lazy(() => import('../AboutComponent/About'));
-const Contactus = lazy(() => import('../ContactusComponent/Contactus'));
+// const Contactus = lazy(() => import('../ContactusComponent/Contactus'));
 const Link = lazy(() => import('../Link/Link'));
 
 const Home = () => {
@@ -45,7 +45,7 @@ const Home = () => {
         </div>
       </div>
       <About headFlag={false} />
-      <Contactus headFlag={false} />
+      {/* <Contactus headFlag={false} /> */}
     </>
   );
 };

@@ -31,6 +31,9 @@
 }
 
 @media only screen and (max-width: 1000px) {
+    .headingContact {
+        font-size: 3rem;
+    }
     .socialMedia {
         width: 70%;
     }
@@ -43,6 +46,9 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .headingContact {
+        font-size: 2.5rem;
+    }
     .socialMedia {
         width: 75%;
     }
@@ -54,6 +60,9 @@
 }
 
 @media only screen and (max-width: 500px) {
+    .headingContact {
+        font-size: 2rem;
+    }
     .mob-style {
         width: 75% !important;
 
@@ -68,4 +77,5 @@
     .socialMedia {
         width: 75%;
     }
+
 }
