@@ -45,18 +45,18 @@ export default function Footer() {
         </div>
         <div className="col-lg col-md-12  col-sm-6 mb-3">
         <ul className="nav  jsutify-content-center align-items-center h-100 d-flex flex-wrap">
-            <li className="nav-item mb-2 w-100"><i className="fa-solid fa-location-dot "></i>    {t("Footer Address Details")}</li>
-            <li className="nav-item mb-2 w-100"><i className="fa-solid fa-phone "></i>   {t("Footer Phone Details")} </li>
-            <li className="nav-item mb-2 w-100"><i className="fa-solid fa-envelope "></i>     {t("Footer Email Details")}</li>
+            <li className="nav-item mb-2 w-100"><i className="fa-solid fa-location-dot "></i>   <p dir='rtl'> {t("Footer Address Details")}</p></li>
+            <li className="nav-item mb-2 w-100"><i className="fa-solid fa-phone " ></i>   <p dir='ltr'>{t("Footer Phone Details")}</p> </li>
+            <li className="nav-item mb-2 w-100"><i className="fa-solid fa-envelope "></i>    <p dir='rtl'> {t("Footer Email Details")}</p></li>
           </ul>
         
         </div>
         <div className='row justify-content-between w-100 '>
             <p className='mb-0'>{t("Footer Copy")}</p>
             <p dir="rtl" className=" mb-1 text-center m-auto"
-                        style={{fontSize: '12px', color: "rgba(255, 255, 255, 0.5)"}}> تم تطوير وبناء الموقع من قبل شركة <a
+                        style={{fontSize: '12px', color: "rgba(255, 255, 255, 0.5)"}}> {t("Footer IzI1")} <a
                             style={{color: "rgba(255, 255, 255, 0.5)", fontWeight: "600", textDecoration: "none",
-                          }}  href="https://www.izitechs.com">IzItechs</a> للبرمجيات وتطوير المواقع والتطبيقات</p>
+                          }}  href="https://www.izitechs.com">IzI Techs</a> {t("Footer IzI2")}</p>
                
         </div>
       </footer>
