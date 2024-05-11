@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./styleNavBar.css";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
+import Logo from "../../assets/Images/Logo.png";
+import whiteIcon from "../../assets/Images/icon.png";
+
 // import Login from "../Form/Login/Login";
 const Link = React.lazy(() => import("../Link/Link"));
 
@@ -67,12 +70,12 @@ const Navbar = () => {
       // add the attribute data-bs-theme and set its value dark
       element.setAttribute("data-bs-theme", "dark");
       // change image src to icon.png
-      document.querySelector("#navBarMain img").src = "./Images/Icon.png";
+      document.querySelector("#navBarMain img").src = whiteIcon;
     } else {
       // Reset the attribute to its initial value when the screen width is not less than 789px
       element.removeAttribute("data-bs-theme"); // Change 'initial-value' to your initial attribute value
       // change image src to logo.png
-      document.querySelector("#navBarMain img").src = "./Images/Logo.png";
+      document.querySelector("#navBarMain img").src = Logo;
     }
   };
 
@@ -80,7 +83,6 @@ const Navbar = () => {
     document.querySelector("body").classList.toggle("dark");
     //change label inner text to light mode
     let darkModeButton = document.querySelector("nav button#darkmode");
-    console.log(darkModeButton.innerHTML);
     darkModeButton.classList.replace("btn-outline-light", "btn-outline-dark");
 
     if (lightFlag) {
@@ -103,7 +105,7 @@ const Navbar = () => {
         <div className="container d-flex justify-content-between ">
           <Link className="navbar-brand " to="/">
             <img
-              src="./Images/Logo.png"
+              src={Logo}
               className="noneImageHover"
               style={{ width: "120px" }}
               alt="logo website "

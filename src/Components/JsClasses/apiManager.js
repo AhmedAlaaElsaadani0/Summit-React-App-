@@ -510,3 +510,24 @@ export default class ApiCalling {
 
 }
 
+/**
+ * contact us
+ * @param {object} data 
+ * @returns 
+ */
+
+export async function contactUs(data) {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    const raw = JSON.stringify(data);
+
+    let response= await fetch(`${BaseURl}/contact`,
+        {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        })
+        .then( response=> response.json())
+    return response;
+}

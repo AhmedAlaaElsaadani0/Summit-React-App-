@@ -98,7 +98,7 @@ const ApartmentDetails = (props) => {
                               className={style.socialMember}
                           
                             >
-                              <a
+                              <a target="_blank"
                                 href="https://www.facebook.com/Summit.develpmentegy?sfnsn=scwspmo&mibextid=RUbZ1f"
                                 className="text-decoration-none  "
                               >
@@ -116,7 +116,7 @@ const ApartmentDetails = (props) => {
                                 height: "25px",
                               }}
                             >
-                              <a
+                              <a target="_blank"
                                 href="https://www.instagram.com/invites/contact/?i=jfc5f4kwlaj8&utm_content=ttcxci2"
                                 className="text-decoration-none  "
                               >
@@ -134,7 +134,7 @@ const ApartmentDetails = (props) => {
                                 height: "25px",
                               }}
                             >
-                              <a
+                              <a target="_blank"
                                 href="https://wa.me/message/T4HZAXRBWHYTP1?src=qr"
                                 className="text-decoration-none  "
                               >
