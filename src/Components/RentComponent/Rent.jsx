@@ -58,8 +58,13 @@ const Rent = () => {
       setLoading(false);
     } catch (error) {
       // Handle errors
-      console.error("Error fetching apartments:", error);
-      // Optionally, you can handle errors by displaying an error message to the user or logging them
+      setLoading(false);
+      setResponse(
+        prevResponse =>
+        ({
+          ...prevResponse,
+          data: []
+        }));      // Optionally, you can handle errors by displaying an error message to the user or logging them
     }
   };
 

@@ -21,7 +21,7 @@ const Buy = () => {
   const { t, i18n } = useTranslation();
   const [prevLang, setPrevLang] = useState(i18n.language);
   const [buttonPressed, setButtonPressed] = useState(false);
-
+  
 
   // this main API call to get all apartments by using param
   const getAllApartments = async (pageIndex = response.pageIndex + 1, replaceApartmentFlag = false, govId = response.govId, areaId = response.areaId, regionId = response.regionId) => {
@@ -46,7 +46,6 @@ const Buy = () => {
         setResponse(
           prevResponse =>
           ({
-
             ...prevResponse,
             ...apiResponse,
             pageIndex: apiResponse.pageIndex,
@@ -57,8 +56,13 @@ const Buy = () => {
       setLoading(false);
     } catch (error) {
       // Handle errors
-      console.error("Error fetching apartments:", error);
-      // Optionally, you can handle errors by displaying an error message to the user or logging them
+      setLoading(false);
+      setResponse(
+        prevResponse =>
+        ({
+          ...prevResponse,
+          data: []
+        }));
     }
   };
 
