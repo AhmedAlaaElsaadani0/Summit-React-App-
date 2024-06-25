@@ -1,104 +1,68 @@
 import React, { Component } from 'react'
-import { Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
 export default class ApartmentSlider extends Component {
-  
   render() {
-
-  
-
-
-
-    return <React.Fragment>
-      {/* <div id={"carouselExampleWhite"+uniqeNum}  className="carousel  carousel-white hide slide" style={
-        flagDetails?{ 
-
-          height: "100%",
-          width: "100%",
-        }:{
-          height: "100%",
-          width: "100%",
-          maxHeight: "350px",
-        }
-      }>
-        <div className="carousel-indicators">
+    let { functionOnClickImage, thePopImageFlag } = this.props;
+    return (
+      <React.Fragment>
+        <style>
+          {`
+            .swiper-button-next, .swiper-button-prev {
+              color: #fff; /* Change arrow color to white */
+              font-size: 30px; /* Increase the size of the arrows */
+              width: 40px; /* Optional: Increase button area for better clickability */
+              height: 40px; /* Optional: Increase button area for better clickability */
+              text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add shadow for better visibility */
+            }
+            .swiper-button-next::after, .swiper-button-prev::after {
+              font-size: 30px; /* Increase the size of the arrow icons */
+              font-weight: bold;
+            }
+            .swiper-initialized {
+              height: 100%;
+              width: 100%;
+            }
+          `}
+        </style>
+        <Swiper
+          modules={[Navigation]}
+          spaceBetween={25}
+          slidesPerView={1}
+          loop={true}
+          navigation={true}
+        >
           {
-            
-            this.props.flatImages.length >0? 
-            this.props.flatImages.map((item, index) => {
-              return <button key={index}  type="button" data-bs-target={"#carouselExampleWhite"+uniqeNum} data-bs-slide-to={index} style={{ width: "20px" }} className={index == 0 ? "active rounded-circle py-2 bg-primColor" : 'rounded-circle py-2 bg-primColor'} aria-current="true" aria-label={`Slide ${index + 1}`}></button>
-            })
-          :
-          <button type="button" data-bs-target={"#carouselExampleWhite"+uniqeNum} data-bs-slide-to="0" style={{ width: "20px" }} className="active rounded-circle py-2 bg-primColor" aria-current="true" aria-label="Slide 1"></button>
-          }
-        </div>
-        <div className="carousel-inner h-100">
-        {
-            
-            this.props.flatImages.length >0? 
-            this.props.flatImages.map((item, index) => {
-              return <div key={index}  className={index == 0 ? "carousel-item h-100 active" : 'carousel-item h-100'} data-bs-interval={(index+1) *10000}>
-                <img src={item.url} className="w-100 h-100 d-block" alt="apartment Picture" />
-              </div>
-               })
-          :<div className="carousel-item h-100 active" data-bs-interval="10000">
-          <img src="Images/RandomBuilding.jpg" className="w-100 h-100 d-block" alt="apartment Picture" />
-        </div>
- 
-          }
-        </div>
-      </div> */}
-            <style>
-        {`
-          .swiper-pagination {
-            bottom: 15px;
-            text-align: center;
-            width: 100%;
-          }
-
-          .swiper-pagination-bullet {
-            width: 20px;
-            height: 20px;
-            background-color: #fff;
-            opacity: 1;
-            margin: 0 5px;
-          }
-
-          .swiper-pagination-bullet-active {
-            background-color: #377474;
-            opacity: 1;
-          }
-          .swiper-initialized{
-            height: 100%;
-            width: 100%;
-          }
-            `}
-      </style>
-      <Swiper
-        modules={[Pagination]}
-        spaceBetween={25}
-        slidesPerView={1}
-        loop={true}
-        pagination={{ clickable: true }}
-
-      >
-
-        {
-          this.props.flatImages.length > 0 ?
-            this.props.flatImages.map((item, index) => {
-              return <SwiperSlide key={index}  >
-                <img src={item.url} className="d-block rounded-3 rounded-bottom-0 object-fit-cover" style={{ height: `100%`, width: `100%` }} alt="apartment Picture" />
+            this.props.flatImages.length > 0 ?
+              this.props.flatImages.map((item, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <a style={{ cursor: "pointer" }} onClick={functionOnClickImage}>
+                      <img
+                        src={item.url}
+                        className={"d-block rounded-3 rounded-bottom-0 " + (thePopImageFlag ? "object-fit-contain" : "object-fit-cover")}
+                        style={{ height: '100%', width: '100%' }}
+                        alt="apartment Picture"
+                      />
+                    </a>
+                  </SwiperSlide>
+                );
+              })
+              :
+              <SwiperSlide>
+                <img
+                  src="Images/RandomBuilding.jpg"
+                  style={{ height: '100%', width: '100%' }}
+                  className="rounded-bottom-0"
+                  alt="apartment Picture"
+                />
               </SwiperSlide>
-            })
-            :
-            <SwiperSlide  >
-              <img src="Images/RandomBuilding.jpg " style={{ height: `100%`, width: `100%` }} className='rounded-bottom-0'  alt="apartment Picture" />
-            </SwiperSlide>
-        }
-      </Swiper>
-
-    </React.Fragment>
+          }
+        </Swiper>
+      </React.Fragment>
+    );
   }
 }

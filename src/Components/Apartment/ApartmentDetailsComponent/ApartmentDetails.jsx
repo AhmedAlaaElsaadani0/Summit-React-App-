@@ -4,19 +4,21 @@ import ApartmentSlider from "../ApartmentSliderComponent/ApartmentSlider";
 import { useTranslation } from "react-i18next";
 import ApiCalling from "../../JsClasses/apiManager";
 import ApartmentLoading from "../ApartmentLoadingComponent/ApartmentLoading";
-import style from "./ApartmentDetails.module.css"
+import style from "./ApartmentDetails.module.css";
 const ApartmentDetails = (props) => {
   const { t, i18n } = useTranslation();
   const [flat, setFlat] = useState(null);
+  const [thePopImageFlag, setThePopImageFlag] = useState(false);
   const { id } = useParams();
   const [apartmentSoldFlag, setApartmentSoldFlag] = useState(false);
   useEffect(() => {
     setFlat(null);
-    document.querySelectorAll(".ApartmentImage").forEach((apartmentImage) => {
-      document.querySelectorAll(".ApartmentDesc").forEach((apartmentDesc) => {
-        apartmentImage.style.height = `${apartmentDesc.clientHeight}px`;
-      });
-    });
+    // make ApartmentImages equal ApartmentDesc height
+    const ApartmentDesc = document.querySelector(".ApartmentDesc");
+    const ApartmentImages = document.querySelector(".ApartmentImages");
+    if (ApartmentDesc && ApartmentImages) {
+      ApartmentImages.style.height = ApartmentDesc.clientHeight + "px";
+    }
     getApartment();
   }, [i18n.language]);
   // get specific apartment from server
@@ -47,21 +49,24 @@ const ApartmentDetails = (props) => {
           <ApartmentLoading />
         ) : (
           <div
-            className={` w-sm-90 p-0 rounded-4 m-auto shadow  ` } style={{width:"60%"}} 
+            className={` w-sm-90 p-0 rounded-5 overflow-hidden m-auto shadow  `}
+            style={{ width: "80%" }}
           >
             <div className="overflow-hidden">
-              <div className="row position-relative" >
-                <div className="col-md-12 ApartmentImage" >
-                  <div className=" m-auto " style={{height:"550px"}} >
+              <div className="row position-relative">
+                <div className="col-lg-5 AbartmentImage p-0 overflow-hidden">
+                  <div className=" m-auto " style={{ height: "590px" }}>
                     <ApartmentSlider
                       key={flat.id}
-                      flagDetails={true}
                       flatImages={flat.pictures}
+                      functionOnClickImage={() =>
+                        setThePopImageFlag(!thePopImageFlag)
+                      }
                     />
                   </div>
                 </div>
                 <div
-                  className={`col-md-12 fs-3 fw-bolder ApartmentDesc bg-primColor text-white`}
+                  className={`col-lg-7 fs-2 fw-bolder ApartmentDesc bg-primColor text-white`}
                 >
                   <div className="fs-3 px-3 fw-bolder w-100">
                     <h2 className="py-2">{flat.title} </h2>
@@ -83,7 +88,7 @@ const ApartmentDetails = (props) => {
                       </p>
                       <p id="Description">
                         {t("Apart Descrp")}{" "}
-                        <span className="fw-normal">{flat.description}</span>
+                        <pre className="fw-bolder">{flat.description}</pre>
                       </p>{" "}
                       <div className="w-100  d-flex justify-content-between">
                         <div className="contact text-white">
@@ -94,59 +99,38 @@ const ApartmentDetails = (props) => {
                               "d-flex justify-content-center socialMedia "
                             }
                           >
-                            <div
-                              className={style.socialMember}
-                          
-                            >
-                              <a target="_blank"
+                            <div className={style.socialMember}>
+                              <a
+                                target="_blank"
                                 href="https://www.facebook.com/Summit.develpmentegy?sfnsn=scwspmo&mibextid=RUbZ1f"
                                 className="text-decoration-none  "
                               >
-                                <i
-                                  style={{ fontSize: "1rem" }}
-                                  className="fa-brands fa-facebook"
-                                ></i>
+                                <i className="fa-brands fa-facebook"></i>
                               </a>
                             </div>
 
-                            <div
-                              className={style.socialMember}
-                              style={{
-                                width: "25px",
-                                height: "25px",
-                              }}
-                            >
-                              <a target="_blank"
+                            <div className={style.socialMember}>
+                              <a
+                                target="_blank"
                                 href="https://www.instagram.com/invites/contact/?i=jfc5f4kwlaj8&utm_content=ttcxci2"
                                 className="text-decoration-none  "
                               >
-                                <i
-                                  style={{ fontSize: "1rem" }}
-                                  className="fa-brands fa-instagram"
-                                ></i>
+                                <i className="fa-brands fa-instagram"></i>
                               </a>
                             </div>
 
-                            <div
-                              className={style.socialMember}
-                              style={{
-                                width: "25px",
-                                height: "25px",
-                              }}
-                            >
-                              <a target="_blank"
+                            <div className={style.socialMember}>
+                              <a
+                                target="_blank"
                                 href="https://wa.me/message/T4HZAXRBWHYTP1?src=qr"
                                 className="text-decoration-none  "
                               >
-                                <i
-                                  style={{ fontSize: "1rem" }}
-                                  className="fa-brands fa-whatsapp"
-                                ></i>
+                                <i className="fa-brands fa-whatsapp"></i>
                               </a>
                             </div>
                           </div>
                         </div>
-                        <button className={"sButtonWhite sButton "}>
+                        <button className={"sButtonWhite sButton p-0 p-1"}>
                           {t("Apart Price")} {flat.price}
                         </button>
                       </div>
@@ -168,6 +152,28 @@ const ApartmentDetails = (props) => {
           </div>
         )}
       </div>
+
+      {thePopImageFlag ? (
+        <div
+          className="w-100 position-fixed top-0 bottom-0 z-3 d-flex  justify-content-center align-items-center"
+          style={{ backgroundColor: "rgba(0,0,0,0.7)" }}
+        >
+          <div className={style.popImage}>
+            <ApartmentSlider
+              key={flat?.id}
+              isUsingInCard={false}
+              flatImages={flat?.pictures}
+              thePopImageFlag={thePopImageFlag}
+            />
+          </div>
+          <button className="btn-close btn position-absolute top-0 left-0 p-3 z-3 rounded-circle bg-white text-bg-danger  "
+          onClick={() => setThePopImageFlag(!thePopImageFlag)}
+          >
+          </button>
+        </div>
+      ) : (
+        ""
+      )}
     </React.Fragment>
   );
 };

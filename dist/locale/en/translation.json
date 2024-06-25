@@ -99,7 +99,11 @@
     "Form Confirm Password Error":"Password and Confirm Password must match",
     "Form Address Error":"Address must not be empty",
     "Form Password Login Error":"We expected password more than 6 characters",
-    "Form Username Error":"valid Email or valid Username"
+    "Form Username Error":"valid Email or valid Username",
+    "Send":"Send",
+"Enter your message":"Enter your message",
+"Enter your name":"Enter your name",
+"Enter your email":"Enter your email"
 
 
     

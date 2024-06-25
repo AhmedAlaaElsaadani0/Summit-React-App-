@@ -81,20 +81,29 @@ const Navbar = () => {
 
   const turnOnDarkMode = () => {
     document.querySelector("body").classList.toggle("dark");
-    //change label inner text to light mode
-    let darkModeButton = document.querySelector("nav button#darkmode");
-    darkModeButton.classList.replace("btn-outline-light", "btn-outline-dark");
-
-    if (lightFlag) {
-      darkModeButton.classList.add("btn-outline-light");
-      darkModeButton.classList.remove("btn-outline-dark");
-      setLightFlag(false);
-    } else {
-      darkModeButton.classList.add("btn-outline-dark");
-      darkModeButton.classList.remove("btn-outline-light");
-      setLightFlag(true);
-    }
+    setLightFlag(!lightFlag);;
   };
+    // this to part to get the prefers-color-scheme from device
+    useEffect(() => {
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  
+      if (mediaQuery.matches) {
+        turnOnDarkMode();
+      }
+  
+      const handleChange = (e) => {
+        if (e.matches) {
+          turnOnDarkMode();
+        }
+      };
+  
+      mediaQuery.addEventListener("change", handleChange);
+  
+      return () => {
+        mediaQuery.removeEventListener("change", handleChange);
+      };
+    }, []);
+  
   return (
     <>
       <nav
@@ -218,12 +227,12 @@ const Navbar = () => {
               <li>
                 <button
                   type="button"
-                  className="btn btn-outline-dark "
+                  className={!lightFlag ? "btn btn-outline-light" : "btn btn-outline-dark"}
                   name="dark mode button"
                   id="darkmode"
                   onClick={turnOnDarkMode}
-                >
-                  <i className="fa-solid fa-circle-half-stroke"></i>
+                >{ <i className="fa-solid fa-moon"></i>
+                }
                 </button>
               </li>
             </ul>

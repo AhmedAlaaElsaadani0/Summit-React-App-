@@ -97,7 +97,9 @@
     "Form Confirm Password Error":"كلمة المرور يجب أن تتطابق مع كلمة المرور السابقة",
     "Form Address Error":"العنوان يجب أن لا يكون فارغ",  
     "Form Password Login Error":"نتوقع من ادخال باسورد اكثر من 6 حروف",
-    "Form Username Error":"يجب ان يكون إيميل صالح او إسم المستخدم"
-
-  
+    "Form Username Error":"يجب ان يكون إيميل صالح او إسم المستخدم",
+"Send":"ارسال",
+"Enter your message":"ادخل رسالتك",
+"Enter your name":"ادخل اسمك",
+"Enter your email":"ادخل بريدك الالكتروني"
 }

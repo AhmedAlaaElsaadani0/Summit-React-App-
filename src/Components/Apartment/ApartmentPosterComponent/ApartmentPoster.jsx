@@ -27,7 +27,7 @@ const ApartmentPoster = (props) => {
           <div className="overflow-hidden">
             <div className="row position-relative ">
               <div className="col-md-5 ApartmentImage ApartmentSlider " style={{ Height: document.querySelectorAll('.ApartmentDesc').clientHeight, maxHeight: '500px' }}>
-                <ApartmentSlider key={flat.id} uniqeNum={flat.id} flatImages={flat.pictures} />
+                <ApartmentSlider key={flat.id} flatImages={flat.pictures}  functionOnClickImage={toApartmentDetails} />
               </div>
               <div className={`col-md-7 fs-3 fw-bolder ApartmentDesc ${flag ? 'text-white' : 'text-primColor'}`}>
                 <div className="fs-3 px-3 fw-bolder w-100">
@@ -49,7 +49,7 @@ const ApartmentPoster = (props) => {
                     </p> */}
                     <div className='w-100 d-flex justify-content-end text-center'>
 
-                      <button onClick={toApartmentDetails} className={` sButton   ms-md-auto m-smalldevice-auto    ${!flag ? "sButtonGreen" : "sButtonWhite"} `}  > 
+                      <button onClick={toApartmentDetails}  className={` sButton   ms-md-auto m-smalldevice-auto    ${!flag ? "sButtonGreen" : "sButtonWhite"} `}  > 
                       {t("Apart Button")}
                       </button>
                     </div>

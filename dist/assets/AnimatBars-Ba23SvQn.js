@@ -1,0 +1,1 @@
+import{j as s}from"./index-nLugMdGR.js";function i(){return s.jsxs("div",{id:"bars",className:"bars",children:[s.jsx("div",{}),s.jsx("div",{style:{animationDelay:"0.025s"}}),s.jsx("div",{style:{animationDelay:"0.05s"}}),s.jsx("div",{style:{animationDelay:"0.075s"}}),s.jsx("div",{style:{animationDelay:"0.1s"}})]})}export{i as default};
