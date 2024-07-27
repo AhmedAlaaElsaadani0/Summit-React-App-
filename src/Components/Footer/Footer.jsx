@@ -48,7 +48,7 @@ export default function Footer() {
               return (
                 <motion.li
                   initial={{ opacity: 0, y: 100 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   key={index}
                   className="nav-item mb-2"
@@ -74,7 +74,7 @@ export default function Footer() {
               return (
                 <motion.li
                   initial={{ opacity: 0, y: 100 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   key={index}
                   className="nav-item mb-2"
@@ -109,7 +109,7 @@ export default function Footer() {
               return (
                 <motion.li
                   initial={{ opacity: 0, y: 100 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   key={index}
                   className="nav-item mb-2"
@@ -133,7 +133,7 @@ export default function Footer() {
               return (
                 <motion.li
                   initial={{ opacity: 0, y: 100 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   key={index}
                   className="nav-item mb-2 w-100 text-start"

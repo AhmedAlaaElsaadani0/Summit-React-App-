@@ -139,7 +139,7 @@ const ContactUs = (props) => {
         >
           <motion.h2
             initial={{ opacity: 0, y: -100 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className={` mb-5 headingForSeactions text-center  ${styleContactUs.headingContact}`}
           >
@@ -148,7 +148,7 @@ const ContactUs = (props) => {
 
           <motion.form
             initial={{ opacity: 0, y: -100 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             onSubmit={(e) => handleSubmit(e)}
             className="w-50 shadow rounded-5"
@@ -219,7 +219,7 @@ const ContactUs = (props) => {
               return (
                 <motion.div
                   initial={{ opacity: 0, y: 100 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.2 }}
                   key={index}
                   className={`rounded-circle d-flex justify-content-center align-items-center ${styleContactUs.socialMediaMember}`}

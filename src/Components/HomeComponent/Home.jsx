@@ -30,7 +30,7 @@ const Home = () => {
         <div className="row">
           <motion.div
             initial={{ opacity: 0, x: i18n.language==="ar"? 100:-100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
             className="col-md-6"
           >
@@ -50,7 +50,7 @@ const Home = () => {
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: (i18n.language==="ar"? -100:100) }}
-            whileInView={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
             className="col-md-6 shadow p-0 overflow-hidden border rounded-5"
           >
