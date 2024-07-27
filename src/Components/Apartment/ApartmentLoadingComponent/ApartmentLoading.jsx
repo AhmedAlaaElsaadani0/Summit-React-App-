@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-
+import randomBuilding from '../../../assets/Images/RandomBuilding.jpg';
 const ApartmentLoading = ({ flag }) => {
     const{t}=useTranslation();
     return (
@@ -9,7 +9,7 @@ const ApartmentLoading = ({ flag }) => {
             <div className="container-fluid overflow-hidden">
                 <div className="row">
                     <div className="col-md-5 AbartmentImage p-0 overflow-hidden" >
-                        <img src="../Images/RandomBuilding.jpg" className="w-100 h-100" alt="apartment Picture" />
+                        <img src={randomBuilding} className="w-100 h-100" alt="apartment Picture" />
                     </div>
                     <div className={`col-md-7 fs-3 fw-bolder AbartmentDesc ${flag ? 'text-white' : 'text-primColor'}`}>
                         <div className="fs-3 px-3 fw-bolder w-100">

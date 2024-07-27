@@ -5,6 +5,7 @@ import ApartmentPoster from '../Apartment/ApartmentPosterComponent/ApartmentPost
 import ApartmentLoading from '../Apartment/ApartmentLoadingComponent/ApartmentLoading';
 import { useTranslation } from 'react-i18next';
 import Filter from '../Filter/Filter';
+import { motion } from 'framer-motion';
 
 const Buy = () => {
 
@@ -136,7 +137,7 @@ const Buy = () => {
         <div className="container-fluid w-90 m-auto">
                  <div className="row column-gap-2">
           {loading ?
-            [true, false, true].map((item, index) => {
+            [true, false].map((item, index) => {
               return <ApartmentLoading key={index} flag={item} />
             })
             :

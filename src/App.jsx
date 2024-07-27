@@ -10,7 +10,6 @@ import RootLayout from "./Components/RootLayout/RootLayout";
 // import Signup from './Components/Form/Signup/Signup';
 // import { UserContextProvider } from './Context/UserContextProvider';
 import Error from "./Components/Error/Error";
-import ErrorTracking from "./Components/ErrorTracking/ErrorTracking";
 import Spinner from "./Components/Spinner/Spinner";
 // Wrap your components with React.lazy
 const Home = lazy(() => import("./Components/HomeComponent/Home"));

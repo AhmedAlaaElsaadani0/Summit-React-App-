@@ -138,7 +138,7 @@ const Rent = () => {
         <div className="container-fluid w-90 m-auto" >
           <div className="row">
           {loading ?
-            [true, false, true].map((item, index) => {
+            [true, false].map((item, index) => {
               return <ApartmentLoading key={index} flag={item} />
             })
             :

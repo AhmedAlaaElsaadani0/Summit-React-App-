@@ -17,12 +17,9 @@ i18n
 
       caches: ["cookie", "localStorage"],
     }
-    // ,
-    // lng:"en"
     , backend: {
       // http backend options
       loadPath: '/locale/{{lng}}/{{ns}}.json',
-
     },
     interpolation: {
       escapeValue: false // react already safes from xss

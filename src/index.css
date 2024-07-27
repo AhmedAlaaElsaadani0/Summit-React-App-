@@ -83,7 +83,6 @@ body{
   -ms-border-radius: 1rem;
   -o-border-radius: 1rem;
 }
-
 .sButtonGreen {
   color: white;
   background-color: var(--PrimColor);
@@ -121,6 +120,17 @@ button:active{
   -moz-transform: translateY(2px);
   -ms-transform: translateY(2px);
   -o-transform: translateY(2px);
+}
+.sButton:disabled{
+  background-color: #d7d7d7;
+  color: white;
+}
+.sButton:disabled:hover{
+  background-color: #d7d7d7;
+  color: white;
+}
+.sButton:disabled:active{
+  scale: 1;
 }
 img{
   transition: all 0.5s ease;

@@ -4,6 +4,7 @@ import "./styleNavBar.css";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Logo from "../../assets/Images/Logo.png";
 import whiteIcon from "../../assets/Images/icon.png";
+import { motion } from "framer-motion";
 
 // import Login from "../Form/Login/Login";
 const Link = React.lazy(() => import("../Link/Link"));
@@ -12,7 +13,13 @@ const Navbar = () => {
   const { t, i18n } = useTranslation();
   const [lightFlag, setLightFlag] = useState(true);
   const [navbarCollapse, setNavbarCollapse] = useState(null);
-
+  const links = [
+    { name: t("Navbar Home"), link: "/" },
+    { name: t("Navbar About"), link: "/About" },
+    { name: t("Navbar Buy"), link: "/Buy" },
+    { name: t("Navbar Rent"), link: "/Rent" },
+    { name: t("Navbar Contact"), link: "/Contact" },
+  ];
   // specify style for nav item when refresh page
   const specifyStyleForNav = () => {
     document.querySelectorAll(".nav-link").forEach((element) => {
@@ -81,29 +88,29 @@ const Navbar = () => {
 
   const turnOnDarkMode = () => {
     document.querySelector("body").classList.toggle("dark");
-    setLightFlag(!lightFlag);;
+    setLightFlag(!lightFlag);
   };
-    // this to part to get the prefers-color-scheme from device
-    useEffect(() => {
-      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-  
-      if (mediaQuery.matches) {
+  // this to part to get the prefers-color-scheme from device
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    if (mediaQuery.matches) {
+      turnOnDarkMode();
+    }
+
+    const handleChange = (e) => {
+      if (e.matches) {
         turnOnDarkMode();
       }
-  
-      const handleChange = (e) => {
-        if (e.matches) {
-          turnOnDarkMode();
-        }
-      };
-  
-      mediaQuery.addEventListener("change", handleChange);
-  
-      return () => {
-        mediaQuery.removeEventListener("change", handleChange);
-      };
-    }, []);
-  
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
+
   return (
     <>
       <nav
@@ -111,9 +118,12 @@ const Navbar = () => {
         className="navbar navbar-expand-lg pt-2 bg-responsiveTransparentAndPrimColorWhenPhone"
         data-bs-theme="dark"
       >
-        <div className="container d-flex justify-content-between ">
+        <div className="container d-flex justify-content-between overflow-hidden">
           <Link className="navbar-brand " to="/">
-            <img
+            <motion.img
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
               src={Logo}
               className="noneImageHover"
               style={{ width: "120px" }}
@@ -124,7 +134,8 @@ const Navbar = () => {
             className="navbar-toggler"
             type="button"
             onClick={() => {
-              navbarCollapse.toggle();}}
+              navbarCollapse.toggle();
+            }}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -134,57 +145,33 @@ const Navbar = () => {
           >
             <div />
             <ul className="navbar-nav gap-3  d-flex justify-content-between mb-2 mb-lg-0">
-              <li className="nav-item ">
-                <Link
-                  className="nav-link active selectedNavElement"
-                  onClick={(e) => changeStyleClassFotNavItem(e)}
-                  to="/"
-                >
-                  {t("Navbar Home")}
-                </Link>
-              </li>
-              <li className="nav-item ">
-                <Link
-                  className="nav-link active"
-                  aria_current="About"
-                  onClick={(e) => changeStyleClassFotNavItem(e)}
-                  to="/About"
-                >
-                  {t("Navbar About")}
-                </Link>
-              </li>
-              <li className="nav-item ">
-                <Link
-                  className="nav-link active"
-                  aria_current="Buy"
-                  onClick={(e) => changeStyleClassFotNavItem(e)}
-                  to="/Buy"
-                >
-                  {t("Navbar Buy")}
-                </Link>
-              </li>
-              <li className="nav-item ">
-                <Link
-                  className="nav-link active"
-                  aria_current="Rent"
-                  onClick={(e) => changeStyleClassFotNavItem(e)}
-                  to="/Rent"
-                >
-                  {t("Navbar Rent")}
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className="nav-link active"
-                  aria_current="Contact"
-                  onClick={(e) => changeStyleClassFotNavItem(e)}
-                  to="/Contact"
-                >
-                  {t("Navbar Contact")}
-                </Link>
-              </li>
+              {links.map((link, index) => {
+                return (
+                  <motion.li
+                    initial={{ opacity: 0, y: -100 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="nav-item "
+                    key={index}
+                  >
+                    <Link
+                      className="nav-link active"
+                      aria_current={link.name}
+                      onClick={(e) => changeStyleClassFotNavItem(e)}
+                      to={link.link}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.li>
+                );
+              })}
             </ul>
-            <ul className="navbar-nav d-flex gap-3  mb-2 mb-lg-0">
+            <motion.ul
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="navbar-nav d-flex gap-3  mb-2 mb-lg-0"
+            >
               {/* login and sign uo button with language switch */}
               {/*
 //Login system
@@ -227,15 +214,19 @@ const Navbar = () => {
               <li>
                 <button
                   type="button"
-                  className={!lightFlag ? "btn btn-outline-light" : "btn btn-outline-dark"}
-                  name="dark mode button"
+                  className={
+                    !lightFlag
+                      ? "btn btn-outline-light"
+                      : "btn btn-outline-dark"
+                  }
+                  name="darkMode"
                   id="darkmode"
                   onClick={turnOnDarkMode}
-                >{ <i className="fa-solid fa-moon"></i>
-                }
+                >
+                  {<i className="fa-solid fa-moon"></i>}
                 </button>
               </li>
-            </ul>
+            </motion.ul>
           </div>
         </div>
       </nav>

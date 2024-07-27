@@ -5,11 +5,30 @@ import { useTranslation } from "react-i18next";
 import ApiCalling from "../../JsClasses/apiManager";
 import ApartmentLoading from "../ApartmentLoadingComponent/ApartmentLoading";
 import style from "./ApartmentDetails.module.css";
+import { motion } from "framer-motion";
+import soldImage from "../../../assets/Images/Sold.png";
 const ApartmentDetails = (props) => {
   const { t, i18n } = useTranslation();
   const [flat, setFlat] = useState(null);
   const [thePopImageFlag, setThePopImageFlag] = useState(false);
   const { id } = useParams();
+  const socialMedia = [
+    {
+      name: "Facebook",
+      link: "https://www.facebook.com/Summit.develpmentegy?sfnsn=scwspmo&mibextid=RUbZ1f",
+      icon: "fa-facebook",
+    },
+    {
+      name: "Instagram",
+      link: "https://www.instagram.com/invites/contact/?i=jfc5f4kwlaj8&utm_content=ttcxci2",
+      icon: "fa-instagram",
+    },
+    {
+      name: "Whatsapp",
+      link: "https://wa.me/message/T4HZAXRBWHYTP1?src=qr",
+      icon: "fa-whatsapp",
+    },
+  ];
   const [apartmentSoldFlag, setApartmentSoldFlag] = useState(false);
   useEffect(() => {
     setFlat(null);
@@ -37,7 +56,7 @@ const ApartmentDetails = (props) => {
         {apartmentSoldFlag ? (
           <div className="d-flex flex-column align-items-center">
             <img
-              src="/Images/Sold.png"
+              src={soldImage}
               alt="sold images"
               style={{ width: "300px" }}
             />
@@ -48,13 +67,24 @@ const ApartmentDetails = (props) => {
         ) : flat == null ? (
           <ApartmentLoading />
         ) : (
-          <div
-            className={` w-sm-90 p-0 rounded-5 overflow-hidden m-auto shadow  `}
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className={` w-sm-90 p-0 rounded-5 rounded-top-end-0 overflow-hidden m-auto shadow  `}
             style={{ width: "80%" }}
           >
             <div className="overflow-hidden">
               <div className="row position-relative">
-                <div className="col-lg-5 AbartmentImage p-0 overflow-hidden">
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    x: i18n.language === "ar" ? 100 : -100,
+                  }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="col-lg-5 AbartmentImage p-0 overflow-hidden"
+                >
                   <div className=" m-auto " style={{ height: "590px" }}>
                     <ApartmentSlider
                       key={flat.id}
@@ -64,8 +94,14 @@ const ApartmentDetails = (props) => {
                       }
                     />
                   </div>
-                </div>
-                <div
+                </motion.div>
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    x: i18n.language === "ar" ? -100 : 100,
+                  }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
                   className={`col-lg-7 fs-2 fw-bolder ApartmentDesc bg-primColor text-white`}
                 >
                   <div className="fs-3 px-3 fw-bolder w-100">
@@ -99,35 +135,28 @@ const ApartmentDetails = (props) => {
                               "d-flex justify-content-center socialMedia "
                             }
                           >
-                            <div className={style.socialMember}>
-                              <a
-                                target="_blank"
-                                href="https://www.facebook.com/Summit.develpmentegy?sfnsn=scwspmo&mibextid=RUbZ1f"
-                                className="text-decoration-none  "
-                              >
-                                <i className="fa-brands fa-facebook"></i>
-                              </a>
-                            </div>
-
-                            <div className={style.socialMember}>
-                              <a
-                                target="_blank"
-                                href="https://www.instagram.com/invites/contact/?i=jfc5f4kwlaj8&utm_content=ttcxci2"
-                                className="text-decoration-none  "
-                              >
-                                <i className="fa-brands fa-instagram"></i>
-                              </a>
-                            </div>
-
-                            <div className={style.socialMember}>
-                              <a
-                                target="_blank"
-                                href="https://wa.me/message/T4HZAXRBWHYTP1?src=qr"
-                                className="text-decoration-none  "
-                              >
-                                <i className="fa-brands fa-whatsapp"></i>
-                              </a>
-                            </div>
+                            {socialMedia.map((link, index) => {
+                              return (
+                                <motion.div
+                                  initial={{
+                                    opacity: 0,
+                                    x: -100,
+                                  }}
+                                  whileInView={{ opacity: 1, x: 0 }}
+                                  transition={{ duration: 0.5, delay: 0.4*index }}
+                                  key={index}
+                                  className={style.socialMember}
+                                >
+                                  <a
+                                    target="_blank"
+                                    href={link.link}
+                                    className="text-decoration-none  "
+                                  >
+                                    <i className={"fa-brands " + link.icon}></i>
+                                  </a>
+                                </motion.div>
+                              );
+                            })}
                           </div>
                         </div>
                         <button className={"sButtonWhite sButton p-0 p-1"}>
@@ -136,10 +165,10 @@ const ApartmentDetails = (props) => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 <div
-                  className={`data position-absolute top-0 z-1 end-0 me-3 mt-2 rounded bg-white  text-primColor `}
+                  className={`data position-absolute top-0 z-1 end-0 me-4 mt-2 rounded-2 bg-white  text-primColor `}
                   style={{ width: "fit-content" }}
                 >
                   <p id="date" className="mb-0">
@@ -149,7 +178,7 @@ const ApartmentDetails = (props) => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
 
@@ -166,10 +195,10 @@ const ApartmentDetails = (props) => {
               thePopImageFlag={thePopImageFlag}
             />
           </div>
-          <button className="btn-close btn position-absolute top-0 left-0 p-3 z-3 rounded-circle bg-white text-bg-danger  "
-          onClick={() => setThePopImageFlag(!thePopImageFlag)}
-          >
-          </button>
+          <button
+            className="btn-close btn position-absolute top-0 left-0 p-3 z-3 rounded-circle bg-white text-bg-danger  "
+            onClick={() => setThePopImageFlag(!thePopImageFlag)}
+          ></button>
         </div>
       ) : (
         ""

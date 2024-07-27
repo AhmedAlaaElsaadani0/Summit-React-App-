@@ -25,6 +25,7 @@ export default class ApartmentSlider extends Component {
             .swiper-initialized {
               height: 100%;
               width: 100%;
+              
             }
           `}
         </style>

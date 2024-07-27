@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ApartmentSlider from '../ApartmentSliderComponent/ApartmentSlider';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 
 const ApartmentPoster = (props) => {
   const navigate = useNavigate();
@@ -22,11 +23,13 @@ const ApartmentPoster = (props) => {
     return (
       <React.Fragment>
       {
-        
-        <div className={`col-xl-5 w-sm-90  p-0 mb-3  rounded-4 overflow-hidden m-auto shadow Apartment ${flag ? 'bg-primColor' : 'bg-whiteToBlack'}`}>
+        <motion.div  initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay:(props.index*0.1) }}
+        className={`col-xl-5 w-sm-90  p-0 mb-3  rounded-4 overflow-hidden m-auto shadow Apartment ${flag ? 'bg-primColor' : 'bg-whiteToBlack'}`}>
           <div className="overflow-hidden">
             <div className="row position-relative ">
-              <div className="col-md-5 ApartmentImage ApartmentSlider " style={{ Height: document.querySelectorAll('.ApartmentDesc').clientHeight, maxHeight: '500px' }}>
+              <div className="col-md-5 ApartmentImage ApartmentSlider " style={{ maxHeight: '270px' ,overflow:"hidden"}}>
                 <ApartmentSlider key={flat.id} flatImages={flat.pictures}  functionOnClickImage={toApartmentDetails} />
               </div>
               <div className={`col-md-7 fs-3 fw-bolder ApartmentDesc ${flag ? 'text-white' : 'text-primColor'}`}>
@@ -39,7 +42,10 @@ const ApartmentPoster = (props) => {
                       Floor : <span className="fw-normal"> {flat.floor} </span>
                     </p> */}
                     <p id="Price">
-                      {t("Apart Price")}<span className="fw-normal"> {flat.price} </span>
+                      {t("Apart Price")}<span className="fw-normal fs-5 "> {
+                      (String(flat.price).length>7) ? String(flat.price).slice(0,6) + "..." : flat.price
+                      
+                      } </span>
                     </p>
                     {/* <p id="Apartmentn">
                       Apartmentn: <span className="fw-normal">{flat.condition}</span>
@@ -49,7 +55,7 @@ const ApartmentPoster = (props) => {
                     </p> */}
                     <div className='w-100 d-flex justify-content-end text-center'>
 
-                      <button onClick={toApartmentDetails}  className={` sButton   ms-md-auto m-smalldevice-auto    ${!flag ? "sButtonGreen" : "sButtonWhite"} `}  > 
+                      <button onClick={toApartmentDetails} style={{fontSize:"16px"}}  className={` sButton   ms-md-auto m-smalldevice-auto    ${!flag ? "sButtonGreen" : "sButtonWhite"} `}  > 
                       {t("Apart Button")}
                       </button>
                     </div>
@@ -67,7 +73,7 @@ const ApartmentPoster = (props) => {
 
             </div>
           </div>
-        </div>
+        </motion.div>
       }
     </React.Fragment>
   );
