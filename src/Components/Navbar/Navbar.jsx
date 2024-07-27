@@ -219,7 +219,7 @@ const Navbar = () => {
                       ? "btn btn-outline-light"
                       : "btn btn-outline-dark"
                   }
-                  name="darkMode"
+                  name="toggle Dark Mode button"
                   id="darkmode"
                   onClick={turnOnDarkMode}
                 >

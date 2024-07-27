@@ -13,14 +13,17 @@ const ContactUs = (props) => {
     {
       icon: "fa-facebook",
       link: "https://www.facebook.com/Summit.develpmentegy?sfnsn=scwspmo&mibextid=RUbZ1f",
+      descName: "Facebook Link",
     },
     {
       icon: "fa-instagram",
       link: "https://www.instagram.com/invites/contact/?i=jfc5f4kwlaj8&utm_content=ttcxci2",
+      descName: "Instagram Link",
     },
     {
       icon: "fa-whatsapp",
       link: "https://wa.me/message/T4HZAXRBWHYTP1?src=qr",
+      descName: "Whatsapp Link",
     },
   ];
   const [errors, setErrors] = useState({});
@@ -151,7 +154,7 @@ const ContactUs = (props) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             onSubmit={(e) => handleSubmit(e)}
-            className="w-50 shadow rounded-5"
+            className={styleContactUs.form+" shadow rounded-5"}
           >
             <div className="row gy-2 gy-xl-4 p-3 ">
               <div className="col-12">
@@ -232,6 +235,7 @@ const ContactUs = (props) => {
                     target="_blank"
                     href={item.link}
                     className="text-decoration-none  "
+                    name={item.descName}
                   >
                     <i
                       style={{ fontSize: "2rem" }}

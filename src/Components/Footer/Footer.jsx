@@ -42,7 +42,7 @@ export default function Footer() {
         }
       >
         <div className="col-lg col-md-3 col-sm-6 mb-3">
-          <h5 className="text-primColor">{t("Footer Service")}</h5>
+          <p className="text-primColor">{t("Footer Service")}</p>
           <ul className="nav flex-column p-0 ">
             {firstLinks.map((link, index) => {
               return (
@@ -68,7 +68,7 @@ export default function Footer() {
         </div>
 
         <div className="col-lg col-md-3 text-center col-sm-6 mb-3">
-          <h5 className="text-primColor ">{t("Footer Companey")}</h5>
+          <p className="text-primColor ">{t("Footer Companey")}</p>
           <ul className="nav flex-column p-0">
             {secondLinks.map((link, index) => {
               return (
@@ -93,7 +93,7 @@ export default function Footer() {
           </ul>
         </div>
         {/* <div className="col-lg col-md-3 text-center col-sm-6 mb-3">
-          <h5 className="text-primColor ">{t("Footer Support")}</h5>
+          <p className="text-primColor ">{t("Footer Support")}</p>
           <ul className="nav flex-column p-0">
             <li className="nav-item mb-2"><Link to="#" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer Help")}</Link></li>
             <li className="nav-item mb-2"><Link to="#" className={"nav-link p-0 text-white "+FooterStyle.Footer_a}>{t("Footer Feedback")}</Link></li>
@@ -103,7 +103,7 @@ export default function Footer() {
         </div> */}
 
         <div className="col-lg col-md-3 text-center col-sm-6 mb-3">
-          <h5 className="text-primColor ">{t("Footer Social")}</h5>
+          <p className="text-primColor ">{t("Footer Social")}</p>
           <ul className="nav flex-column p-0">
             {socialMedia.map((link, index) => {
               return (

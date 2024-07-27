@@ -69,7 +69,7 @@ const ApartmentDetails = (props) => {
         ) : (
           <motion.div
             initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className={` w-sm-90 p-0 rounded-5 rounded-top-end-0 overflow-hidden m-auto shadow  `}
             style={{ width: "80%" }}
@@ -81,7 +81,7 @@ const ApartmentDetails = (props) => {
                     opacity: 0,
                     x: i18n.language === "ar" ? 100 : -100,
                   }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                   className="col-lg-5 AbartmentImage p-0 overflow-hidden"
                 >
@@ -100,7 +100,7 @@ const ApartmentDetails = (props) => {
                     opacity: 0,
                     x: i18n.language === "ar" ? -100 : 100,
                   }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                   className={`col-lg-7 fs-2 fw-bolder ApartmentDesc bg-primColor text-white`}
                 >
@@ -142,7 +142,7 @@ const ApartmentDetails = (props) => {
                                     opacity: 0,
                                     x: -100,
                                   }}
-                                  whileInView={{ opacity: 1, x: 0 }}
+                                  animate={{ opacity: 1, x: 0 }}
                                   transition={{ duration: 0.5, delay: 0.4*index }}
                                   key={index}
                                   className={style.socialMember}

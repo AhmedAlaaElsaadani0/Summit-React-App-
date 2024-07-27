@@ -9,6 +9,9 @@
   letter-spacing: 0.5px;
   margin-top: 20px;
 }
+  footer p{
+    font-size:18px;
+  }
 .Footer_a {
   color: #fff !important;
   text-decoration: none;
