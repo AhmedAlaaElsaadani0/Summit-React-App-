@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import ApartmentSlider from "../ApartmentSliderComponent/ApartmentSlider";
 import { useTranslation } from "react-i18next";
 import ApiCalling from "../../JsClasses/apiManager";
-import ApartmentLoading from "../ApartmentLoadingComponent/ApartmentLoading";
 import style from "./ApartmentDetails.module.css";
 import { motion } from "framer-motion";
 import soldImage from "../../../assets/Images/Sold.png";
+import ApartmentSlider from "../ApartmentSliderComponent/ApartmentSlider";
+import ApartmentLoading from "../ApartmentLoadingComponent/ApartmentLoading";
 const ApartmentDetails = (props) => {
   const { t, i18n } = useTranslation();
   const [flat, setFlat] = useState(null);
@@ -116,16 +116,16 @@ const ApartmentDetails = (props) => {
                       </p>
                       <p id="Price">
                         {t("Apart Price")}{" "}
-                        <span className="fw-normal"> {flat.price} </span>
+                        <span className="fw-normal"> {flat.price.toLocaleString()} </span>
                       </p>
                       <p id="Apartment">
                         {t("Apart Condition")}{" "}
                         <span className="fw-normal">{flat.condition}</span>
                       </p>
-                      <p id="Description">
+                      <div id="Description">
                         {t("Apart Descrp")}{" "}
                         <pre className="fw-bolder">{flat.description}</pre>
-                      </p>{" "}
+                      </div>{" "}
                       <div className="w-100  d-flex justify-content-between">
                         <div className="contact text-white">
                           <h5 className="fw-bolder">{t("Apart Contact")}</h5>
@@ -160,7 +160,7 @@ const ApartmentDetails = (props) => {
                           </div>
                         </div>
                         <button className={"sButtonWhite sButton p-0 p-1"}>
-                          {t("Apart Price")} {flat.price}
+                          {t("Apart Price")} {flat.price.toLocaleString()}
                         </button>
                       </div>
                     </div>

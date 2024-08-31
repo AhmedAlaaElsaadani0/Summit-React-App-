@@ -128,7 +128,7 @@ export default function Footer() {
           </ul>
         </div>
         <div className="col-lg col-md-12  col-sm-6 mb-3">
-          <ul className="nav  jsutify-content-center align-items-center h-100 d-flex flex-wrap">
+          <ul className="nav  jsutify-content-center align-items-center h-100 d-flex">
             {connectDetails.map((detail, index) => {
               return (
                 <motion.li
@@ -136,10 +136,10 @@ export default function Footer() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   key={index}
-                  className="nav-item mb-2 w-100 text-start"
+                  className="nav-item mb-2 w-100 d-flex align-items-center "
                 >
-                  <i className={`fas ${detail.icon} text-white`}></i>
-                  <span className="text-white ms-2">{detail.text}</span>
+                  <i className={`fas ${detail.icon}  text-white`} ></i>
+                  <span className="text-white mx-auto ">{detail.text}</span>
                 </motion.li>
               );
             })}

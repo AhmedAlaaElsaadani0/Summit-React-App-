@@ -43,7 +43,7 @@ const ApartmentPoster = (props) => {
                     </p> */}
                     <p id="Price">
                       {t("Apart Price")}<span className="fw-normal fs-5 "> {
-                      (String(flat.price).length>7) ? String(flat.price).slice(0,6) + "..." : flat.price
+                      (flat.price.toLocaleString().length>7) ? flat.price.toLocaleString().slice(0,6) + "..." : flat.price.toLocaleString()
                       
                       } </span>
                     </p>

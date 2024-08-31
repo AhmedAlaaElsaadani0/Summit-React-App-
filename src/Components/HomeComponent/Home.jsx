@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import homeStyle from "./Home.module.css";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import homeImage from '../../assets/Images/Pyramids.jpg';
+import homeImage from '../../assets/Images/HomeImage.jpg';
 const About = lazy(() => import("../AboutComponent/About"));
 // const Contactus = lazy(() => import('../ContactusComponent/Contactus'));
 const Link = lazy(() => import("../Link/Link"));
@@ -27,7 +27,7 @@ const Home = () => {
         className="container-fluid p-5 justify-content-center d-flex align-items-center myVh-100 overflow-hidden"
         id="Home"
       >
-        <div className="row">
+        <div className={"row "+homeStyle.hero}>
           <motion.div
             initial={{ opacity: 0, x: i18n.language==="ar"? 100:-100 }}
             animate={{ opacity: 1, x: 0 }}
@@ -52,16 +52,18 @@ const Home = () => {
             initial={{ opacity: 0, x: (i18n.language==="ar"? -100:100) }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="col-md-6 shadow p-0 overflow-hidden border rounded-5"
+            className={"col-md-6  p-0  "+homeStyle.heroImage}
           >
             <img
               src={homeImage}
-              style={{ width: "100%", height: "100%" }}
+              loading="lazy"
               alt="RandomBuilding"
+              className="shadow border rounded-5"
             />
           </motion.div>
         </div>
       </div>
+      
       <About headFlag={false} />
       {/* <Contactus headFlag={false} /> */}
     </>

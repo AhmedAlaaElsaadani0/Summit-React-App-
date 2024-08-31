@@ -11,7 +11,7 @@ const Link = React.lazy(() => import("../Link/Link"));
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
-  const [lightFlag, setLightFlag] = useState(true);
+  const [lightFlag, setLightFlag] = useState(!(window.matchMedia("(prefers-color-scheme: dark)")));
   const [navbarCollapse, setNavbarCollapse] = useState(null);
   const links = [
     { name: t("Navbar Home"), link: "/" },
@@ -89,14 +89,11 @@ const Navbar = () => {
   const turnOnDarkMode = () => {
     document.querySelector("body").classList.toggle("dark");
     setLightFlag(!lightFlag);
+
   };
-  // this to part to get the prefers-color-scheme from device
+  // this to part to get the prefers-color-scheme from device and change the theme of body
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-    if (mediaQuery.matches) {
-      turnOnDarkMode();
-    }
 
     const handleChange = (e) => {
       if (e.matches) {

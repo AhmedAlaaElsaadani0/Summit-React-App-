@@ -515,7 +515,6 @@ export default class ApiCalling {
  * @param {object} data 
  * @returns 
  */
-
 export async function contactUs(data) {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
